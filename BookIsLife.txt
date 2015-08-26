@@ -1,0 +1,4 @@
+      O programa "BookIsLife" consiste na apresentação de uma plataforma de gêneros literários e os livros que pertencem a tais. Além disso, "BookIsLife" visa o aperfeiçoamento dos conhecimentos da disciplina de Português e Literatura.
+      Para cada livro o leitor terá a possibilidade de avaliar e resenhar. Para aqueles que tiverem dificuldades na disciplina, haverá uma página que auxiliará o leitor a criar uma boa resenha.
+      O objetivo da criação de "BookIsLife" é influenciar os jovens a ler e conhecer os diferentes gênero literários. Uma vez que podemos perceber que as novas gerações não têm mais o mesmo gosto pela leitura.
+      Outro objetivo interessante é utilizar o programa para auxiliar também outras disciplinas que envolvam leitura e resenhas para compreender melhor o que se foi estudado, como filosofia, sociologia e história entre outras.
