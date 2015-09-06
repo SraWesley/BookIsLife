@@ -9,20 +9,21 @@ import java.util.Scanner;
 public class LivroDAO implements DAO<Livro>{
 
 	@Override
-	public void save(Livro obj) throws Exception {
+	public void save(Livro obj)  {
 		try{
-			File dir = new File("Livros");
+			File dir = new File("livros");
 			if(!dir.exists()) dir.mkdir();
 			File arq = new File("livros/" + obj.getISBN() + ".csv");
 			if(arq.exists()) return;
 			FileWriter writer = new FileWriter(arq);
+			writer.write(obj.getISBN() + ";");
 			writer.write(obj.getNome() + ";");
 			writer.write(obj.getEditora() + ";");
 			writer.write(obj.getEscritor() + ";");
 			writer.write(obj.getAnopublicado() + ";");
-			writer.write(obj.getPaginas() + ";");
 			writer.flush();
 			writer.close();
+			System.out.println("OK");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -31,15 +32,20 @@ public class LivroDAO implements DAO<Livro>{
 
 	@Override
 	public void delete(Livro obj) {
-		// TODO Auto-generated method stub
-		
+		try{
+			File arq =  new File("Lilmes/" + obj.getISBN() + ".csv");
+			if(! arq.exists()) return; 
+			arq.delete();
+		} catch(Exception e){
+			e.printStackTrace();
+		}		
 	}
 
 	@Override
 	public Livro load(int chave) {
 		Livro l = null;
 		try{
-			File arq =  new File("filmes/" + chave + ".csv");
+			File arq =  new File("livros/" + chave + ".csv");
 			if(!arq.exists()) return null;
 			l = new Livro();
 			Scanner scan = new Scanner(arq);
@@ -50,6 +56,7 @@ public class LivroDAO implements DAO<Livro>{
 			l.setEditora(colunas[2]);
 			l.setEscritor(colunas[3]);
 		//	l.setAnopublicado(Date a = new Date(colunas[4]));
+			System.out.println("LSLSLS");
 			return l;
 		}catch(Exception e){
 			e.printStackTrace();
