@@ -28,14 +28,14 @@ public class Main {
 		System.out.println(a.getNome().equals("Questões do Coração"));
 		System.out.println(a.getEditora().equals("Novo Conceito"));
 		System.out.println(a.getEscritor().equals("Emily Giffin"));
-		//System.out.println(new Date(3, 1 , 115).equals(a.getAnopublicado()));
+		System.out.println(new Date(3, 1 , 115).equals(a.getAnopublicado()));
 		
 		Livro l2 = new Livro();
 		l2.setISBN(2);
 		l2.setNome("Maldosas");
 		l2.setEditora("Rocco");
 		l2.setEscritor("Sarah Shepard");
-		l2.setAnopublicado(new Date(4, 2, 114));
+		l2.setAnopublicado(new Date(4, 2, 120));
 		
 		dao.save(l2);
 		
@@ -44,6 +44,12 @@ public class Main {
 		
 		Livro c = dao.load(2);
 		System.out.println(c.equals(l2));
+		System.out.println(c != null);
+		System.out.println(c.getISBN() == 2);
+		System.out.println(c.getNome().equals("Maldosas"));
+		System.out.println(c.getEditora().equals("Novo Conceito"));
+		System.out.println(c.getEscritor().equals("Sarah Shepard"));
+		System.out.println(new Date(4, 2 , 120).equals(a.getAnopublicado()));
 		
 		dao.delete(c); // ou f1
 		
