@@ -23,6 +23,7 @@ public class LivroDAO implements DAO<Livro>{
 			writer.write(obj.getAnopublicado() + ";");
 			writer.flush();
 			writer.close();
+			System.out.println("OK");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -32,8 +33,8 @@ public class LivroDAO implements DAO<Livro>{
 	@Override
 	public void delete(Livro obj) {
 		try{
-			File arq =  new File("Filmes/" + obj.getISBN() + ".csv");
-			if(!arq.exists()) return; 
+			File arq =  new File("Lilmes/" + obj.getISBN() + ".csv");
+			if(! arq.exists()) return; 
 			arq.delete();
 		} catch(Exception e){
 			e.printStackTrace();
@@ -54,11 +55,8 @@ public class LivroDAO implements DAO<Livro>{
 			l.setNome(colunas[1]);
 			l.setEditora(colunas[2]);
 			l.setEscritor(colunas[3]);
-			String [] a = colunas[4].split("-");
-			int ano = Integer.parseInt(a[0]);
-			int dia = Integer.parseInt(a[1]);
-			int mes = Integer.parseInt(a[2]);
-			l.setAnopublicado(new Date(dia, mes, ano));
+		//	l.setAnopublicado(Date a = new Date(colunas[4]));
+			System.out.println("LSLSLS");
 			return l;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -70,32 +68,13 @@ public class LivroDAO implements DAO<Livro>{
 
 	@Override
 	public void update(Livro obj) {
-		
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public ArrayList<Livro> findAll() {
-		ArrayList<Livro> lista = new ArrayList<Livro>();
-		try{
-			File dir = new File("livros");
-			File[] arqs = dir.listFiles();
-			for(File arq : arqs){ 
-				Scanner scan = new Scanner(arq);
-				String linha = scan.nextLine();
-				String[] colunas = linha.split(";");
-				Livro l = new Livro();
-				l.setISBN(Integer.parseInt(colunas[0]));
-				l.setNome(colunas[1]);
-				l.setEditora(colunas[2]);
-				l.setEscritor(colunas[3]);
-				String [] a = colunas[4].split("-");
-				int ano = Integer.parseInt(a[0]);
-				int dia = Integer.parseInt(a[1]);
-				int mes = Integer.parseInt(a[2]);
-				l.setAnopublicado(new Date(dia, mes, ano));
-				lista.add(l);
-			}
+		// TODO Auto-generated method stub
 		return null;
 	}
 	
