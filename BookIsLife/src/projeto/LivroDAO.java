@@ -32,7 +32,7 @@ public class LivroDAO implements DAO<Livro>{
 	@Override
 	public void delete(Livro obj) {
 		try{
-			File arq =  new File("Filmes/" + obj.getISBN() + ".csv");
+			File arq =  new File("Livros/" + obj.getISBN() + ".csv");
 			if(!arq.exists()) return; 
 			arq.delete();
 		} catch(Exception e){
