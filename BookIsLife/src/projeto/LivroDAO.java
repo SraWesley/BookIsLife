@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class LivroDAO implements DAO<Livro>{
 
+
 	@Override
 	public void save(Livro obj)  {
 		try{
@@ -70,7 +71,27 @@ public class LivroDAO implements DAO<Livro>{
 
 	@Override
 	public void update(Livro obj) {
-		
+		Livro l = null;
+		int chave = obj.getISBN();
+		try{
+			File arq =  new File("livros/" + chave + ".csv");
+			l = new Livro();
+			Scanner scan = new Scanner(arq);
+			String linha = scan.nextLine();
+			String[] colunas = linha.split(";");
+			l.setISBN(chave);
+			l.setNome(colunas[1]);
+			l.setEditora(colunas[2]);
+			l.setEscritor(colunas[3]);
+			String [] a = colunas[4].split("-");
+			int ano = Integer.parseInt(a[0]);
+			int dia = Integer.parseInt(a[1]);
+			int mes = Integer.parseInt(a[2]);
+			l.setAnopublicado(new Date(dia, mes, ano));
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -96,16 +117,9 @@ public class LivroDAO implements DAO<Livro>{
 				l.setAnopublicado(new Date(dia, mes, ano));
 				lista.add(l);
 			}
-		return null;
+		}catch(Exception e){
+				e.printStackTrace();
+			}
+			return lista;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}	
+}

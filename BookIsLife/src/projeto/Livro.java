@@ -58,4 +58,14 @@ public class Livro {
 		this.paginas = paginas;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Livro [nome=" + nome + ", editora=" + editora + ", escritor="
+				+ escritor + ", ISBN=" + ISBN + ", anopublicado="
+				+ anopublicado + ", paginas=" + paginas + "]";
+	}
+	
+	
+	
 }
