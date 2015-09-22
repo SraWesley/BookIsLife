@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -28,7 +29,7 @@ public class Main {
 		System.out.println(a.getNome().equals("Questões do Coração"));
 		System.out.println(a.getEditora().equals("Novo Conceito"));
 		System.out.println(a.getEscritor().equals("Emily Giffin"));
-		System.out.println(new Date(07, 24 , 1911).equals(a.getAnopublicado()));
+		System.out.println(new Date(05, 15 , 1912).equals(a.getAnopublicado()));
 		
 		Livro l2 = new Livro();
 		l2.setISBN(2);
