@@ -6,10 +6,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LivroDAO implements DAO<Livro>{
-
-
-	@Override
+	public class LivroDAO implements DAO<Livro>{
+			@Override
 	public void save(Livro obj)  {
 		try{
 			File dir = new File("livros");
@@ -33,9 +31,11 @@ public class LivroDAO implements DAO<Livro>{
 	@Override
 	public void delete(Livro obj) {
 		try{
-			File arq =  new File("Livros/" + obj.getISBN() + ".csv");
+			File arq =  new File("livros/" + obj.getISBN() + ".csv");
+			System.out.println(arq.exists());
 			if(!arq.exists()) return; 
-			arq.delete();
+			System.out.println("Chegou aqui!");
+			Files.delete(arq.toPath());
 		} catch(Exception e){
 			e.printStackTrace();
 		}		
@@ -50,6 +50,7 @@ public class LivroDAO implements DAO<Livro>{
 			l = new Livro();
 			Scanner scan = new Scanner(arq);
 			String linha = scan.nextLine();
+			scan.close();
 			String[] colunas = linha.split(";");
 			l.setISBN(chave);
 			l.setNome(colunas[1]);
@@ -75,19 +76,16 @@ public class LivroDAO implements DAO<Livro>{
 		int chave = obj.getISBN();
 		try{
 			File arq =  new File("livros/" + chave + ".csv");
-			l = new Livro();
-			Scanner scan = new Scanner(arq);
-			String linha = scan.nextLine();
-			String[] colunas = linha.split(";");
-			l.setISBN(chave);
-			l.setNome(colunas[1]);
-			l.setEditora(colunas[2]);
-			l.setEscritor(colunas[3]);
-			String [] a = colunas[4].split("-");
-			int ano = Integer.parseInt(a[0]);
-			int dia = Integer.parseInt(a[1]);
-			int mes = Integer.parseInt(a[2]);
-			l.setAnopublicado(new Date(dia, mes, ano));
+			if(arq.exists()) {
+			FileWriter writer = new FileWriter(arq);
+			writer.write(obj.getISBN() + ";");
+			writer.write(obj.getNome() + ";");
+			writer.write(obj.getEditora() + ";");
+			writer.write(obj.getEscritor() + ";");
+			writer.write(obj.getAnopublicado() + ";");
+			writer.flush();
+			writer.close();
+			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -104,6 +102,7 @@ public class LivroDAO implements DAO<Livro>{
 			for(File arq : arqs){ 
 				Scanner scan = new Scanner(arq);
 				String linha = scan.nextLine();
+				scan.close();
 				String[] colunas = linha.split(";");
 				Livro l = new Livro();
 				l.setISBN(Integer.parseInt(colunas[0]));
@@ -122,4 +121,9 @@ public class LivroDAO implements DAO<Livro>{
 			}
 			return lista;
 	}
+	
+
+	
+
+
 }

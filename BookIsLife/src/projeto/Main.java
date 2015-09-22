@@ -24,12 +24,11 @@ public class Main {
 		
 		Livro a = dao.load(1);
 		System.out.println(a != null);
-	
 		System.out.println(a.getISBN() == 1);
 		System.out.println(a.getNome().equals("Questões do Coração"));
 		System.out.println(a.getEditora().equals("Novo Conceito"));
 		System.out.println(a.getEscritor().equals("Emily Giffin"));
-		System.out.println(new Date(05, 26 , 1903).equals(a.getAnopublicado()));
+		System.out.println(new Date(07, 24 , 1911).equals(a.getAnopublicado()));
 		
 		Livro l2 = new Livro();
 		l2.setISBN(2);
@@ -40,11 +39,11 @@ public class Main {
 		
 		dao.save(l2);
 		
-		Livro b = dao.load(11); //número não encontrado: NULL
+		Livro b = dao.load(11); 
 		System.out.println(b == null);
 		
 		Livro c = dao.load(2);
-		System.out.println(c.equals(l2)); //ISSO NAO FUNFAA
+		System.out.println(c.equals(l2)); 
 		System.out.println(c != null);
 		System.out.println(c.getISBN() == 2);
 		System.out.println(c.getNome().equals("Maldosas"));
@@ -57,7 +56,14 @@ public class Main {
 		Livro d = dao.load(2);
 		System.out.println(d == null); //nem isso
 		
-	
+		ArrayList<Livro> todos = dao.findAll();
+		System.out.println(todos.get(0));
+		 todos.get(0).setEditora("Rocco");
+		 dao.update(todos.get(0));
+		 
+		 Livro l3 = dao.load(1);
+		 System.out.println(l3);
 		
+	
 		
 }}	
