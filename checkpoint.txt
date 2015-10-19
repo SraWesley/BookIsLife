@@ -1,0 +1,14 @@
+CHECKPOINT
+
+O que foi desenvolvido?
+  - Criação dos perfil (ainda sem a persistência) 
+  - Cadastro de livros (persiste e lista)
+  - Edição do perfil
+
+O que falta desenvolver?
+  - Persistência dos usuários
+  - CSS (design)
+  - União dos livros e usuários
+  - Possibilidade de comentar, adicionar resenha ou na estante virtual.
+
+Outras funcionalidades não planejadas
