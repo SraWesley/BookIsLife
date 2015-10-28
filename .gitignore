@@ -24,3 +24,5 @@ local.properties
 .cproject
 .buildpath
 .recommenders
+.classpath
+.project
