@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>		
+	<h1>Lista de Filmes (Biblioteca)</h1>
+	
+  <table>
+    <thead>
+      <tr>
+        <th>ISBN</th>
+        <th>Nome</th>
+        <th>Escritor</th>
+        <th>Editora</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#livros}}
+      <tr>
+        <td>{{ISBN}}</td>
+        <td>{{nome}}</td>
+        <td>{{escritor}}</td>
+        <td>{{editora}}</td>
+        <td>
+        	<a href="/exclui/{{ISBN}}" onclick="return confirm('Deseja excluir este livro?');">
+        	Excluir
+        		<a href="/ver">
+        		Ver
+        	</a>
+        </td>
+      </tr>
+      {{/livros}}
+    </tbody>
+  </table>
+  <a href="/novo">Novo Livro</a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
