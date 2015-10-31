@@ -18,7 +18,7 @@ public class Cadastro {
 				File file = new File("Usuarios/" + usuario.getNumero() + ".csv");
 				if (file.exists()) return;
 				else {
-					if(file.exists()) return;
+					if (file.exists()) return;
 					FileWriter writer = new FileWriter(file);
 					writer.write(usuario.getNumero() + ";");
 					writer.write(usuario.getLogin() + ";");

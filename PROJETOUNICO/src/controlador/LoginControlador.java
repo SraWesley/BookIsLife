@@ -5,9 +5,9 @@ import spark.Request;
 import spark.Response;
 import spark.TemplateViewRoute;
 
-public class PaginaInicialControlador implements TemplateViewRoute {
+public class LoginControlador implements TemplateViewRoute{
 
 	public ModelAndView handle(Request req, Response resp) {		
-		return new ModelAndView(null, "index.html");
+		return new ModelAndView(null, "login.html");
 	}
 }

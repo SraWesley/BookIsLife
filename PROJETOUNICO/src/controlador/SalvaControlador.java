@@ -11,12 +11,10 @@ import spark.Response;
 import spark.Spark;
 import spark.TemplateViewRoute;
 
-public class SalvaControlador 
-	implements TemplateViewRoute {
+public class SalvaControlador implements TemplateViewRoute {
 	
 	private LivroDAO dao = new LivroDAO();
 
-	@Override
 	public ModelAndView handle(Request req, Response resp) {		
 		Livro livro = new Livro();
 		livro.setISBN(req.queryMap("ISBN").integerValue());
@@ -45,14 +43,4 @@ public class SalvaControlador
 //		}
 		return null;
 	}
-
 }
-
-
-
-
-
-
-
-
-

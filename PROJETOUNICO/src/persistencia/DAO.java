@@ -12,6 +12,5 @@ public interface DAO <T>{
 	
 	public void update(T obj);
 	
-	public ArrayList<T> findAll();
-	
+	public ArrayList<T> findAll();	
 }

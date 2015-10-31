@@ -3,32 +3,28 @@
 <html>
 
 <head>
- <meta charset="utf-8">
+	<meta charset="utf-8">
+	<title> CADASTRO DE USUARIO </title>
 </html>
 
 <body>
 
- <h1> Cadastro</h1>
+ <h1> Cadastro </h1>
  
- <form method="post" action='/index'>
- 
-  <input type="number" name="numero" placeholder="Numero do Usuario" autofocus>
-  <br> <br>
-  <input type="text" name="username" placeholder="Login">
-  <br> <br> 
-  <input type="password" name="psw" placeholder="Senha">
-  <br> <br>
-  <input type="text" name="local" placeholder="Cidade atual">
-  <br> <br>
-  <input type="number" name="idade" placeholder="Idade">
-  <br> <br>
-  <input type="date" name="bday" max="1900-12-31" min="2015-09-25" placeholder="Data de Nascimento (Ex.: 2000-05-24)">
-  <br> <br>
-  <input type="text" name="escola" placeholder="Escola">
-  <br> <br>
-  
-  <a href="index.html"> Cadastrar </a>
-  
- </form>
+<form method="post" action="/salvausuario">
+	<input type="text" name="Login" placeholder="Login">
+    <br> <br> 
+    <input type="password" name="Senha" placeholder="Senha">
+    <br> <br>
+    <input type="text" name="Local" placeholder="Cidade atual">
+    <br> <br>
+    <input type="number" name="Idade" placeholder="Idade">
+    <br> <br>
+    <input type="date" name="Nascimento" min="1900-12-31" max="2015-09-25" placeholder="Data de Nascimento (Ex.: 2000-05-24)">
+    <br> <br>
+    <input type="text" name="Escola" placeholder="Escola">
+    <br> <br>
+    <input type="submit" value="Cadastrar">
+</form>
 </body>
 </html>

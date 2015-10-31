@@ -5,13 +5,25 @@ import java.util.*;
 import modelo.Usuario;
 
 public class UsuarioDAO implements DAO<Usuario> {
-
+	
 	public void save(Usuario obj) {
+				      
 		try {
 			File dir = new File("Usuarios");
-			if( ! dir.exists()) dir.mkdir();
+			if( ! dir.exists()) {
+				dir.mkdir();
+			}
 			
-			File file = new File("Usuarios/" + obj.getLogin() + ".csv");
+			int n = dir.list().length;
+			int num = 0;
+			do {
+			    num++;
+			}
+			while (num < n);
+			      obj.setNumero(num + 1);
+		
+			
+			File file = new File("Usuarios/" + obj.getNumero() + ".csv");
 			if (file.exists()) return;
 			else {
 				if(file.exists()) return;
@@ -34,7 +46,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
 	public void delete(Usuario obj) {
 		try {
-			File arq = new File("Usuarios/" + obj.getLogin() +".csv");
+			File arq = new File("Usuarios/" + obj.getNumero() +".csv");
 			if (! arq.exists()) return;
 			arq.delete();
 			System.out.println("Excluído com sucesso!");
@@ -73,7 +85,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 	public void update(Usuario obj) {
 		Usuario u = null;
 		try{
-			File arq =  new File("Usuarios/" + u.getLogin() + ".csv");
+			File arq =  new File("Usuarios/" + obj.getNumero() + ".csv");
 			if(arq.exists()) {
 			FileWriter writer = new FileWriter(arq);
 			writer.write(obj.getNumero() + ";");

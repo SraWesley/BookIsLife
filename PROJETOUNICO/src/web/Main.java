@@ -1,15 +1,14 @@
 package web;
 
+import controlador.EntraControlador;
 import controlador.ExcluiControlador;
-//import controlador.FotoControlador;
 import controlador.ListaControlador;
+import controlador.LoginControlador;
 import controlador.NovoControlador_Livros;
 import controlador.NovoControlador_usuario;
 import controlador.PaginaInicialControlador;
 import controlador.SalvaControlador;
-import spark.Filter;
-import spark.Request;
-import spark.Response;
+import controlador.SalvaControladorUsuario;
 import spark.Spark;
 import spark.template.mustache.MustacheTemplateEngine;
 
@@ -17,62 +16,40 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		
-		
-		// precisa de um package publico (pub)
-		// onde ficam os css, js, imgs, conteúdo fixo
 		Spark.staticFileLocation("/pub");
 		
-		// precisa de um package apresentacao (views)
-		// onde ficam os HTML's
-		MustacheTemplateEngine engine = 
-				new MustacheTemplateEngine("apresentacao");
+		MustacheTemplateEngine engine = new MustacheTemplateEngine("apresentacao");
 		
-		PaginaInicialControlador paginaInicial =
-				new PaginaInicialControlador();
-		
-		// get ou post (get ler informações, post submeter informações)
+		// HOME
+		PaginaInicialControlador paginaInicial = new PaginaInicialControlador();
 		Spark.get("/", paginaInicial, engine);
 		
-		NovoControlador_Livros novoControlador = 
-				new NovoControlador_Livros();
 		
-		// abrir o form
-		Spark.get("/novo", novoControlador, engine);
-		
+		// USUARIO
 		NovoControlador_usuario novoControladorUsuario = new NovoControlador_usuario();
-		
 		Spark.get("/usuario_cadastrar", novoControladorUsuario, engine);
 		
-		SalvaControlador salvaControlador =
-				new SalvaControlador();
+		LoginControlador loginControlador = new LoginControlador();
+		Spark.get("/login", loginControlador, engine);
 		
-		// submissão do form
+		SalvaControladorUsuario salvaUsuario = new SalvaControladorUsuario();
+		Spark.post("/salvausuario", salvaUsuario, engine);
+		
+		EntraControlador entraControlador = new EntraControlador();
+		Spark.post("/perfil", entraControlador, engine);
+		
+		
+		// LIVROS
+		NovoControlador_Livros novoControlador = new NovoControlador_Livros();
+		Spark.get("/novo", novoControlador, engine);
+				
+		SalvaControlador salvaControlador = new SalvaControlador();
 		Spark.post("/salva", salvaControlador, engine);
 		
-		ListaControlador listaControlador =
-				new ListaControlador();
-		
+		ListaControlador listaControlador = new ListaControlador();
 		Spark.get("/lista", listaControlador, engine);
 		
-		ExcluiControlador excluiControlador = 
-				new ExcluiControlador();
-		
+		ExcluiControlador excluiControlador = new ExcluiControlador();
 		Spark.get("/exclui/:numero", excluiControlador, engine);
-		
-	
-		//FotoControlador upador = new FotoControlador();
-		//Spark.post("/recebefoto", upador);
-		
-		
-				
 	}
-
 }
-
-
-
-
-
-
-

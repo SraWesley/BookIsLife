@@ -3,13 +3,15 @@ package modelo;
 import java.sql.Date;
 
 public class Livro {
+	
 	private String nome;//
 	private String editora;//
 	private String escritor;//
 	private int ISBN;//
 	private Date anopublicado;//
 	private int paginas;
-//adicionar genero
+	//adicionar genero
+	
 	public String getNome() {
 		return nome;
 	}
@@ -57,6 +59,4 @@ public class Livro {
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
-
-
 }
