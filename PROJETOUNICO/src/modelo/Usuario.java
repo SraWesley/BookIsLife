@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Usuario {
 	
 	private int numero;
@@ -9,8 +11,17 @@ public class Usuario {
 	private int idade;
 	private String nascimento;
 	private String escola;
+	private ArrayList<Livro> meusLivros = new ArrayList<Livro>(); 
 	
 	public Usuario() {}
+
+	public ArrayList<Livro> getMeusLivros() {
+		return meusLivros;
+	}
+
+	public void setMeusLivros(ArrayList<Livro> meusLivros) {
+		this.meusLivros = meusLivros;
+	}
 
 	public int getNumero() {
 		return numero;
@@ -19,6 +30,8 @@ public class Usuario {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
+	
+	
 
 	public String getLogin() {
 		return login;
@@ -89,6 +102,7 @@ public class Usuario {
 	}
 
 	public String toString() {
-		return ""+ login + "";
+		return "Usuario [numero=" + numero + ", login=" + login + ", senha=" + senha + ", local=" + local + ", idade="
+				+ idade + ", nascimento=" + nascimento + ", escola=" + escola + "]";
 	}
 }

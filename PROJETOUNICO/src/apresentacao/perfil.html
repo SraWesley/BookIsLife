@@ -1,11 +1,24 @@
 <!doctype html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title> PERFIL </title>
 	</head>
 	
 	<body>
+	
 		<h1> Perfil </h1>
+		<thead>
+				<tr>
+	        		<th>Login : {{usuario.login}}    </th> <br>
+	        		<th>Local : {{usuario.local}} </th> <br>
+	       			<th>Idade : {{usuario.idade}} </th> <br>
+		        	<th>Nascimento : 	{{usuario.nascimento}} </th> <br>
+		        	<th>Escola : {{usuario.escola}}</th> <br>
+		      	</tr>
+	    	</thead>
+    	<br>
+		<a href="/lista"> Biblioteca </a>
 	</body>
 </html>

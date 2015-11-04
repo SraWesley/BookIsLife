@@ -10,9 +10,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 				      
 		try {
 			File dir = new File("Usuarios");
-			if( ! dir.exists()) {
-				dir.mkdir();
-			}
+			if( ! dir.exists()) dir.mkdir();
 			
 			int n = dir.list().length;
 			int num = 0;
@@ -22,7 +20,6 @@ public class UsuarioDAO implements DAO<Usuario> {
 			while (num < n);
 			      obj.setNumero(num + 1);
 		
-			
 			File file = new File("Usuarios/" + obj.getNumero() + ".csv");
 			if (file.exists()) return;
 			else {
@@ -79,6 +76,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 		catch (Exception e) {
 			e.printStackTrace();	
 		}
+		
 		return null;
 	}
 
@@ -118,6 +116,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 				String[] colunas = linha.split(";");
 				
 				Usuario u = new Usuario();
+				u.setNumero(Integer.parseInt(colunas[0]));
 				u.setLogin(colunas[1]);
 				u.setSenha(colunas[2]);
 				u.setLocal(colunas[3]);

@@ -6,7 +6,7 @@
 </head>
 
 <body>		
-	<h1>Lista de Livros (Biblioteca)</h1>
+	<h1>Biblioteca</h1>
 	
 	<table>
     	<thead>
@@ -18,22 +18,24 @@
 	        	<th></th>
 	      	</tr>
     	</thead>
-    <tbody>
-      {{#livros}}
-      <tr>
-        <td>{{ISBN}}</td>
-        <td>{{nome}}</td>
-        <td>{{escritor}}</td>
-        <td>{{editora}}</td>
-        <td>
-        	<a href="/exclui/{{ISBN}}" onclick="return confirm('Deseja excluir este livro?');">
-        	Excluir
-        		<a href="/ver"> Ver </a>
-        </td>
-      </tr>
-      {{/livros}}
-    </tbody>
-  </table>
-  <a href="/novo"> Novo Livro </a>
+	    <tbody>
+			{{#livros}}
+			<tr>
+		        <td>{{ISBN}}</td>
+		        <td>{{nome}}</td>
+		        <td>{{escritor}}</td>
+		        <td>{{editora}}</td>
+	      		<td>
+	      			<a href="/adicionaestante"> Adicionar à estante </a>
+		        	<a href="/exclui/{{ISBN}}" onclick="return confirm('Deseja excluir este livro?');">
+		        	Excluir
+		        	<a href="/ver"> Ver </a>
+	       		</td>
+	      	</tr>
+	      	{{/livros}}
+		</tbody>
+	</table>
+	
+	<a href="/novo"> Novo Livro </a>
 </body>
 </html>

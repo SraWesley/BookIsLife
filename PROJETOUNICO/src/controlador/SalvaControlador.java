@@ -26,7 +26,7 @@ public class SalvaControlador implements TemplateViewRoute {
 		if (livro.getNome().length() < 3) { // inválido
 			String erro = "";
 			try {
-				erro = URLEncoder.encode("Título deve ter pelo menos 3 caracteres", "UTF-8");
+				erro = URLEncoder.encode("T�tulo deve ter pelo menos 3 caracteres", "UTF-8");
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}

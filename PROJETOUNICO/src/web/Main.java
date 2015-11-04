@@ -29,14 +29,16 @@ public class Main {
 		NovoControlador_usuario novoControladorUsuario = new NovoControlador_usuario();
 		Spark.get("/usuario_cadastrar", novoControladorUsuario, engine);
 		
-		LoginControlador loginControlador = new LoginControlador();
-		Spark.get("/login", loginControlador, engine);
-		
 		SalvaControladorUsuario salvaUsuario = new SalvaControladorUsuario();
 		Spark.post("/salvausuario", salvaUsuario, engine);
 		
+		
+		
+		LoginControlador loginControlador = new LoginControlador();
+		Spark.get("/login", loginControlador, engine);
+		
 		EntraControlador entraControlador = new EntraControlador();
-		Spark.post("/perfil", entraControlador, engine);
+		Spark.post("/login", entraControlador, engine);
 		
 		
 		// LIVROS
@@ -50,6 +52,6 @@ public class Main {
 		Spark.get("/lista", listaControlador, engine);
 		
 		ExcluiControlador excluiControlador = new ExcluiControlador();
-		Spark.get("/exclui/:numero", excluiControlador, engine);
+		Spark.get("/exclui/:ISBN", excluiControlador, engine);
 	}
 }
