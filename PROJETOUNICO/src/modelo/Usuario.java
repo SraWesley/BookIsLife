@@ -19,8 +19,8 @@ public class Usuario {
 		return meusLivros;
 	}
 
-	public void setMeusLivros(ArrayList<Livro> meusLivros) {
-		this.meusLivros = meusLivros;
+	public void setMeusLivros(Livro livro) {
+		meusLivros.add(livro);
 	}
 
 	public int getNumero() {

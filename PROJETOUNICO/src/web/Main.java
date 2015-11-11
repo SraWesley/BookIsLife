@@ -1,5 +1,6 @@
 package web;
 
+import controlador.AdicionaEstanteControlador;
 import controlador.EntraControlador;
 import controlador.ExcluiControlador;
 import controlador.ListaControlador;
@@ -31,9 +32,7 @@ public class Main {
 		
 		SalvaControladorUsuario salvaUsuario = new SalvaControladorUsuario();
 		Spark.post("/salvausuario", salvaUsuario, engine);
-		
-		
-		
+				
 		LoginControlador loginControlador = new LoginControlador();
 		Spark.get("/login", loginControlador, engine);
 		
@@ -53,5 +52,8 @@ public class Main {
 		
 		ExcluiControlador excluiControlador = new ExcluiControlador();
 		Spark.get("/exclui/:ISBN", excluiControlador, engine);
+	
+		AdicionaEstanteControlador adicionaEstante = new AdicionaEstanteControlador();
+		Spark.get("/adicionaestante", adicionaEstante, engine);
 	}
 }
