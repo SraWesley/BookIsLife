@@ -1,6 +1,10 @@
 package modelo;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import persistencia.LivroDAO;
 
 public class Usuario {
 	
@@ -16,7 +20,11 @@ public class Usuario {
 	public Usuario() {}
 
 	public ArrayList<Livro> getMeusLivros() {
+		File file = new File("Usuarios/Matricula/" + this.getNumero() + "/" + "meusLivros.csv");
+		LivroDAO livros =  new LivroDAO();
+		meusLivros = livros.findAll();
 		return meusLivros;
+		
 	}
 
 	public void setMeusLivros(Livro livro) {

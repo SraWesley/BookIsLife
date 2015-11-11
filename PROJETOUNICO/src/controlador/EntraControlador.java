@@ -23,22 +23,22 @@ public class EntraControlador implements TemplateViewRoute{
 
 		UsuarioDAO dao = new UsuarioDAO();
 		ArrayList<Usuario> usuarios = dao.findAll();
-		System.out.println(usuarios.toString());
-		System.out.println(usuarios.size());
+	//	System.out.println(usuarios.toString());
+	//	System.out.println(usuarios.size());
 		
 		for (int i = 0; i < usuarios.size(); i++) {
-			System.out.println("em entra controlador1");
+		//	System.out.println("em entra controlador1");
 			String s;
 			s = usuarios.get(i).getLogin();
-			System.out.println(usuario.getLogin());
-			System.out.println(s);
+			//System.out.println(usuario.getLogin());
+		//	System.out.println(s);
 			String x;
 			x = usuarios.get(i).getSenha();
-			System.out.println(usuario.getSenha());
-			System.out.println(x);
+			//System.out.println(usuario.getSenha());
+			//System.out.println(x);
 			
 			if (s.equals(usuario.getLogin()) && x.equals(usuario.getSenha())){
-				req.session().attribute("usuario_logado", usuario);
+				req.session().attribute("usuario_logado", usuarios.get(i));
 				HashMap mapa2 = new HashMap();
 				mapa2.put("usuario", usuarios.get(i));
 				return new ModelAndView(mapa2, "perfil.html");

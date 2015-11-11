@@ -54,6 +54,6 @@ public class Main {
 		Spark.get("/exclui/:ISBN", excluiControlador, engine);
 	
 		AdicionaEstanteControlador adicionaEstante = new AdicionaEstanteControlador();
-		Spark.get("/adicionaestante", adicionaEstante, engine);
+		Spark.get("/adicionaestante/:ISBN", adicionaEstante, engine);
 	}
 }

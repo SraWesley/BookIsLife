@@ -23,6 +23,7 @@ public class SalvaControladorUsuario implements TemplateViewRoute{
 		usuario.setNascimento(req.queryMap("Nascimento").value());
 		usuario.setEscola(req.queryMap("Escola").value());
 		
+		
 		if (usuario.getLogin().length() < 3) {
 			String erro = "";
 			
