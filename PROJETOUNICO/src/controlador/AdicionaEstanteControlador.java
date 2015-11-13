@@ -13,15 +13,15 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 	public ModelAndView handle(Request req, Response resp) {
 		int ISBN = Integer.parseInt(req.params("ISBN"));
 		
-		Usuario usuario = req.session().attribute("usuario_logado");
+			Usuario usuario = req.session().attribute("usuario_logado");
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			boolean teste;
-		 	teste = usuarioDAO.addMeusLivros(ISBN, usuario.getNumero());
-		 	System.out.println(teste);
-		 	if(teste){
+			boolean foiAdicionado;
+		 	foiAdicionado = usuarioDAO.addMeusLivros(ISBN, usuario.getNumero());
+		 	System.out.println(foiAdicionado);
+		 	if (foiAdicionado){
 		 		HashMap mapa = new HashMap();
 		 		mapa.put("usuario", usuario);
-		 		mapa.put("meuslivros", usuario.getMeusLivros() );
+		 		mapa.put("meuslivros", usuario.getMeusLivros());
 				return new ModelAndView(mapa, "perfil.html");
 		 	}
 		 	
