@@ -83,8 +83,10 @@ public class UsuarioDAO implements DAO<Usuario> {
 
 			try {
 				FileWriter writer = new FileWriter(file);
-				writer.write(isbnExistente);
-				writer.write(";");
+				if(!isbnExistente.isEmpty()){
+					writer.write(isbnExistente);
+					writer.write(";");
+				} 
 				writer.write(String.valueOf(ISBN));
 				writer.flush();
 				writer.close();
