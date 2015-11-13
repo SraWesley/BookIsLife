@@ -6,19 +6,30 @@
 	<meta charset="utf-8">
 	<title> PERFIL </title>
 </head>
-	
-<body>
-	<h1> Perfil </h1>
-	<thead>
-		<tr>
-       		<th> Login: {{usuario.login}} </th> <br />
-       		<th> Local: {{usuario.local}} </th> <br />
-    		<th> Idade: {{usuario.idade}} </th> <br />
-	       	<th> Nascimento: {{usuario.nascimento}} </th> <br />
-	       	<th> Escola: {{usuario.escola}} </th> <br />
-	       	<th> Meus Livros: {{usuario.meusLivros}} </th> <br /> <br />
-	   	</tr>
-    </thead>
-  	<a href="/lista"> Biblioteca </a>
+	<body>
+		<h1> Perfil </h1>
+		
+		<thead>
+				<tr>
+					{{#usuario}}
+	        		<th>Login : {{usuario.login}}    </th> <br>
+	        		<th>Local : {{usuario.local}} </th> <br>
+	       			<th>Idade : {{usuario.idade}} </th> <br>
+		        	<th>Nascimento : 	{{usuario.nascimento}} </th> <br>
+		        	<th>Escola : {{usuario.escola}}</th> <br>
+		        	{{/usuario}}
+		      	
+		      	</tr>
+		      	
+	    	</thead>
+    	Meus Livros : {{#usuario.getMeusLivros()}}
+    					{{livro.getNome()}}
+    					{{/usuario.getMeusLivros()}}	<br>
+    	<br>
+		<a href="/lista"> Biblioteca </a>
+	</body>
+
+
 </body>
+
 </html>

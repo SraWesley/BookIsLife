@@ -10,9 +10,7 @@ public class Usuario {
 	private String nascimento;
 	private String escola;
 	
-	public Usuario() {
-		
-	}
+	public Usuario() { }
 
 	public int getNumero() {
 		return numero;

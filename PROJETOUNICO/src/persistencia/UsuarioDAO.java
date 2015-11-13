@@ -2,6 +2,8 @@ package persistencia;
 
 import java.io.*;
 import java.util.*;
+
+import modelo.Livro;
 import modelo.Usuario;
 
 public class UsuarioDAO implements DAO<Usuario> {
@@ -51,15 +53,15 @@ public class UsuarioDAO implements DAO<Usuario> {
 	}
 
 	public boolean addMeusLivros(int ISBN, int chave) {
-		File file = new File(DIR + chave + "/" + "meusLivros.csv");
-		int isbn = 0;
+		File file = new File(DIR +chave+ "/" + "meusLivros.csv");
+		String isbn = "";
 		
 		if (file.exists()) {
 			try {
 				Scanner scan1 = new Scanner(file);
 				String linha =  scan1.nextLine();
 				String[] colunas = linha.split(";");
-				for(int i = 0; i < colunas.length; i++){
+				for(int i = 0; i < colunas.length; i++) {
 					int isbnteste = Integer.parseInt(colunas[i]);
 					if(isbnteste == ISBN) return false;
 				}
@@ -70,12 +72,12 @@ public class UsuarioDAO implements DAO<Usuario> {
 			
 			try {
 				Scanner scan = new Scanner(file);
-				while (scan.hasNextLine()) {
-					isbn+=scan.nextInt();
+				while(scan.hasNextLine()){
+					isbn += scan.nextLine();
+					System.out.println(isbn);
 				}
 				scan.close();
-			} 
-			catch (FileNotFoundException e) {
+			}catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 			
@@ -101,19 +103,37 @@ public class UsuarioDAO implements DAO<Usuario> {
 			}
 			catch (IOException e) {
 				e.printStackTrace();
-			}
+			}	
 		}
 		
+		try {
+			Scanner scan3 =  new Scanner(file);
+			String linha3 =  scan3.nextLine();
+			String[] colunas3 = linha3.split(";");
+			for(int i = 0; i < colunas3.length; i++) {
+				LivroDAO daoLIVRO = new LivroDAO();
+				Livro livro = new Livro();
+				livro = daoLIVRO.load(Integer.parseInt(colunas3[i]));
+				UsuarioDAO dao = new UsuarioDAO();
+				Usuario usuario = new Usuario();
+				usuario = dao.load(chave);
+				usuario.setMeusLivros(livro);
+			}
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 	
 	public void adicionaSenhas(String senha) {
 		File file = new File("Usuarios/" + "senha.csv");
 		String senha1 = "";
-		if (file.exists()) {
+
+		if(file.exists()) {
 			try {
 				Scanner scan = new Scanner(file);
-				while(scan.hasNextLine()) {
+				while(scan.hasNextLine()){
 					senha1 += scan.nextLine();
 				}
 				scan.close();
@@ -121,7 +141,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-			
+		
 			try {
 				FileWriter  writer = new FileWriter(file);
 				writer.write(senha1);
@@ -134,8 +154,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 				e.printStackTrace();
 			}
 		}
-		
-		else {
+				else {
 			try {
 				FileWriter  writer = new FileWriter(file);
 				writer.write(senha + ";");
@@ -151,18 +170,17 @@ public class UsuarioDAO implements DAO<Usuario> {
 	public void adicionaNomes(String login) {
 		File file = new File("Usuarios/" + "login.csv");
 		String nome= "";
-		if (file.exists()) {
+		if(file.exists()) {
 			try {
 				Scanner scan = new Scanner(file);
-				while (scan.hasNextLine()) {
+				while(scan.hasNextLine()){
 					nome += scan.nextLine();
 				}
-				scan.close();
-			}
-			catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			
+			scan.close();
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 			try {
 				FileWriter  writer = new FileWriter(file);
 				writer.write(nome);
@@ -203,7 +221,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
 	public Usuario load(int chave) {
 		try {
-			File arq = new File(DIR + chave);
+			File arq = new File(DIR + chave+ "dados.csv");
 			if (! arq.exists()) return null;
 			
 			Scanner scan = new Scanner(arq);

@@ -1,7 +1,10 @@
 package modelo;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import persistencia.LivroDAO;
 
 public class Usuario {
@@ -17,18 +20,52 @@ public class Usuario {
 	
 	public Usuario() {}
 
-	public ArrayList<Livro> getMeusLivros() {
-		//File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
-		if (meusLivros == null) { 
-			LivroDAO livros =  new LivroDAO();
-			meusLivros = livros.findAll(numero);
+//	public ArrayList<Livro> getMeusLivros() {
+	//	//File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
+	//	if (meusLivros == null) { 
+		//	LivroDAO livros =  new LivroDAO();
+		//	meusLivros = livros.findAll(numero);
+	public 	ArrayList<Livro> getMeusLivros() {
+		File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
+		LivroDAO livros =  new LivroDAO();
+		try {
+			Scanner scan = new Scanner(file);
+			String linha =  scan.nextLine();
+			String[] colunas = linha.split(";");
+			for(int i = 0; i < colunas.length; i++){
+				Livro livro = new Livro();
+				livro.setNome(colunas[i]);
+				meusLivros.add(livro);
+			}
+			//String[] meuslivrosNomes = new String[meusLivros.size()];
+			//for(int i = 0; i < meusLivros.size();i++){
+			//	 meuslivrosNomes[i] = meusLivros.get(i).getNome();
+			//}
+			return meusLivros;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 		
+		meusLivros = livros.findAll();
 		return meusLivros;
 	}
 
 	public void setMeusLivros(Livro livro) {
-		meusLivros.add(livro);
+		//File file = new File("Usuarios/Matricula/" + this.getNumero() + "/" + "meusLivros.csv");
+		//try {
+			//Scanner scan = new Scanner(file);
+			//String linha =  scan.nextLine();
+			//String[] colunas = linha.split(";");
+			//for(int i = 0; i < colunas.length; i++){
+			//	Livro livro = new Livro();
+			//	livro.setNome(colunas[i]);
+				meusLivros.add(livro);
+		//	}
+		//} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+		//	e.printStackTrace();
+		//}
+		
 	}
 
 	public int getNumero() {
