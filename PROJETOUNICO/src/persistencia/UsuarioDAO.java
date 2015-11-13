@@ -2,12 +2,13 @@ package persistencia;
 
 import java.io.*;
 import java.util.*;
-
 import modelo.Livro;
 import modelo.Usuario;
 
 public class UsuarioDAO implements DAO<Usuario> {
+	
 	private static final String DIR = "Usuarios/Matriculas/";
+	
 	public void save(Usuario obj) {
 				      
 		try {
@@ -30,60 +31,58 @@ public class UsuarioDAO implements DAO<Usuario> {
 		    dir = new File(DIR + obj.getNumero() + "/");
 			if( ! dir.exists()) dir.mkdir();
 			File file = new File(DIR + obj.getNumero() + "/" + "dados.csv");
-			if (file.exists()) {
-				return;
-			}
+			if (file.exists()) return;
 			
-				FileWriter writer = new FileWriter(file);
-				writer.write(obj.getNumero() + ";");
-				writer.write(obj.getLogin() + ";");
-				writer.write(obj.getSenha() + ";");
-				writer.write(obj.getLocal() + ";");
-				writer.write(obj.getIdade() + ";");
-				writer.write(obj.getNascimento() + ";");
-				writer.write(obj.getEscola() + ";");
-				writer.flush();
-				writer.close();
-			
-			
-		//	File file2 =  new File("Usuarios/" + obj.getNumero() + "/" + "meuslivros.csv");
-		
+			FileWriter writer = new FileWriter(file);
+			writer.write(obj.getNumero() + ";");
+			writer.write(obj.getLogin() + ";");
+			writer.write(obj.getSenha() + ";");
+			writer.write(obj.getLocal() + ";");
+			writer.write(obj.getIdade() + ";");
+			writer.write(obj.getNascimento() + ";");
+			writer.write(obj.getEscola() + ";");
+			writer.flush();
+			writer.close();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		adicionaNomes(obj.getLogin());
 		adicionaSenhas(obj.getSenha());
 	}
 
-	public boolean addMeusLivros(int ISBN, int chave){
+	public boolean addMeusLivros(int ISBN, int chave) {
 		File file = new File(DIR +chave+ "/" + "meusLivros.csv");
-		int isbn = 0;
+		String isbn = "";
 		
-		if(file.exists()){
+		if(file.exists()) {
+			
 			try {
 				Scanner scan1 = new Scanner(file);
 				String linha =  scan1.nextLine();
 				String[] colunas = linha.split(";");
-				for(int i = 0; i < colunas.length; i++){
+				for(int i = 0; i < colunas.length; i++) {
 					int isbnteste = Integer.parseInt(colunas[i]);
-					if(isbnteste == ISBN){
-						return false;
-					}
+					if(isbnteste == ISBN) return false;
 				}
-			} catch (FileNotFoundException e1) {
+			} 
+			catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}
 			
 			try {
 				Scanner scan = new Scanner(file);
 				while(scan.hasNextLine()){
-					isbn += scan.nextInt();
+					isbn += scan.nextLine();
+					System.out.println(isbn);
 				}
 				scan.close();
-			} catch (FileNotFoundException e) {
+			}
+			catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
+			
 			try {
 				FileWriter  writer = new FileWriter(file);
 				writer.write(isbn);
@@ -91,37 +90,59 @@ public class UsuarioDAO implements DAO<Usuario> {
 				writer.write(";");
 				writer.flush();
 				writer.close();
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else{
+		}
+		
+		else {
 			try {
 				FileWriter  writer = new FileWriter(file);
 				writer.write(ISBN + ";");
 				writer.flush();
 				writer.close();
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}	
+		}
+		
+		try {
+			Scanner scan3 =  new Scanner(file);
+			String linha3 =  scan3.nextLine();
+			String[] colunas3 = linha3.split(";");
+			for(int i = 0; i < colunas3.length; i++) {
+				LivroDAO daoLIVRO = new LivroDAO();
+				Livro livro = new Livro();
+				livro = daoLIVRO.load(Integer.parseInt(colunas3[i]));
+				UsuarioDAO dao = new UsuarioDAO();
+				Usuario usuario = new Usuario();
+				usuario = dao.load(chave);
+				usuario.setMeusLivros(livro);
+			}
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
+	public void adicionaSenhas(String senha) {
+		File file = new File("Usuarios/" + "senha.csv");
+		String senha1 = "";
+		if(file.exists()) {
+			try {
+				Scanner scan = new Scanner(file);
+				while(scan.hasNextLine()){
+					senha1 += scan.nextLine();
+				}
+				scan.close();
+			}
+			catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 			
-		}
-		
-		return true;
-	}
-	public void adicionaSenhas(String senha){
-		File file = new File("Usuarios/" + "senha.csv");
-		String senha1 = "";
-		if(file.exists()){
-				try {
-				Scanner scan = new Scanner(file);
-				while(scan.hasNextLine()){
-				senha1 += scan.nextLine();
-			}
-			scan.close();
-		}
-		 catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
 			try {
 				FileWriter  writer = new FileWriter(file);
 				writer.write(senha1);
@@ -129,37 +150,38 @@ public class UsuarioDAO implements DAO<Usuario> {
 				writer.write(";");
 				writer.flush();
 				writer.close();
+			}
 			
-			} catch (IOException e) {
+			catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else{
+		}
+		
+		else {
 			try {
 				FileWriter  writer = new FileWriter(file);
 				writer.write(senha + ";");
 				writer.flush();
 				writer.close();
-			
-				
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 			}
-			
 		}
 	}
 	
-	public void adicionaNomes(String login){
+	public void adicionaNomes(String login) {
 		File file = new File("Usuarios/" + "login.csv");
 		String nome= "";
-		if(file.exists()){
+		if(file.exists()) {
 			try {
 				Scanner scan = new Scanner(file);
 				while(scan.hasNextLine()){
-				nome += scan.nextLine();
-			}
+					nome += scan.nextLine();
+				}
 			scan.close();
 		}
-		 catch (FileNotFoundException e) {
+		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 			try {
@@ -201,7 +223,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
 	public Usuario load(int chave) {
 		try {
-			File arq = new File(DIR + chave);
+			File arq = new File(DIR + chave+ "dados.csv");
 			if (! arq.exists()) return null;
 			
 			Scanner scan = new Scanner(arq);
@@ -258,7 +280,6 @@ public class UsuarioDAO implements DAO<Usuario> {
 			int aux = 0;
 			String[] colunas = linhas.split(";");
 			aux = colunas.length;
-			//System.out.println(aux);
 			Scanner scan2 = new Scanner(dir2);
 			String linhas2 = scan2.nextLine();
 			String[] colunas2 = linhas2.split(";");

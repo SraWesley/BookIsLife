@@ -36,7 +36,6 @@ import modelo.Livro;
 			File arq =  new File("livros/" + obj.getISBN() + ".csv");
 			System.out.println(arq.exists());
 			if(!arq.exists()) return; 
-			System.out.println("Chegou aqui!");
 			Files.delete(arq.toPath());
 		}
 		catch(Exception e) {
