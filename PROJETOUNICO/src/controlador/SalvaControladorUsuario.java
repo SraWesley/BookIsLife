@@ -35,9 +35,8 @@ public class SalvaControladorUsuario implements TemplateViewRoute{
 			}
 			
 			resp.redirect("/novo?erro=" + erro);
-		} 
-		
-		else { // válido
+		}
+		else {
 			dao.save(usuario);	
 			resp.redirect("/");
 		}

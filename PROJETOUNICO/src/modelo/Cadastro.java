@@ -10,11 +10,12 @@ public class Cadastro {
 	
 	public void addUsuario(int numero, String login, String senha, String local, int idade, String nascimento, String escola) {
 		Usuario usuario = new Usuario();
+		
 		if(usuarios.indexOf(usuario) == -1)	{
-			
 			try {
 				File dir = new File("Usuarios");
 				if( ! dir.exists()) dir.mkdir();
+		
 				File file = new File("Usuarios/" + usuario.getNumero() + ".csv");
 				if (file.exists()) return;
 				else {

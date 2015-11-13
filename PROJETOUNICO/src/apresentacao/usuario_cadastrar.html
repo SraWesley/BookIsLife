@@ -5,25 +5,25 @@
 <head>
 	<meta charset="utf-8">
 	<title> CADASTRO DE USUARIO </title>
-</html>
+	<link href="Usuarios.css" rel="stylesheet" type="text/css" />
+</head>
 
 <body>
-
- <h1> Cadastro </h1>
+<h1> Cadastro </h1>
  
 <form method="post" action="/salvausuario">
 	<input type="text" name="Login" placeholder="Login">
-    <br> <br> 
+    <br /> <br /> 
     <input type="password" name="Senha" placeholder="Senha">
-    <br> <br>
+    <br /> <br />
     <input type="text" name="Local" placeholder="Cidade atual">
-    <br> <br>
+    <br /> <br />
     <input type="number" name="Idade" placeholder="Idade">
-    <br> <br>
-    <input type="date" name="Nascimento" min="1900-12-31" max="2015-09-25" placeholder="Data de Nascimento (Ex.: 2000-05-24)">
-    <br> <br>
+    <br /> <br />
+    <input type="date" name="Nascimento" min="1900-01-01" max="2015-11-25" placeholder="Data de Nascimento">
+    <br /> <br />
     <input type="text" name="Escola" placeholder="Escola">
-    <br> <br>
+    <br /> <br />
     <input type="submit" value="Cadastrar">
 </form>
 </body>

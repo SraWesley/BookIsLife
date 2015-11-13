@@ -42,9 +42,8 @@ public class Usuario {
 			e.printStackTrace();
 		}
 		
-		return null;
-	
-		
+		meusLivros = livros.findAll();
+		return meusLivros;
 	}
 
 	public void setMeusLivros(Livro livro) {
@@ -73,8 +72,6 @@ public class Usuario {
 		this.numero = numero;
 	}
 	
-	
-
 	public String getLogin() {
 		return login;
 	}
@@ -145,6 +142,6 @@ public class Usuario {
 
 	public String toString() {
 		return "Usuario [numero=" + numero + ", login=" + login + ", senha=" + senha + ", local=" + local + ", idade="
-				+ idade + ", nascimento=" + nascimento + ", escola=" + escola + "]";
-	}
+				+ idade + ", nascimento=" + nascimento + ", escola=" + escola + ", meusLivros=" + meusLivros + "]";
+	}	
 }
