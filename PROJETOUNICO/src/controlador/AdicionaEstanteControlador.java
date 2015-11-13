@@ -1,11 +1,6 @@
 package controlador;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Scanner;
-
-import modelo.Livro;
+import java.util.*;
 import modelo.Usuario;
 import persistencia.UsuarioDAO;
 import spark.ModelAndView;
@@ -16,22 +11,20 @@ import spark.TemplateViewRoute;
 public class AdicionaEstanteControlador implements TemplateViewRoute {
 
 	public ModelAndView handle(Request req, Response resp) {
-			int ISBN = Integer.parseInt(req.params("ISBN"));
+		int ISBN = Integer.parseInt(req.params("ISBN"));
 		
-			Usuario usuario = req.session().attribute("usuario_logado");
-							System.out.println(usuario.getNumero());
-			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			boolean teste;
-		 	teste = usuarioDAO.addMeusLivros(ISBN, usuario.getNumero());
+		Usuario usuario = req.session().attribute("usuario_logado");
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		boolean teste;
+		teste = usuarioDAO.addMeusLivros(ISBN, usuario.getNumero());
 		 	
-		 	if(teste){
-		 		HashMap mapa = new HashMap();
-		 		mapa.put("usuario", usuario);
-		 		mapa.put("meuslivro", usuario.getMeusLivros() );
-				return new ModelAndView(mapa, "perfil.html");
-		 	}
-		 	
-		 	
+		if (teste == true) {
+			HashMap mapa = new HashMap();
+			mapa.put("usuario", usuario);
+			mapa.put("meuslivro", usuario.getMeusLivros());
+			return new ModelAndView(mapa, "perfil.html");
+		}
+		 			 	
 		 	///
 		 	/*File file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "meusLivros.csv");
 		 	Scanner scan;
@@ -45,7 +38,6 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 					livro.setISBN(ISBN);
 					int teste = livro.getISBN();
 				}} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		 	
@@ -53,13 +45,10 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 			//	if(isbnteste.equals(colunas[i])){
 				//				}
 			
-		 	
 		 	//HashMap mapa = new HashMap();
 			//mapa.put("usuario", usuario); 
 			//return new ModelAndView(mapa, "perfil.html");
 		 	/*
-			
-			
 			for(int i = 0; i < usuario.getMeusLivros().size(); i++){
 				Livro livroteste = new Livro();
 				livroteste = usuario.getMeusLivros().get(i);
@@ -70,6 +59,7 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 					return new ModelAndView(mapa, "perfil.html");
 				}
 			}*/
+		
 			String erro = "Esse livro já está na sua estante";
 			HashMap mapa = new HashMap();
 			mapa.put("erro", erro);

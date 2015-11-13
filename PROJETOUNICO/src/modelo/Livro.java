@@ -59,4 +59,8 @@ public class Livro {
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
+
+	public String toString() {
+		return "" + nome + "";
+	}
 }

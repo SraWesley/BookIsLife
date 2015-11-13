@@ -3,7 +3,6 @@ package persistencia;
 import java.io.File;
 import java.io.FileWriter;
 import java.nio.file.Files;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +10,7 @@ import modelo.Livro;
 
 	public class LivroDAO implements DAO<Livro> {
 		
-	public void save(Livro obj)  {
+	public void save(Livro obj) {
 		try {
 			File dir = new File("livros");
 			if(!dir.exists()) dir.mkdir();
@@ -26,7 +25,7 @@ import modelo.Livro;
 			writer.flush();
 			writer.close();
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -39,7 +38,7 @@ import modelo.Livro;
 			System.out.println("Chegou aqui!");
 			Files.delete(arq.toPath());
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}		
 	}
@@ -60,7 +59,7 @@ import modelo.Livro;
 			writer.close();
 			}
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -88,7 +87,7 @@ import modelo.Livro;
 				lista.add(l);
 			}
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -116,7 +115,7 @@ import modelo.Livro;
 			//l.setAnopublicado(new Date(dia, mes, ano));
 			return l;
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 

@@ -18,13 +18,11 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Spark.staticFileLocation("/pub");
-		
 		MustacheTemplateEngine engine = new MustacheTemplateEngine("apresentacao");
 		
 		// HOME
 		PaginaInicialControlador paginaInicial = new PaginaInicialControlador();
 		Spark.get("/", paginaInicial, engine);
-		
 		
 		// USUARIO
 		NovoControlador_usuario novoControladorUsuario = new NovoControlador_usuario();
@@ -38,7 +36,6 @@ public class Main {
 		
 		EntraControlador entraControlador = new EntraControlador();
 		Spark.post("/login", entraControlador, engine);
-		
 		
 		// LIVROS
 		NovoControlador_Livros novoControlador = new NovoControlador_Livros();

@@ -2,8 +2,6 @@ package modelo;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import persistencia.LivroDAO;
 
 public class Usuario {
@@ -23,8 +21,8 @@ public class Usuario {
 		File file = new File("Usuarios/Matricula/" + this.getNumero() + "/" + "meusLivros.csv");
 		LivroDAO livros =  new LivroDAO();
 		meusLivros = livros.findAll();
-		return meusLivros;
 		
+		return meusLivros;
 	}
 
 	public void setMeusLivros(Livro livro) {
@@ -39,8 +37,6 @@ public class Usuario {
 		this.numero = numero;
 	}
 	
-	
-
 	public String getLogin() {
 		return login;
 	}
@@ -111,6 +107,6 @@ public class Usuario {
 
 	public String toString() {
 		return "Usuario [numero=" + numero + ", login=" + login + ", senha=" + senha + ", local=" + local + ", idade="
-				+ idade + ", nascimento=" + nascimento + ", escola=" + escola + "]";
-	}
+				+ idade + ", nascimento=" + nascimento + ", escola=" + escola + ", meusLivros=" + meusLivros + "]";
+	}	
 }
