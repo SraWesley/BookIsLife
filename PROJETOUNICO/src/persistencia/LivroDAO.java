@@ -35,7 +35,6 @@ import modelo.Livro;
 			File arq =  new File("livros/" + obj.getISBN() + ".csv");
 			System.out.println(arq.exists());
 			if(!arq.exists()) return; 
-			System.out.println("Chegou aqui!");
 			Files.delete(arq.toPath());
 		}
 		catch (Exception e) {
@@ -120,5 +119,29 @@ import modelo.Livro;
 		}
 
 		return null;
+	}
+
+	public ArrayList<Livro> findAll(int numero) {
+		ArrayList<Livro> lista = new ArrayList<Livro>();
+		
+		try {
+			File dir = new File("Usuarios/Matriculas/" + numero + "meusLivros.csv");
+			File[] arqs = dir.listFiles();
+			for(File arq : arqs) { 
+				Scanner scan = new Scanner(arq);
+				String linha = scan.nextLine();
+				scan.close();
+				String[] colunas = linha.split(";");
+				Livro l = new Livro();
+				l.setNome(colunas[0]);
+							
+				lista.add(l);
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
 }

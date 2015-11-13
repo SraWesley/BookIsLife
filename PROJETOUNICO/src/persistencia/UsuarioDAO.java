@@ -13,7 +13,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			File dir = new File("Usuarios/");
 			if( ! dir.exists()) dir.mkdir();
 			File subdir = new File(DIR);
-			if(! subdir.exists()) subdir.mkdir();
+			if( ! subdir.exists()) subdir.mkdir();
 			
 			int n = subdir.list().length + 1;
 			/*System.out.println(n);
@@ -51,7 +51,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 	}
 
 	public boolean addMeusLivros(int ISBN, int chave) {
-		File file = new File(DIR +chave+ "/" + "meusLivros.csv");
+		File file = new File(DIR + chave + "/" + "meusLivros.csv");
 		int isbn = 0;
 		
 		if (file.exists()) {
@@ -64,14 +64,14 @@ public class UsuarioDAO implements DAO<Usuario> {
 					if(isbnteste == ISBN) return false;
 				}
 			} 
-			catch (FileNotFoundException e1) {
-				e1.printStackTrace();
+			catch (FileNotFoundException e) {
+				e.printStackTrace();
 			}
 			
 			try {
 				Scanner scan = new Scanner(file);
 				while (scan.hasNextLine()) {
-					isbn++; //scan.nextInt();
+					isbn+=scan.nextInt();
 				}
 				scan.close();
 			} 

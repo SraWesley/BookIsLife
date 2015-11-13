@@ -13,14 +13,16 @@ public class Usuario {
 	private int idade;
 	private String nascimento;
 	private String escola;
-	private ArrayList<Livro> meusLivros = new ArrayList<Livro>(); 
+	private ArrayList<Livro> meusLivros;
 	
 	public Usuario() {}
 
 	public ArrayList<Livro> getMeusLivros() {
-		File file = new File("Usuarios/Matricula/" + this.getNumero() + "/" + "meusLivros.csv");
-		LivroDAO livros =  new LivroDAO();
-		meusLivros = livros.findAll();
+		//File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
+		if (meusLivros == null) { 
+			LivroDAO livros =  new LivroDAO();
+			meusLivros = livros.findAll(numero);
+		}
 		
 		return meusLivros;
 	}
