@@ -11,7 +11,7 @@ import controlador.NovoControlador_usuario;
 import controlador.PaginaInicialControlador;
 import controlador.SalvaControlador;
 import controlador.SalvaControladorUsuario;
-import spark.Spark;
+import spark.*;
 import spark.template.mustache.MustacheTemplateEngine;
 
 public class Main {
@@ -53,7 +53,8 @@ public class Main {
 	
 		AdicionaEstanteControlador adicionaEstante = new AdicionaEstanteControlador();
 		Spark.get("/adicionaestante/:ISBN", adicionaEstante, engine);
-		
+				
+		// RESENHAS
 		AdicionaResenhaControlador adicionaResenha = new AdicionaResenhaControlador();
 		Spark.post("/adicionaresenha", adicionaResenha, engine);
 	}

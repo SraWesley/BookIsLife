@@ -6,31 +6,28 @@
 	<meta charset="utf-8">
 	<title> PERFIL </title>
 </head>
-	<body>
-		<h1> Perfil </h1>
-		{{erro}
-		<thead>
-				<tr>
-					{{#usuario}}
-	        		<th>Login : {{usuario.login}}    </th> <br>
-	        		<th>Local : {{usuario.local}} </th> <br>
-	       			<th>Idade : {{usuario.idade}} </th> <br>
-		        	<th>Nascimento : {{usuario.nascimento}} </th> <br>
-		        	<th>Escola : {{usuario.escola}}</th> <br>
-		        	{{/usuario}}
-		      	
-		      	</tr>
-		      	
-	    	</thead>
-	    	<!----PEDIR PARA O MÁRCIO COMO SE FAZ ISSO --->
-	    	    	Meus Livros: {{#usuario.getMeusLivros()}}
-    					{{meusLivros.getNome()}}
-    						{{/usuario.getMeusLivros()}}	<a href="/adicionaresenha/{{ISBN}}"> Adicionar resenha </a>
-    	<br>
-		<a href="/lista"> Biblioteca </a>
-	</body>
 
-
+<body>
+	<h1> Perfil </h1>
+	{{erro}}
+	<thead>
+		<tr>
+			{{#usuario}}
+        	<th>Login: {{usuario.login}} </th> <br />
+        	<th>Local: {{usuario.local}} </th> <br />
+       		<th>Idade: {{usuario.idade}} </th> <br />
+	       	<th>Nascimento: {{usuario.nascimento}} </th> <br />
+	       	<th>Escola: {{usuario.escola}} </th> <br />
+	       	{{/usuario}}
+	    </tr>
+    </thead>
+    	
+    <!----PEDIR PARA O MÁRCIO COMO SE FAZ ISSO --->
+    Meus Livros: {{#usuario.getMeusLivros()}}
+    				{{meusLivros.getNome()}}
+    			 {{/usuario.getMeusLivros()}}	
+   	<br />
+	<a href="/lista"> Biblioteca </a>
+	<a href="/adicionaresenha"> Adiciona Resenha </a>
 </body>
-
 </html>

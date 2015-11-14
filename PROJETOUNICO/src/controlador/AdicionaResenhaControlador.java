@@ -1,5 +1,8 @@
 package controlador;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import modelo.Resenha;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -7,11 +10,10 @@ import spark.TemplateViewRoute;
 
 public class AdicionaResenhaControlador implements TemplateViewRoute{
 
-	@Override
-	public ModelAndView handle(Request arg0, Response arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	public ModelAndView handle(Request req, Response resp) {
+		ArrayList<Resenha> resenhas = new ArrayList<Resenha>();
+		HashMap mapa = new HashMap();
+		mapa.put("resenhas", resenhas);		
+		return new ModelAndView(mapa, "adiciona_resenha.html");
 	}
-	
-	
 }
