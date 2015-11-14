@@ -12,20 +12,27 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 
 	public ModelAndView handle(Request req, Response resp) {
 		int ISBN = Integer.parseInt(req.params("ISBN"));
-		
 			Usuario usuario = req.session().attribute("usuario_logado");
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
 			boolean foiAdicionado;
 		 	foiAdicionado = usuarioDAO.addMeusLivros(ISBN, usuario.getNumero());
 		 	System.out.println(foiAdicionado);
+		 	System.out.println(usuario.getMeusLivros());
 		 	if (foiAdicionado){
 		 		HashMap mapa = new HashMap();
 		 		mapa.put("usuario", usuario);
 		 		mapa.put("meuslivros", usuario.getMeusLivros());
 				return new ModelAndView(mapa, "perfil.html");
+		 	}else {
+		 		String erro = "Esse livro já está na sua estante";
+		 		HashMap mapa = new HashMap();
+		 		mapa.put("erro", erro);
+		 		mapa.put("usuario", usuario);
+		 		mapa.put("meuslivros", usuario.getMeusLivros());
+		 		return new ModelAndView(mapa,"perfil.html");
 		 	}
-		 	
-
+		}
+}
 		 			 	
 		 	///
 		 	/*File file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "meusLivros.csv");
@@ -62,9 +69,5 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 				}
 			}*/
 		
-			String erro = "Esse livro já está na sua estante";
-			HashMap mapa = new HashMap();
-			mapa.put("erro", erro);
-			return new ModelAndView(mapa,"perfil.html");
-	}
-}
+			
+	

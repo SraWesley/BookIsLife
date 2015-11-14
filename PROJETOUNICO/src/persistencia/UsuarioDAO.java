@@ -47,8 +47,8 @@ public class UsuarioDAO implements DAO<Usuario> {
 	}
 
 	public boolean addMeusLivros(int ISBN, int chave) {
-		System.out.println(ISBN);
-		System.out.println(chave);
+		//System.out.println(ISBN);
+		//System.out.println(chave);
 		File file = new File(DIR + chave + "/" + "meusLivros.csv");
 		String isbnExistente = "";
 		Scanner scan = null;
@@ -73,7 +73,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 				scan = new Scanner(file);
 				if (scan.hasNextLine()) {
 					isbnExistente += scan.nextLine();
-					System.out.println(isbnExistente);
+					//System.out.println(isbnExistente);
 				}
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -85,9 +85,10 @@ public class UsuarioDAO implements DAO<Usuario> {
 				FileWriter writer = new FileWriter(file);
 				if(!isbnExistente.isEmpty()){
 					writer.write(isbnExistente);
-					writer.write(";");
+					//writer.write(";");
 				} 
 				writer.write(String.valueOf(ISBN));
+				writer.write(";");
 				writer.flush();
 				writer.close();
 			} catch (IOException e) {
@@ -97,6 +98,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			try {
 				FileWriter writer = new FileWriter(file);
 				writer.write(String.valueOf(ISBN));
+				writer.write(";");
 				writer.flush();
 				writer.close();
 			} catch (IOException e) {

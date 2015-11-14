@@ -24,9 +24,13 @@ public class Usuario {
 	//File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
 		if (meusLivros == null) { 
 			LivroDAO livros =  new LivroDAO();
-			System.out.println(numero);
+			//System.out.println(numero);
 			meusLivros = livros.findAll(numero);
-	/*public 	ArrayList<Livro> getMeusLivros() {
+			//System.out.println(meusLivros);
+		}
+		return meusLivros;
+	}
+			/*public 	ArrayList<Livro> getMeusLivros() {
 		File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
 		LivroDAO livros =  new LivroDAO();
 		try {
@@ -49,9 +53,6 @@ public class Usuario {
 		
 		meusLivros = livros.findAll();
 		return meusLivros;*/
-	}
-		return meusLivros;
-	}
 	public void setMeusLivros(Livro livro) {
 		//File file = new File("Usuarios/Matricula/" + this.getNumero() + "/" + "meusLivros.csv");
 		//try {
@@ -62,13 +63,12 @@ public class Usuario {
 			//	Livro livro = new Livro();
 			//	livro.setNome(colunas[i]);
 				meusLivros.add(livro);
-		//	}
+			}
 		//} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 		//	e.printStackTrace();
 		//}
 		
-	}
 
 	public int getNumero() {
 		return numero;

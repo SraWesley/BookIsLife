@@ -1,6 +1,7 @@
 package web;
 
 import controlador.AdicionaEstanteControlador;
+import controlador.AdicionaResenhaControlador;
 import controlador.EntraControlador;
 import controlador.ExcluiControlador;
 import controlador.ListaControlador;
@@ -52,5 +53,8 @@ public class Main {
 	
 		AdicionaEstanteControlador adicionaEstante = new AdicionaEstanteControlador();
 		Spark.get("/adicionaestante/:ISBN", adicionaEstante, engine);
+		
+		AdicionaResenhaControlador adicionaResenha = new AdicionaResenhaControlador();
+		Spark.post("/adicionaresenha", adicionaResenha, engine);
 	}
 }

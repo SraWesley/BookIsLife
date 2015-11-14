@@ -121,13 +121,15 @@ public class LivroDAO implements DAO<Livro> {
 		ArrayList<Livro> lista = new ArrayList<Livro>();
 		Scanner scan = null;
 		try {
-			File file = new File("Usuarios/Matriculas/" + numeroUsuario + "meusLivros.csv");
+			File file = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "meusLivros.csv");
 			if (file.exists()) {
+				System.out.println("t aqui");
 				scan = new Scanner(file);
 				String linha3 = scan.nextLine();
 				String[] colunas3 = linha3.split(";");
 				for (int i = 0; i < colunas3.length; i++) {
 					Livro livro = load(Integer.parseInt(colunas3[i]));
+					System.out.println(livro.toString());
 					lista.add(livro);
 				}
 			}

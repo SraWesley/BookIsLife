@@ -8,7 +8,7 @@
 </head>
 	<body>
 		<h1> Perfil </h1>
-		
+		{{erro}
 		<thead>
 				<tr>
 					{{#usuario}}
@@ -22,9 +22,10 @@
 		      	</tr>
 		      	
 	    	</thead>
-    	Meus Livros : {{#usuario.getMeusLivros()}}
-    					{{livro.getNome()}}
-    					{{/usuario.getMeusLivros()}}	<br>
+	    	<!----PEDIR PARA O MÁRCIO COMO SE FAZ ISSO --->
+	    	    	Meus Livros: {{#usuario.getMeusLivros()}}
+    					{{meusLivros.getNome()}}
+    						{{/usuario.getMeusLivros()}}	<a href="/adicionaresenha/{{ISBN}}"> Adicionar resenha </a>
     	<br>
 		<a href="/lista"> Biblioteca </a>
 	</body>
