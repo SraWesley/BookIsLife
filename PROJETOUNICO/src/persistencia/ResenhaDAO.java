@@ -16,17 +16,11 @@ public class ResenhaDAO implements DAO<Resenha>{
 			File dir = new File(DIR);
 			if (! dir.exists()) dir.mkdir();
 				
-			File file = new File(DIR + "/" + r.getNumero() + "/" + "minhasResenhas.csv");
-			if (file.exists()){
-				FileWriter writer = new FileWriter(file);
-				writer.write(r.getISBN() + ";");
-				writer.write(r.getTexto() + ";");
-				writer.flush();
-				writer.close();
-			}
-			
+			 dir = new File(DIR + "/" + r.getNumero() + "/" + "MinhasResenhas");
+			if (! dir.exists()) dir.mkdir();
+			File file = new File(DIR + "/" + r.getNumero() + "/" + "MinhasResenhas" + "/" + r.getISBN()+ ".csv");
+
 			FileWriter writer = new FileWriter(file);
-			writer.write(r.getISBN() + ";");
 			writer.write(r.getTexto() + ";");
 			writer.flush();
 			writer.close();

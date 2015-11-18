@@ -39,7 +39,7 @@ public class SalvaResenhaControlador implements TemplateViewRoute {
 		}
 		else {
 			dao.save(resenha);
-			resp.redirect("ver_resenha/:ISBN");
+			resp.redirect("/ver_resenha/"+ resenha.getISBN());
 		}
 		return null;
 	}
