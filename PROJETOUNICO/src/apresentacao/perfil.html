@@ -12,23 +12,23 @@
 	{{erro}}
 	<thead>
 		<tr>
-			{{#usuario}}
-        	<th>Login: {{usuario.login}} </th> <br />
+			<th>Login: {{usuario.login}} </th> <br />
         	<th>Local: {{usuario.local}} </th> <br />
        		<th>Idade: {{usuario.idade}} </th> <br />
 	       	<th>Nascimento: {{usuario.nascimento}} </th> <br />
 	       	<th>Escola: {{usuario.escola}} </th> <br />
-	       	{{/usuario}}
-	    </tr>
+	  </tr>
     </thead>
     	
     <!----PEDIR PARA O MÁRCIO COMO SE FAZ ISSO --->
-    Meus Livros: {{#usuario.getMeusLivros()}}
-    				{{meusLivros.getNome()}}
-    			 {{/usuario.getMeusLivros()}}	
+    Meus Livros: {{#meusLivros}}
+    				{{nome}}
+    				<a href="/adiciona_resenha/{{ISBN}}"> Adicionar resenhas </a>
+    			 	<a href= "/ver_resenhas/{{ISBN}}"> Ver resenhas</a>
+    			 	<br />
+    			 {{/meusLivros}}	
    	<br />
 	<a href="/lista"> Biblioteca </a>
-	<br />
-	<a href="/adiciona_resenha"> Adicionar Resenha </a>
+
 </body>
 </html>

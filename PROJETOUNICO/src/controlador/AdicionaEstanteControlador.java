@@ -25,14 +25,14 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 		if (foiAdicionado){
 			HashMap mapa = new HashMap();
 			mapa.put("usuario", usuario);
-			mapa.put("meuslivros", usuario.getMeusLivros());
+			mapa.put("meusLivros", usuario.getMeusLivros());
 			return new ModelAndView(mapa, "perfil.html");
 		} else {
 			String erro = "Esse livro já está na sua estante";
 			HashMap mapa = new HashMap();
 			mapa.put("erro", erro);
 			mapa.put("usuario", usuario);
-			mapa.put("meuslivros", usuario.getMeusLivros());
+			mapa.put("meusLivros", usuario.getMeusLivros());
 			return new ModelAndView(mapa,"perfil.html");
 		}
 	}

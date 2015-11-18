@@ -4,28 +4,32 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-import modelo.Livro;
 import modelo.Resenha;
+import modelo.Usuario;
 
 public class ResenhaDAO implements DAO<Resenha>{
 
+	private static final String DIR = "Usuarios/Matriculas/";
 	
-	private static final String DIR = "livros/ISBN/";
-	
-	public void save(Resenha obj) {
+	public void save(Resenha r) {
 		try {
-			File dir = new File("livros/");
+			File dir = new File(DIR);
 			if (! dir.exists()) dir.mkdir();
-			File subdir = new File(DIR);
-			if (! subdir.exists()) subdir.mkdir();
-			
-			dir = new File(DIR + obj.getISBN() + "/");
-			if (! dir.exists()) dir.mkdir();
-			File file = new File(DIR + obj.getISBN() + "/" + "resenhas.csv");
-			if (file.exists()) return;
+				
+			File file = new File(DIR + "/" + r.getNumero() + "/" + "minhasResenhas.csv");
+			if (file.exists()){
+				FileWriter writer = new FileWriter(file);
+				writer.write(r.getISBN() + ";");
+				writer.write(r.getTexto() + ";");
+				writer.flush();
+				writer.close();
+			}
 			
 			FileWriter writer = new FileWriter(file);
-			
+			writer.write(r.getISBN() + ";");
+			writer.write(r.getTexto() + ";");
+			writer.flush();
+			writer.close();
 		}
 		
 		 catch (Exception e) {
@@ -47,6 +51,7 @@ public class ResenhaDAO implements DAO<Resenha>{
 	}
 
 	public ArrayList<Resenha> findAll() {
+		
 		return null;
 	}
 }

@@ -14,24 +14,22 @@ public class EntraControlador implements TemplateViewRoute{
 			mapa.put("erro", req.queryParams("erro"));
 		}
 		
-		Usuario usuario = new Usuario();
-		usuario.setLogin(req.queryMap("username").value());
-		usuario.setSenha(req.queryMap("psw").value());
+		
+		String username = req.queryMap("username").value();
+		String psw = req.queryMap("psw").value();
 		
 		UsuarioDAO dao = new UsuarioDAO();
 		ArrayList<Usuario> usuarios = dao.findAll();
 	
 		for (int i = 0; i < usuarios.size(); i++) {
-			String s, x;
-			
-			s = usuarios.get(i).getLogin();
-			x = usuarios.get(i).getSenha();
+			Usuario usuario = usuarios.get(i);
 	
-			if (s.equals(usuario.getLogin()) && x.equals(usuario.getSenha())){
-				req.session().attribute("usuario_logado", usuarios.get(i));
+			if (username.equals(usuario.getLogin()) && psw.equals(usuario.getSenha())){
+				req.session().attribute("usuario_logado", usuario);
 				HashMap mapa2 = new HashMap();
-				mapa2.put("usuario", usuarios.get(i));
-				
+				mapa2.put("usuario", usuario);
+				System.out.println("estamos aquii");
+				mapa2.put("meusLivros", usuario.getMeusLivros());
 				return new ModelAndView(mapa2, "perfil.html");
 			}
 		}

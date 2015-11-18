@@ -20,7 +20,6 @@ public class SalvaControlador implements TemplateViewRoute {
 		livro.setNome(req.queryMap("nome").value());
 		livro.setEscritor(req.queryMap("escritor").value());
 		livro.setEditora(req.queryMap("editora").value());
-		//livro.setAnopublicado(req.queryMap("anopublicado").integerValue());
 		
 		///ver se tem necessidade disso
 		if (livro.getNome().length() < 3) {

@@ -1,0 +1,21 @@
+package controlador;
+
+import java.io.File;
+import java.util.HashMap;
+
+import modelo.Usuario;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.TemplateViewRoute;
+
+public class VerResenhaControlador implements TemplateViewRoute {
+
+	public ModelAndView handle(Request req, Response resp) {
+		Usuario usuario = req.session().attribute("usuario_logado");
+		HashMap mapa = new HashMap();
+		//mapa.put("resenha", );		
+		return new ModelAndView(mapa, "ver_resenha.html");
+	}
+
+}

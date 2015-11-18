@@ -21,14 +21,14 @@ public class Usuario {
 	public Usuario() {}
 
 	public ArrayList<Livro> getMeusLivros() {
+		System.out.println("estamos em getmeuslivros");
 	//File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
-		if (meusLivros == null) { 
+			//System.out.println("estamos em getmeuslivros se for null");
 			LivroDAO livros =  new LivroDAO();
 			//System.out.println(numero);
 			meusLivros = livros.findAll(numero);
 			//System.out.println(meusLivros);
-		}
-		return meusLivros;
+			return meusLivros;
 	}
 			/*public 	ArrayList<Livro> getMeusLivros() {
 		File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");

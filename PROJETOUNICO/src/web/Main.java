@@ -11,6 +11,8 @@ import controlador.NovoControlador_usuario;
 import controlador.PaginaInicialControlador;
 import controlador.SalvaControlador;
 import controlador.SalvaControladorUsuario;
+import controlador.SalvaResenhaControlador;
+import controlador.VerResenhaControlador;
 import spark.*;
 import spark.template.mustache.MustacheTemplateEngine;
 
@@ -25,6 +27,7 @@ public class Main {
 		PaginaInicialControlador paginaInicial = new PaginaInicialControlador();
 		Spark.get("/", paginaInicial, engine);
 		
+		
 		// USUARIO
 		NovoControlador_usuario novoControladorUsuario = new NovoControlador_usuario();
 		Spark.get("/usuario_cadastrar", novoControladorUsuario, engine);
@@ -37,6 +40,7 @@ public class Main {
 		
 		EntraControlador entraControlador = new EntraControlador();
 		Spark.post("/login", entraControlador, engine);
+		
 		
 		// LIVROS
 		NovoControlador_Livros novoControlador = new NovoControlador_Livros();
@@ -54,8 +58,15 @@ public class Main {
 		AdicionaEstanteControlador adicionaEstante = new AdicionaEstanteControlador();
 		Spark.get("/adicionaestante/:ISBN", adicionaEstante, engine);
 				
+		
 		// RESENHAS
 		AdicionaResenhaControlador adicionaResenha = new AdicionaResenhaControlador();
-		Spark.post("/adicionaresenha", adicionaResenha, engine);
+		Spark.get("/adiciona_resenha/:ISBN", adicionaResenha, engine);
+		
+		SalvaResenhaControlador salvaResenha = new SalvaResenhaControlador();
+		Spark.post("/salva_resenha/:ISBN", salvaResenha, engine);
+		
+		VerResenhaControlador verResenha = new VerResenhaControlador();
+		Spark.get("/ver_resenha/:ISBN", verResenha, engine);
 	}
 }
