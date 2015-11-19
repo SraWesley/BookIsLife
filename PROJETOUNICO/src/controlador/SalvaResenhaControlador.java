@@ -38,8 +38,17 @@ public class SalvaResenhaControlador implements TemplateViewRoute {
 			return new ModelAndView(mapa,"adiciona_resenha.html");
 		}
 		else {
-			dao.save(resenha);
-			resp.redirect("ver_resenha/:ISBN");
+			boolean resenhaJaExiste = dao.resenhaExiste(resenha);
+			if(!resenhaJaExiste){
+					dao.save(resenha);
+			}else{
+				String erro2 ="Você já tem resenha desse livro!";
+				HashMap mapa2 = new HashMap();
+				mapa2.put("erro2", erro2);
+				return new ModelAndView(mapa2,"adiciona_resenha.html");
+			}
+			req.session().attribute("resenha_logada", resenha);
+			resp.redirect("/ver_resenha/" + resenha.getISBN());
 		}
 		return null;
 	}
