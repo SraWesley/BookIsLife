@@ -14,9 +14,9 @@ public class VerResenhaControlador implements TemplateViewRoute {
 
 	public ModelAndView handle(Request req, Response resp) {
 		Usuario usuario = req.session().attribute("usuario_logado");
-		Resenha r = dao.load(?);
+		//Resenha r = dao.load(?);
 		HashMap mapa = new HashMap();
-		mapa.put("texto", r.getTexto());		
+		//mapa.put("texto", r.getTexto());		
 		return new ModelAndView(mapa, "ver_resenha.html");
 	}
 
