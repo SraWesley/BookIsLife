@@ -1,14 +1,9 @@
 package controlador;
 
-import java.io.File;
-import java.util.HashMap;
-
+import java.util.*;
 import modelo.Resenha;
 import modelo.Usuario;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
+import spark.*;
 
 public class VerResenhaControlador implements TemplateViewRoute {
 
@@ -21,5 +16,4 @@ public class VerResenhaControlador implements TemplateViewRoute {
 		mapa.put("resenha", resenha.getTexto());		
 		return new ModelAndView(mapa, "ver_resenha.html");
 	}
-
 }

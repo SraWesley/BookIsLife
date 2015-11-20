@@ -2,10 +2,7 @@ package controlador;
 
 import modelo.Livro;
 import persistencia.LivroDAO;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
+import spark.*;
 
 public class ExcluiControlador implements TemplateViewRoute {
 	
@@ -16,7 +13,6 @@ public class ExcluiControlador implements TemplateViewRoute {
 		Livro livro = dao.load(numero);
 		if (livro != null) dao.delete(livro);
 		resp.redirect("/lista");
-		
 		return null;
 	}
 }

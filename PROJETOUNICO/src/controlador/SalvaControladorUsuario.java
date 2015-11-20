@@ -4,10 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import modelo.Usuario;
 import persistencia.UsuarioDAO;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
+import spark.*;
 
 public class SalvaControladorUsuario implements TemplateViewRoute{
 

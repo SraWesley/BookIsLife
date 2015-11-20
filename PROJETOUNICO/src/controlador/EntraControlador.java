@@ -1,7 +1,6 @@
 package controlador;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import modelo.Usuario;
 import persistencia.UsuarioDAO;
 import spark.*;
@@ -13,7 +12,6 @@ public class EntraControlador implements TemplateViewRoute{
 		if (req.queryParams("erro") != null) { 
 			mapa.put("erro", req.queryParams("erro"));
 		}
-		
 		
 		String username = req.queryMap("username").value();
 		String psw = req.queryMap("psw").value();

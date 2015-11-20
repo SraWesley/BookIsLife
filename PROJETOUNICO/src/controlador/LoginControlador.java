@@ -1,10 +1,7 @@
 package controlador;
 
-import java.util.HashMap;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
+import java.util.*;
+import spark.*;
 
 public class LoginControlador implements TemplateViewRoute{
 

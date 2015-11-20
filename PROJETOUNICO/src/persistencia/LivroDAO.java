@@ -1,28 +1,26 @@
 package persistencia;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.util.*;
+import java.io.*;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Scanner;
 import modelo.Livro;
 
 public class LivroDAO implements DAO<Livro> {
 
 	public void save(Livro obj) {
-		
+
 		try {
 			File dir = new File("livros");
-			if (!dir.exists()) dir.mkdir();
+			if (!dir.exists())
+				dir.mkdir();
 			File arq = new File("livros/" + obj.getISBN() + ".csv");
-			if (arq.exists()) return;
+			if (arq.exists())
+				return;
 			FileWriter writer = new FileWriter(arq);
 			writer.write(obj.getISBN() + ";");
 			writer.write(obj.getNome() + ";");
 			writer.write(obj.getEscritor() + ";");
 			writer.write(obj.getEditora() + ";");
-			// writer.write(obj.getAnopublicado() + ";");
 			writer.flush();
 			writer.close();
 		} catch (Exception e) {
@@ -34,7 +32,8 @@ public class LivroDAO implements DAO<Livro> {
 		try {
 			File arq = new File("livros/" + obj.getISBN() + ".csv");
 			System.out.println(arq.exists());
-			if (!arq.exists()) return;
+			if (!arq.exists())
+				return;
 			Files.delete(arq.toPath());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -94,7 +93,8 @@ public class LivroDAO implements DAO<Livro> {
 		Livro l = null;
 		try {
 			File arq = new File("livros/" + chave + ".csv");
-			if (!arq.exists()) return null;
+			if (!arq.exists())
+				return null;
 			l = new Livro();
 			Scanner scan = new Scanner(arq);
 			String linha = scan.nextLine();

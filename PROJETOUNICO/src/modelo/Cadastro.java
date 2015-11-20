@@ -1,8 +1,7 @@
 package modelo;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 public class Cadastro {
 

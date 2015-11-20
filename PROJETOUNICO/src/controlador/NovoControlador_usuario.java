@@ -1,10 +1,7 @@
 package controlador;
 
-import java.util.HashMap;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
+import java.util.*;
+import spark.*;
 
 public class NovoControlador_usuario implements TemplateViewRoute{
 
@@ -12,7 +9,6 @@ public class NovoControlador_usuario implements TemplateViewRoute{
 		
 		HashMap mapa = new HashMap();
 		if (req.queryParams("erro") != null) mapa.put("erro", req.queryParams("erro"));
-
 		return new ModelAndView(mapa, "usuario_cadastrar.html");
 	}	
 }

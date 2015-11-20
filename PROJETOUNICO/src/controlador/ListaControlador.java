@@ -1,13 +1,9 @@
 package controlador;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
+import spark.*;
 import modelo.Livro;
 import persistencia.LivroDAO;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
 
 public class ListaControlador implements TemplateViewRoute {
 

@@ -1,6 +1,6 @@
 package persistencia;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public interface DAO <T>{
 	

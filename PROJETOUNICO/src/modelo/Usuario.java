@@ -1,10 +1,6 @@
 package modelo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
+import java.util.*;
 import persistencia.LivroDAO;
 
 public class Usuario {
