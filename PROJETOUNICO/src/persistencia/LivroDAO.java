@@ -11,11 +11,9 @@ public class LivroDAO implements DAO<Livro> {
 
 		try {
 			File dir = new File("livros");
-			if (!dir.exists())
-				dir.mkdir();
+			if (!dir.exists()) dir.mkdir();
 			File arq = new File("livros/" + obj.getISBN() + ".csv");
-			if (arq.exists())
-				return;
+			if (arq.exists()) return;
 			FileWriter writer = new FileWriter(arq);
 			writer.write(obj.getISBN() + ";");
 			writer.write(obj.getNome() + ";");
@@ -32,8 +30,7 @@ public class LivroDAO implements DAO<Livro> {
 		try {
 			File arq = new File("livros/" + obj.getISBN() + ".csv");
 			System.out.println(arq.exists());
-			if (!arq.exists())
-				return;
+			if (!arq.exists()) return;
 			Files.delete(arq.toPath());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,7 +48,6 @@ public class LivroDAO implements DAO<Livro> {
 				writer.write(obj.getNome() + ";");
 				writer.write(obj.getEscritor() + ";");
 				writer.write(obj.getEditora() + ";");
-				// writer.write(obj.getAnopublicado() + ";");
 				writer.flush();
 				writer.close();
 			}
@@ -75,11 +71,6 @@ public class LivroDAO implements DAO<Livro> {
 				l.setNome(colunas[1]);
 				l.setEscritor(colunas[2]);
 				l.setEditora(colunas[3]);
-				// String [] a = colunas[4].split("-");
-				// int ano = Integer.parseInt(a[0]);
-				// int dia = Integer.parseInt(a[1]);
-				// int mes = Integer.parseInt(a[2]);
-				// l.setAnopublicado(new Date(dia, mes, ano));
 				lista.add(l);
 			}
 		} catch (Exception e) {
@@ -93,8 +84,7 @@ public class LivroDAO implements DAO<Livro> {
 		Livro l = null;
 		try {
 			File arq = new File("livros/" + chave + ".csv");
-			if (!arq.exists())
-				return null;
+			if (!arq.exists()) return null;
 			l = new Livro();
 			Scanner scan = new Scanner(arq);
 			String linha = scan.nextLine();
@@ -104,11 +94,6 @@ public class LivroDAO implements DAO<Livro> {
 			l.setNome(colunas[1]);
 			l.setEscritor(colunas[2]);
 			l.setEditora(colunas[3]);
-			// String [] a = colunas[4].split("-");
-			// int ano = Integer.parseInt(a[0]);
-			// int dia = Integer.parseInt(a[1]);
-			// int mes = Integer.parseInt(a[2]);
-			// l.setAnopublicado(new Date(dia, mes, ano));
 			return l;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,24 +107,19 @@ public class LivroDAO implements DAO<Livro> {
 		Scanner scan = null;
 		try {
 			File file = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "meusLivros.csv");
-			System.out.println("verificando se existe" + file);
 			if (file.exists()) {
-				System.out.println("existe");
 				scan = new Scanner(file);
 				String linha3 = scan.nextLine();
 				String[] colunas3 = linha3.split(";");
 				for (int i = 0; i < colunas3.length; i++) {
 					Livro livro = load(Integer.parseInt(colunas3[i]));
-					System.out.println("pegamando um livro");
 					lista.add(livro);
 				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		if (scan != null) {
-			scan.close();
-		}
+		if (scan != null) scan.close();
 		return lista;
 	}
 }
