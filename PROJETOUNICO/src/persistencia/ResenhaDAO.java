@@ -116,7 +116,7 @@ public class ResenhaDAO implements DAO<Resenha> {
 	}
 
 	public void update(Resenha obj) {
-		int isbn = obj.getISBN();
+		String isbn = obj.getISBN();
 		try {
 			File arq = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/ " + isbn + ".csv");
 			if (arq.exists()) {
@@ -133,7 +133,7 @@ public class ResenhaDAO implements DAO<Resenha> {
 	public ArrayList<Resenha> findAll() {
 		ArrayList<Resenha> lista = new ArrayList<Resenha>();
 		Resenha resenha = new Resenha();
-		int isbn = resenha.getISBN();
+		String isbn = resenha.getISBN();
 		Scanner scan = null;
 		try {
 			File file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/" + isbn + ".csv");
@@ -154,7 +154,7 @@ public class ResenhaDAO implements DAO<Resenha> {
 	}
 
 
-	public ArrayList<Resenha> resenhasDoLivro(int iSBN) {
+	public ArrayList<Resenha> resenhasDoLivro(String iSBN) {
 		ArrayList<Resenha> listaResenha = new ArrayList<Resenha>();
 		File dirUsuarios = new File("Usuarios/Matriculas/");
 		File[] usuarios = dirUsuarios.listFiles();

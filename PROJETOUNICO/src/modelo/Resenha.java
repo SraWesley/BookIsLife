@@ -3,14 +3,14 @@ package modelo;
 public class Resenha {
 
 	private String texto;
-	private int ISBN;
+	private String ISBN;
 	private int numero;
 	
-	public int getISBN() {
+	public String getISBN() {
 		return ISBN;
 	}
 
-	public void setISBN(int iSBN) {
+	public void setISBN(String iSBN) {
 		ISBN = iSBN;
 	}
 
