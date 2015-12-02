@@ -10,8 +10,17 @@ public class Livro {
 	private int ISBN;//
 	private Date anopublicado;//
 	private int paginas;
+	private String sinopse;
 	//adicionar genero
 	
+	public String getSinopse() {
+		return sinopse;
+	}
+
+	public void setSinopse(String sinopse) {
+		this.sinopse = sinopse;
+	}
+
 	public String getNome() {
 		return nome;
 	}

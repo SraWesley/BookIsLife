@@ -3,12 +3,12 @@ package persistencia;
 import java.util.*;
 import java.io.*;
 import java.nio.file.Files;
+
 import modelo.Livro;
 
 public class LivroDAO implements DAO<Livro> {
 
 	public void save(Livro obj) {
-
 		try {
 			File dir = new File("livros");
 			if (!dir.exists()) dir.mkdir();
@@ -19,13 +19,52 @@ public class LivroDAO implements DAO<Livro> {
 			writer.write(obj.getNome() + ";");
 			writer.write(obj.getEscritor() + ";");
 			writer.write(obj.getEditora() + ";");
+			writer.write(obj.getSinopse() + ";");
 			writer.flush();
 			writer.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		adicionaTitulos(obj.getNome());
 	}
 
+	public void adicionaTitulos(String titulo) {
+		File file = new File("livros/" + "titulos.csv");
+		String nome = "";
+		if (file.exists()) {
+			try {
+				Scanner scan = new Scanner(file);
+				while (scan.hasNextLine()) {
+					nome += scan.nextLine();
+				}
+				scan.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			try {
+				FileWriter writer = new FileWriter(file);
+				writer.write(nome);
+				writer.write(titulo);
+				writer.write(";");
+				writer.flush();
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		else {
+			try {
+				FileWriter writer = new FileWriter(file);
+				writer.write(titulo + ";");
+				writer.flush();
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public void delete(Livro obj) {
 		try {
 			File arq = new File("livros/" + obj.getISBN() + ".csv");
@@ -47,6 +86,7 @@ public class LivroDAO implements DAO<Livro> {
 				writer.write(obj.getISBN() + ";");
 				writer.write(obj.getNome() + ";");
 				writer.write(obj.getEscritor() + ";");
+				writer.write(obj.getEditora() + ";");
 				writer.write(obj.getEditora() + ";");
 				writer.flush();
 				writer.close();
@@ -71,6 +111,7 @@ public class LivroDAO implements DAO<Livro> {
 				l.setNome(colunas[1]);
 				l.setEscritor(colunas[2]);
 				l.setEditora(colunas[3]);
+				l.setSinopse(colunas[4]);
 				lista.add(l);
 			}
 		} catch (Exception e) {
@@ -94,6 +135,7 @@ public class LivroDAO implements DAO<Livro> {
 			l.setNome(colunas[1]);
 			l.setEscritor(colunas[2]);
 			l.setEditora(colunas[3]);
+			l.setSinopse(colunas[4]);
 			return l;
 		} catch (Exception e) {
 			e.printStackTrace();

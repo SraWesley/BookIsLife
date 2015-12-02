@@ -2,6 +2,7 @@ package controlador;
 
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Scanner;
 import modelo.Usuario;
 import persistencia.UsuarioDAO;
@@ -20,35 +21,38 @@ public class SalvaControladorUsuario implements TemplateViewRoute{
 		usuario.setIdade(req.queryMap("Idade").integerValue());
 		usuario.setNascimento(req.queryMap("Nascimento").value());
 		usuario.setEscola(req.queryMap("Escola").value());
-		
+		String erro = "";
+		String erro2 = "";
 		if (usuario.getLogin().length() < 3) {
-			String erro = "";
-			try {
-				erro = URLEncoder.encode("Login deve ter pelo menos 3 caracteres", "UTF-8");
-			} 
-			catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			resp.redirect("/?erro=" + erro);
+			
+			erro = "Login deve ter pelo menos 3 caracteres";
+			HashMap mapa = new HashMap();
+			mapa.put("erro", erro);
+			return new ModelAndView(mapa,"usuario_cadastrar.html");
 		}else {
 			File file = new File("Usuarios/" + "login.csv");
 			String login = usuario.getLogin();
-			String erro2 = "";
+			System.out.println("Estou no else");
 			if (file.exists()) {
-				try {
+				try {System.out.println(login);
 					Scanner scan = new Scanner(file);
 					String linha = scan.nextLine();
 					String[] colunas = linha.split(";");
 					scan.close();
 					for(int i = 0; i < colunas.length; i++){
 						if(login.equals(colunas[i])){
+							
+							System.out.println(colunas[i]);
+							System.out.println("é igual");
 							erro2 = "Login já existente! Escolha outro!";
 						}
 					}
 				} catch (FileNotFoundException e) {
 				}
+			HashMap mapa1 = new HashMap();
+			mapa1.put("erro2", erro2);
+			return new ModelAndView(mapa1,"usuario_cadastrar.html");
 			}
-			resp.redirect("/?erro=" + erro2);
 		}
 			dao.save(usuario);	
 			resp.redirect("/");
