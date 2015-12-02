@@ -15,7 +15,7 @@ public class VerResenhaControlador implements TemplateViewRoute {
 		ArrayList<Resenha> resenhas = dao.resenhasDoLivro(ISBN); 
 		
 		
-		File  file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "minhasResenhas/" + ISBN + ".csv");
+		File  file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/" + ISBN + ".csv");
 		Resenha resenha = new Resenha();
 		if(file.exists()){
 			try {

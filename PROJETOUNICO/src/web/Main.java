@@ -4,6 +4,7 @@ import controlador.AdicionaEstanteControlador;
 import controlador.AdicionaResenhaControlador;
 import controlador.EntraControlador;
 import controlador.ExcluiControlador;
+import controlador.ExcluirResenhaControlador;
 import controlador.ListaControlador;
 import controlador.LoginControlador;
 import controlador.NovoControlador_Livros;
@@ -72,5 +73,8 @@ public class Main {
 		
 		VerResenhasLivrosControlador verResenhasLivros = new VerResenhasLivrosControlador();
 		Spark.get("/verTodasResenhas/:ISBN", verResenhasLivros, engine);
+		
+		ExcluirResenhaControlador excluirResenha = new ExcluirResenhaControlador();
+		Spark.post("exclui_resenha/:ISBN", excluirResenha, engine);
 	}
 }
