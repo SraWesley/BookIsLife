@@ -24,7 +24,6 @@ public class SalvaControladorUsuario implements TemplateViewRoute{
 		String erro = "";
 		String erro2 = "";
 		if (usuario.getLogin().length() < 3) {
-			
 			erro = "Login deve ter pelo menos 3 caracteres";
 			HashMap mapa = new HashMap();
 			mapa.put("erro", erro);
