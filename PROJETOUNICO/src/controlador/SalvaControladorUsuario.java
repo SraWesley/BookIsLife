@@ -1,14 +1,9 @@
 package controlador;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Scanner;
-
 import modelo.Usuario;
 import persistencia.UsuarioDAO;
 import spark.*;

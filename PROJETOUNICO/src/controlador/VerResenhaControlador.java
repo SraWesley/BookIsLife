@@ -1,11 +1,8 @@
 package controlador;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
-
-import modelo.Resenha;
-import modelo.Usuario;
+import modelo.*;
 import spark.*;
 
 public class VerResenhaControlador implements TemplateViewRoute {
@@ -24,7 +21,6 @@ public class VerResenhaControlador implements TemplateViewRoute {
 				resenha.setTexto(linha);
 				scan.close();
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

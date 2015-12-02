@@ -1,33 +1,66 @@
 <!doctype html>
-
 <html>
-
 <head>
 	<meta charset="utf-8">
-	<title> CADASTRO DE USUARIO </title>
+	<title>CADASTRO DE USUARIO</title>
 	<link href="Style.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
+
 <h1> Cadastro </h1>
 {{erro}}
 {{erro2}}
-<div id="salvaUsuario">
-<form method="post" action="/salvausuario">
-	<input type="text" name="Login" placeholder="Login">
-    <br /> <br /> 
-    <input type="password" name="Senha" maxlength="8" placeholder="Senha">
-    <br /> <br />
-    <input type="text" name="Local" placeholder="Cidade atual">
-    <br /> <br />
-    <input type="number" name="Idade" placeholder="Idade">
-    <br /> <br />
-    <input type="date" name="Nascimento" min="1900-01-01" max="2015-12-07" placeholder="Data de Nascimento">
-    <br /> <br />
-    <input type="text" name="Escola" placeholder="Escola">
-    <br /> <br />
-    <input type="submit" value="Cadastrar">
-</form>
-</div>
+	<div align="center">
+		<div id="menu1">
+			<ul>
+				<li><a href="/" title="Home"> Home </a></li>
+				<li><a href="/login" title="Logar-se"> Logar-se </a></li>
+				<li><a href="/lista" title="Biblioteca"> Biblioteca </a></li>
+				<li><a href="/novo" title="Novo Livro"> Novo Livro </a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="img">
+		<img src="index.jpg" height=370 width=1363 title="BookIsLife">
+	</div>
+	<div align="center">
+		<div id="salvaUsuario">
+			<form method="post" action="/salvausuario">
+				<h1> Cadastro </h1>
+				<br />
+				<table>
+					<tr>
+						<td align="center"><label> Login </label></td>
+						<td><input type="text" name="Login" placeholder="Login" size="33"></td>
+					</tr>
+					<tr>
+						<td align="center"><label> Senha </label></td>
+						<td><input type="password" name="Senha" maxlength="8" placeholder="Senha" size="33"></td>
+					</tr>
+					<tr>
+						<td align="center"><label> Local </label></td>
+						<td><input type="text" name="Local" placeholder="Cidade atual" size="33"></td>
+					</tr>
+					<tr>
+						<td align="center"><label> Idade </label></td>
+						<td><input type="number" name="Idade" placeholder="Idade"></td>
+					</tr>
+					<tr>
+						<td align="center"><label> Data de Nascimento </label></td>
+						<td><input type="date" name="Nascimento" min="1900-01-01" max="2015-12-07" placeholder="Data de Nascimento">
+						</td>
+					</tr>
+					<tr>
+						<td align="center"><label> Escola </label></td>
+						<td><input type="text" name="Escola" placeholder="Escola" size="33">
+						</td>
+					</tr>
+				</table>
+				<br />
+				<input type="submit" value="Cadastrar">
+			</form>
+		</div>
+	</div>
+
 </body>
 </html>
