@@ -1,7 +1,5 @@
 <!doctype html>
-
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<title>RESENHA</title>
@@ -9,17 +7,8 @@
 
 <body>		
 	<h1> Resenha </h1>
-	
-	<table>
-        <tbody>
-			 <td> {{texto}} </td>
-		    	<a href="/editar_resenha/{{ISBN}}"> Editar Resenha </a>
-		        <a href="/exclui_resenha/{{ISBN}}" onclick="return confirm('Deseja excluir esta resenha?');"> Excluir </a>
-		        </td>
-	      	</tr>
-	      	{{/texto}}
-		</tbody>
-	</table>
-	
+		{{resenha}}
+		<a href="/editar_resenha/{{ISBN}}"> Editar Resenha </a>
+		<a href="/exclui_resenha/{{ISBN}}" onclick="return confirm('Deseja excluir este livro?');"> Excluir </a>
 </body>
 </html>

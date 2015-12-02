@@ -11,12 +11,9 @@ public class UsuarioDAO implements DAO<Usuario> {
 	public void save(Usuario obj) {
 		try {
 			File dir = new File("Usuarios/");
-			if (!dir.exists())
-				dir.mkdir();
+			if (!dir.exists()) dir.mkdir();
 			File subdir = new File(DIR);
-			if (!subdir.exists())
-				subdir.mkdir();
-
+			if (!subdir.exists()) subdir.mkdir();
 			int n = subdir.list().length + 1;
 			/*
 			 * System.out.println(n); int num = 0; do { num++; } while (num <
@@ -24,11 +21,9 @@ public class UsuarioDAO implements DAO<Usuario> {
 			 */
 			obj.setNumero(n);
 			dir = new File(DIR + obj.getNumero() + "/");
-			if (!dir.exists())
-				dir.mkdir();
+			if (!dir.exists()) dir.mkdir();
 			File file = new File(DIR + obj.getNumero() + "/" + "dados.csv");
-			if (file.exists())
-				return;
+			if (file.exists()) return;
 
 			FileWriter writer = new FileWriter(file);
 			writer.write(obj.getNumero() + ";");
@@ -60,8 +55,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 					String[] colunas = linha.split(";");
 					for (int i = 0; i < colunas.length; i++) {
 						int isbnteste = Integer.parseInt(colunas[i]);
-						if (isbnteste == ISBN)
-							return false;
+						if (isbnteste == ISBN) return false;
 					}
 				}
 			} catch (FileNotFoundException e) {
@@ -72,8 +66,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
 			try {
 				scan = new Scanner(file);
-				if (scan.hasNextLine())
-					isbnExistente += scan.nextLine();
+				if (scan.hasNextLine()) isbnExistente += scan.nextLine();
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} finally {
@@ -82,9 +75,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
 			try {
 				FileWriter writer = new FileWriter(file);
-				if (!isbnExistente.isEmpty()) {
-					writer.write(isbnExistente);
-				}
+				if (!isbnExistente.isEmpty()) writer.write(isbnExistente);
 				writer.write(String.valueOf(ISBN));
 				writer.write(";");
 				writer.flush();
@@ -103,7 +94,6 @@ public class UsuarioDAO implements DAO<Usuario> {
 				e.printStackTrace();
 			}
 		}
-		//
 		// try {
 		// scan = new Scanner(file);
 		// String linha3 = scan.nextLine();
@@ -203,8 +193,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 	public void delete(Usuario obj) {
 		try {
 			File arq = new File(DIR + obj.getNumero() + ".csv");
-			if (!arq.exists())
-				return;
+			if (!arq.exists()) return;
 			arq.delete();
 			System.out.println("Excluído com sucesso!");
 		} catch (Exception e) {
@@ -215,8 +204,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 	public Usuario load(int chave) {
 		try {
 			File arq = new File(DIR + chave + "dados.csv");
-			if (!arq.exists())
-				return null;
+			if (!arq.exists()) return null;
 
 			Scanner scan = new Scanner(arq);
 			String linha = scan.nextLine();
@@ -234,7 +222,6 @@ public class UsuarioDAO implements DAO<Usuario> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 
@@ -270,6 +257,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			int aux = 0;
 			String[] colunas = linhas.split(";");
 			aux = colunas.length;
+			System.out.println(aux);
 			Scanner scan2 = new Scanner(dir2);
 			String linhas2 = scan2.nextLine();
 			String[] colunas2 = linhas2.split(";");
@@ -293,8 +281,6 @@ public class UsuarioDAO implements DAO<Usuario> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return lista;
 	}
-	
 }

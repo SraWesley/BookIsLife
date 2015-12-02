@@ -1,16 +1,14 @@
 <!doctype html>
 
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<title> PERFIL </title>
 	<link href="Style.css"  rel="stylesheet" type="text/css" />
 </head>
-
 <body>
 	<div align="center">
-	<div id="menu1">
+		<div id="menu1">
 			<ul>
 				<li> <a href="/login" title="Logar-se"> Logar-se </a> </li>
 				<li> <a href="/lista" title="Biblioteca"> Biblioteca </a> </li>
@@ -25,6 +23,7 @@
 	</div>
 	
 	{{erro}}
+	
 	<div>
 		<thead>
 			<tr>
@@ -40,7 +39,7 @@
  	    Meus Livros: {{#meusLivros}}
 	    				{{nome}}
 	    				<a href="/adiciona_resenha/{{ISBN}}"> Adicionar resenhas </a>
-	    			 	<a href= "/ver_resenhas/{{ISBN}}"> Ver resenhas </a> <br />
+	    			 	<a href= "/ver_resenha/{{ISBN}}"> Ver resenhas </a> <br />
 	    			 {{/meusLivros}}	
 	   	<br />
 		<a href="/lista"> Biblioteca </a>
