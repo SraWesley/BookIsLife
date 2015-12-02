@@ -11,12 +11,9 @@ public class UsuarioDAO implements DAO<Usuario> {
 	public void save(Usuario obj) {
 		try {
 			File dir = new File("Usuarios/");
-			if (!dir.exists())
-				dir.mkdir();
+			if (!dir.exists()) dir.mkdir();
 			File subdir = new File(DIR);
-			if (!subdir.exists())
-				subdir.mkdir();
-
+			if (!subdir.exists()) subdir.mkdir();
 			int n = subdir.list().length + 1;
 			/*
 			 * System.out.println(n); int num = 0; do { num++; } while (num <
@@ -24,11 +21,9 @@ public class UsuarioDAO implements DAO<Usuario> {
 			 */
 			obj.setNumero(n);
 			dir = new File(DIR + obj.getNumero() + "/");
-			if (!dir.exists())
-				dir.mkdir();
+			if (!dir.exists()) dir.mkdir();
 			File file = new File(DIR + obj.getNumero() + "/" + "dados.csv");
-			if (file.exists())
-				return;
+			if (file.exists()) return;
 
 			FileWriter writer = new FileWriter(file);
 			writer.write(obj.getNumero() + ";");
@@ -270,6 +265,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			int aux = 0;
 			String[] colunas = linhas.split(";");
 			aux = colunas.length;
+			System.out.println(aux);
 			Scanner scan2 = new Scanner(dir2);
 			String linhas2 = scan2.nextLine();
 			String[] colunas2 = linhas2.split(";");
