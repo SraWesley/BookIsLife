@@ -47,7 +47,6 @@ public class ResenhaDAO implements DAO<Resenha> {
 				e.printStackTrace();
 			}
 		}
-
 		/*
 		 * if (file.exists()) { Scanner scan = new Scanner(file); String linha =
 		 * scan.nextLine(); scan.close(); String[] colunas = linha.split(";");
@@ -154,5 +153,21 @@ public class ResenhaDAO implements DAO<Resenha> {
 		return lista;
 	}
 
-	
+
+	public ArrayList<Resenha> resenhasDoLivro(int iSBN) {
+		ArrayList<Resenha> listaResenha = new ArrayList<Resenha>();
+		File dirUsuarios = new File("Usuarios/Matriculas/");
+		File[] usuarios = dirUsuarios.listFiles();
+		for (int i = 0; i < usuarios.length; i++) {
+			System.out.println(usuarios[i].getPath());
+			File resenha = new File(dirUsuarios + usuarios[i].getPath() + "/" + "MinhasResenhas/" + iSBN + ".csv");
+			File[] resenhas = resenha.listFiles();
+			if (resenha.exists()) {
+				Resenha r = new Resenha();
+				listaResenha.add(r);
+			}
+		}
+		return listaResenha;
+	}
+
 }
