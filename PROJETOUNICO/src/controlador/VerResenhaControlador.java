@@ -18,7 +18,7 @@ public class VerResenhaControlador implements TemplateViewRoute {
 
 	public ModelAndView handle(Request req, Response resp) {
 		Usuario usuario = req.session().attribute("usuario_logado");
-		int ISBN = Integer.parseInt(req.params("ISBN"));
+		String ISBN = req.params("ISBN");
 		ResenhaDAO dao = new ResenhaDAO();
 		ArrayList<Resenha> resenhas = dao.resenhasDoLivro(ISBN); 
 		
@@ -30,7 +30,9 @@ public class VerResenhaControlador implements TemplateViewRoute {
 				Scanner scan = new Scanner(file);
 				String textoResenha = new String();
 				String linha = scan.nextLine();
-			
+				while(scan.hasNextLine()){
+					linha+= scan.nextLine();
+				}
 				resenha.setTexto(linha);
 				scan.close();
 			} catch (FileNotFoundException e) {

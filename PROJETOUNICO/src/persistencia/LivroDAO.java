@@ -165,4 +165,28 @@ public class LivroDAO implements DAO<Livro> {
 		if (scan != null) scan.close();
 		return lista;
 	}
+
+	public boolean testandoSeLivroExiste(String nome) {
+		File file = new File("livros/" + "nomes.csv");
+		System.out.println("Estou no else");
+		if (file.exists()) {
+			try {
+				System.out.println(nome);
+				Scanner scan = new Scanner(file);
+				String linha = scan.nextLine();
+				String[] colunas = linha.split(";");
+				scan.close();
+				for(int i = 0; i < colunas.length; i++){
+					if(nome.equals(colunas[i])){
+						System.out.println(colunas[i]);
+						System.out.println("é igual");
+						return true;
+						}
+				}
+			} catch (FileNotFoundException e) {
+			
+			}
+		}
+		return false;
+	}
 }
