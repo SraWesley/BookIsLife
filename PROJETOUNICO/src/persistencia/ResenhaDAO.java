@@ -12,10 +12,10 @@ public class ResenhaDAO implements DAO<Resenha> {
 	Usuario usuario = new Usuario();
 
 	public void save(Resenha r) {
-		File dir = new File(DIR + "/" + r.getNumero() + "/" + "minhasResenhas");
+		File dir = new File(DIR + "/" + r.getNumero() + "/" + "MinhasResenhas");
 		if (!dir.exists()) dir.mkdir();
 		String resenhasExistente = "";
-		File file = new File(DIR + "/" + r.getNumero() + "/" + "minhasResenhas" + "/" + r.getISBN() + ".csv");
+		File file = new File(DIR + "/" + r.getNumero() + "/" + "MinhasResenhas" + "/" + r.getISBN() + ".csv");
 		Scanner scan = null;
 		if (file.exists()) {
 			try {
@@ -61,9 +61,9 @@ public class ResenhaDAO implements DAO<Resenha> {
 	}
 
 	public boolean resenhaExiste(Resenha resenha) {
-		File dir = new File(DIR + "/" + resenha.getNumero() + "/" + "minhasResenhas");
+		File dir = new File(DIR + "/" + resenha.getNumero() + "/" + "MinhasResenhas");
 		if (!dir.exists()) dir.mkdir();
-		File file = new File(DIR + "/" + resenha.getNumero() + "/" + "minhasResenhas" + "/" + resenha.getISBN() + ".csv");
+		File file = new File(DIR + "/" + resenha.getNumero() + "/" + "MinhasResenhas" + "/" + resenha.getISBN() + ".csv");
 		Scanner scan = null;
 		if (file.exists()) {
 			try {
