@@ -2,6 +2,7 @@ package persistencia;
 
 import java.io.*;
 import java.util.*;
+
 import modelo.Usuario;
 
 public class UsuarioDAO implements DAO<Usuario> {
@@ -43,7 +44,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 		adicionaSenhas(obj.getSenha());
 	}
 
-	public boolean addMeusLivros(int ISBN, int chave) {
+	public boolean addMeusLivros(String ISBN, int chave) {
 		File file = new File(DIR + chave + "/" + "meusLivros.csv");
 		String isbnExistente = "";
 		Scanner scan = null;
@@ -54,8 +55,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 					String linha = scan.nextLine();
 					String[] colunas = linha.split(";");
 					for (int i = 0; i < colunas.length; i++) {
-						int isbnteste = Integer.parseInt(colunas[i]);
-						if (isbnteste == ISBN) return false;
+						if (colunas[i].equals(ISBN)) return false;
 					}
 				}
 			} catch (FileNotFoundException e) {
@@ -76,7 +76,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			try {
 				FileWriter writer = new FileWriter(file);
 				if (!isbnExistente.isEmpty()) writer.write(isbnExistente);
-				writer.write(String.valueOf(ISBN));
+				writer.write(ISBN);
 				writer.write(";");
 				writer.flush();
 				writer.close();
@@ -86,7 +86,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 		} else { // Arquivo não existe
 			try {
 				FileWriter writer = new FileWriter(file);
-				writer.write(String.valueOf(ISBN));
+				writer.write(ISBN);
 				writer.write(";");
 				writer.flush();
 				writer.close();
@@ -201,7 +201,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 		}
 	}
 
-	public Usuario load(int chave) {
+	public Usuario load(Object chave) {
 		try {
 			File arq = new File(DIR + chave + "dados.csv");
 			if (!arq.exists()) return null;
@@ -212,7 +212,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			String[] colunas = linha.split(";");
 
 			Usuario u = new Usuario();
-			u.setNumero(chave);
+			u.setNumero((int) chave);
 			u.setLogin(colunas[1]);
 			u.setSenha(colunas[2]);
 			u.setLocal(colunas[3]);
@@ -283,4 +283,6 @@ public class UsuarioDAO implements DAO<Usuario> {
 		}
 		return lista;
 	}
+
+
 }

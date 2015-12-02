@@ -7,7 +7,7 @@ public class Livro {
 	private String nome;//
 	private String editora;//
 	private String escritor;//
-	private int ISBN;//
+	private String ISBN;//
 	private Date anopublicado;//
 	private int paginas;
 	private String sinopse;
@@ -45,11 +45,11 @@ public class Livro {
 		this.escritor = escritor;
 	}
 
-	public int getISBN() {
+	public String getISBN() {
 		return ISBN;
 	}
 
-	public void setISBN(int iSBN) {
+	public void setISBN(String iSBN) {
 		ISBN = iSBN;
 	}
 

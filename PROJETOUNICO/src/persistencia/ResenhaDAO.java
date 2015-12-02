@@ -1,6 +1,7 @@
 package persistencia;
 
 import modelo.*;
+
 import java.io.*;
 import java.util.*;
 import java.nio.file.Files;
@@ -96,7 +97,7 @@ public class ResenhaDAO implements DAO<Resenha> {
 		}
 	}
 
-	public Resenha load(int isbn) {
+	public Resenha load(Object isbn) {
 		Resenha r = null;
 		try {
 			File arq = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/ " + isbn + ".csv");
@@ -152,4 +153,6 @@ public class ResenhaDAO implements DAO<Resenha> {
 		if (scan != null) scan.close();
 		return lista;
 	}
+
+	
 }

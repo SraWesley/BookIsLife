@@ -16,10 +16,11 @@ public class SalvaControlador implements TemplateViewRoute {
 	public ModelAndView handle(Request req, Response resp) {
 
 		Livro livro = new Livro();
-		livro.setISBN(req.queryMap("ISBN").integerValue());
+		livro.setISBN(req.queryMap("ISBN").value());
 		livro.setNome(req.queryMap("nome").value());
 		livro.setEscritor(req.queryMap("escritor").value());
 		livro.setEditora(req.queryMap("editora").value());
+		livro.setSinopse(req.queryMap("sinopse").value());
 		String erro2="";
 		if (livro.getNome().length() < 3) {
 			String erro = "";

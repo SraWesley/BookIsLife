@@ -78,7 +78,7 @@ public class LivroDAO implements DAO<Livro> {
 
 	public void update(Livro obj) {
 		Livro l = null;
-		int chave = obj.getISBN();
+		String chave = obj.getISBN();
 		try {
 			File arq = new File("livros/" + chave + ".csv");
 			if (arq.exists()) {
@@ -107,7 +107,7 @@ public class LivroDAO implements DAO<Livro> {
 				scan.close();
 				String[] colunas = linha.split(";");
 				Livro l = new Livro();
-				l.setISBN(Integer.parseInt(colunas[0]));
+				l.setISBN(colunas[0]);
 				l.setNome(colunas[1]);
 				l.setEscritor(colunas[2]);
 				l.setEditora(colunas[3]);
@@ -121,8 +121,9 @@ public class LivroDAO implements DAO<Livro> {
 		return lista;
 	}
 
-	public Livro load(int chave) {
+	public Livro load(Object chave) {
 		Livro l = null;
+		
 		try {
 			File arq = new File("livros/" + chave + ".csv");
 			if (!arq.exists()) return null;
@@ -131,7 +132,7 @@ public class LivroDAO implements DAO<Livro> {
 			String linha = scan.nextLine();
 			scan.close();
 			String[] colunas = linha.split(";");
-			l.setISBN(chave);
+			l.setISBN(colunas[0]);
 			l.setNome(colunas[1]);
 			l.setEscritor(colunas[2]);
 			l.setEditora(colunas[3]);

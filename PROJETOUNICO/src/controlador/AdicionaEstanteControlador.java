@@ -12,7 +12,7 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 
 	public ModelAndView handle(Request req, Response resp) {
 
-		int ISBN = Integer.parseInt(req.params("ISBN"));
+		String ISBN = req.params("ISBN");
 
 		Usuario usuario = req.session().attribute("usuario_logado");
 		UsuarioDAO usuarioDAO = new UsuarioDAO();

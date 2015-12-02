@@ -8,8 +8,8 @@ public interface DAO <T>{
 	
 	public void delete(T obj);
 	
-	public T load(int chave);
-	
+	public T load(Object chave);
+
 	public void update(T obj);
 	
 	public ArrayList<T> findAll();	
