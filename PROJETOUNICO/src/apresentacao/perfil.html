@@ -5,30 +5,45 @@
 <head>
 	<meta charset="utf-8">
 	<title> PERFIL </title>
+	<link href="Style.css"  rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	<h1> Perfil </h1>
+	<div align="center">
+	<div id="menu1">
+			<ul>
+				<li> <a href="/login" title="Logar-se"> Logar-se </a> </li>
+				<li> <a href="/lista" title="Biblioteca"> Biblioteca </a> </li>
+				<li> <a href="/novo" title="Novo Livro"> Novo Livro </a> </li>
+				<li> <a href="/" title="Sair"> Sair </a> </li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="img">
+		<img src="index.jpg" height=370 width=1363 title="BookIsLife">
+	</div>
+	
 	{{erro}}
-	<thead>
-		<tr>
-			<th>Login: {{usuario.login}} </th> <br />
-        	<th>Local: {{usuario.local}} </th> <br />
-       		<th>Idade: {{usuario.idade}} </th> <br />
-	       	<th>Nascimento: {{usuario.nascimento}} </th> <br />
-	       	<th>Escola: {{usuario.escola}} </th> <br />
-	  </tr>
-    </thead>
-    	
-    <!----PEDIR PARA O MÁRCIO COMO SE FAZ ISSO --->
-    Meus Livros: {{#meusLivros}}
-    				{{nome}}
-    				<a href="/adiciona_resenha/{{ISBN}}"> Adicionar resenhas </a>
-    			 	<a href= "/ver_resenhas/{{ISBN}}"> Ver resenhas</a>
-    			 	<br />
-    			 {{/meusLivros}}	
-   	<br />
-	<a href="/lista"> Biblioteca </a>
-
+	<div>
+		<thead>
+			<tr>
+				<th>Login: {{usuario.login}} </th> <br />
+	        	<th>Local: {{usuario.local}} </th> <br />
+	       		<th>Idade: {{usuario.idade}} </th> <br />
+		       	<th>Nascimento: {{usuario.nascimento}} </th> <br />
+		       	<th>Escola: {{usuario.escola}} </th> <br />
+			</tr>
+	    </thead>
+    </div>
+    <div>
+ 	    Meus Livros: {{#meusLivros}}
+	    				{{nome}}
+	    				<a href="/adiciona_resenha/{{ISBN}}"> Adicionar resenhas </a>
+	    			 	<a href= "/ver_resenhas/{{ISBN}}"> Ver resenhas </a> <br />
+	    			 {{/meusLivros}}	
+	   	<br />
+		<a href="/lista"> Biblioteca </a>
+	</div>
 </body>
 </html>

@@ -1,1 +1,18 @@
-#salvaUsuario {font-family: Arial, Helvetica, sans-serif; color: #000000; font-size: 18px; padding: 13px 47px; background-color:blue;}
+* {border: 0; padding: 0; margin: 0;}
+
+body {background-color: #E3E3E3}
+
+#menu1 ul {background-color: #E3E3E3E; width: auto; height: 47px;}
+#menu1 ul li {display:inline-table}
+#menu1 ul li a {text-decoration: none; font-family: Arial, Helvetica, sans-serif; color: #393738; font-size: 16px; float:right; padding: 13px 47px}
+#menu1 ul li a:hover {background-color: #393738; color: #E3E3E3}
+
+#img {border-width:1px; border-style:solid; border-color:#C85C43; height:370px; width:1347.49px}
+
+#salvaUsuario {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	padding: 13px 47px;
+	float: left;
+	margin-left: 10%;
+}
