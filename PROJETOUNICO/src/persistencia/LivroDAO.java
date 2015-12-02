@@ -155,7 +155,7 @@ public class LivroDAO implements DAO<Livro> {
 				String linha3 = scan.nextLine();
 				String[] colunas3 = linha3.split(";");
 				for (int i = 0; i < colunas3.length; i++) {
-					Livro livro = load(Integer.parseInt(colunas3[i]));
+					Livro livro = load(colunas3[i]);
 					lista.add(livro);
 				}
 			}
