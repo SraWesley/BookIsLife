@@ -1,15 +1,28 @@
 package controlador;
 
-import java.io.*;
-import java.util.*;
-import modelo.*;
-import spark.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+import modelo.Resenha;
+import modelo.Usuario;
+import persistencia.ResenhaDAO;
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.TemplateViewRoute;
 
 public class VerResenhaControlador implements TemplateViewRoute {
 
 	public ModelAndView handle(Request req, Response resp) {
 		Usuario usuario = req.session().attribute("usuario_logado");
 		int ISBN = Integer.parseInt(req.params("ISBN"));
+		ResenhaDAO dao = new ResenhaDAO();
+		ArrayList<Resenha> resenhas = dao.resenhasDoLivro(ISBN); 
+		
+		
 		File  file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "minhasResenhas/" + ISBN + ".csv");
 		Resenha resenha = new Resenha();
 		if(file.exists()){
