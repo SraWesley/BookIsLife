@@ -33,24 +33,27 @@ public class SalvaControladorUsuario implements TemplateViewRoute{
 			String login = usuario.getLogin();
 			System.out.println("Estou no else");
 			if (file.exists()) {
-				try {System.out.println(login);
+				try {
+					System.out.println(login);
 					Scanner scan = new Scanner(file);
 					String linha = scan.nextLine();
 					String[] colunas = linha.split(";");
 					scan.close();
 					for(int i = 0; i < colunas.length; i++){
 						if(login.equals(colunas[i])){
-							
 							System.out.println(colunas[i]);
 							System.out.println("é igual");
 							erro2 = "Login já existente! Escolha outro!";
+							break;
 						}
 					}
 				} catch (FileNotFoundException e) {
 				}
-			HashMap mapa1 = new HashMap();
-			mapa1.put("erro2", erro2);
-			return new ModelAndView(mapa1,"usuario_cadastrar.html");
+			}
+			if(!erro2.equals("")){
+				HashMap mapa1 = new HashMap();
+				mapa1.put("erro2", erro2);
+				return new ModelAndView(mapa1,"usuario_cadastrar.html");
 			}
 		}
 			dao.save(usuario);	

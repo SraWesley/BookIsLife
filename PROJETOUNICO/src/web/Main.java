@@ -3,6 +3,7 @@ package web;
 import controlador.AdicionaEstanteControlador;
 import controlador.AdicionaResenhaControlador;
 import controlador.EntraControlador;
+import controlador.EntraPerfilControlador;
 import controlador.ExcluiControlador;
 import controlador.ExcluirResenhaControlador;
 import controlador.ListaControlador;
@@ -43,6 +44,8 @@ public class Main {
 		EntraControlador entraControlador = new EntraControlador();
 		Spark.post("/login", entraControlador, engine);
 		
+		EntraPerfilControlador entraPerfil = new EntraPerfilControlador();
+		Spark.get("/perfil", entraPerfil, engine);
 		
 		// LIVROS
 		NovoControlador_Livros novoControlador = new NovoControlador_Livros();
@@ -75,6 +78,6 @@ public class Main {
 		Spark.get("/verTodasResenhas/:ISBN", verResenhasLivros, engine);
 		
 		ExcluirResenhaControlador excluirResenha = new ExcluirResenhaControlador();
-		Spark.post("excluir_resenha/:ISBN", excluirResenha, engine);
+		Spark.get("/excluir_resenha/:ISBN", excluirResenha, engine);
 		}
 }
