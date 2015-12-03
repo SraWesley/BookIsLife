@@ -14,7 +14,8 @@ import controlador.SalvaControlador;
 import controlador.SalvaControladorUsuario;
 import controlador.SalvaResenhaControlador;
 import controlador.VerResenhaControlador;
-import spark.*;
+import controlador.VerResenhasLivrosControlador;
+import spark.Spark;
 import spark.template.mustache.MustacheTemplateEngine;
 
 public class Main {
@@ -70,9 +71,10 @@ public class Main {
 		VerResenhaControlador verResenha = new VerResenhaControlador();
 		Spark.get("/ver_resenha/:ISBN", verResenha, engine);
 		
+		VerResenhasLivrosControlador verResenhasLivros = new VerResenhasLivrosControlador();
+		Spark.get("/verTodasResenhas/:ISBN", verResenhasLivros, engine);
+		
 		ExcluirResenhaControlador excluirResenha = new ExcluirResenhaControlador();
 		Spark.post("excluir_resenha/:ISBN", excluirResenha, engine);
-		
-		
-	}
+		}
 }

@@ -1,7 +1,6 @@
 package persistencia;
 
 import modelo.*;
-
 import java.io.*;
 import java.util.*;
 import java.nio.file.Files;
@@ -111,7 +110,6 @@ public class ResenhaDAO implements DAO<Resenha> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 
@@ -153,7 +151,6 @@ public class ResenhaDAO implements DAO<Resenha> {
 		return lista;
 	}
 
-
 	public ArrayList<Resenha> resenhasDoLivro(String iSBN) {
 		ArrayList<Resenha> listaResenha = new ArrayList<Resenha>();
 		File dirUsuarios = new File("Usuarios/Matriculas/");
@@ -169,5 +166,4 @@ public class ResenhaDAO implements DAO<Resenha> {
 		}
 		return listaResenha;
 	}
-
 }

@@ -1,18 +1,10 @@
 package controlador;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-
-import modelo.Resenha;
-import modelo.Usuario;
+import java.io.*;
+import java.util.*;
+import modelo.*;
 import persistencia.ResenhaDAO;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
+import spark.*;
 
 public class VerResenhaControlador implements TemplateViewRoute {
 
