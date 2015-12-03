@@ -14,9 +14,10 @@ public class VerResenhasLivrosControlador implements TemplateViewRoute {
 		resenha_lista = dao.resenhasDoLivro(ISBN);
 		LivroDAO daoLivro = new LivroDAO();
 		Livro livro = daoLivro.load(ISBN);
+		
 		HashMap mapa = new HashMap();
 		mapa.put("livro", livro.getSinopse());
-		mapa.put("livro_lista", resenha_lista);
+		mapa.put("resenha_lista", resenha_lista);
 		return new ModelAndView(mapa, "verTodasResenhas.html");	
 	}
 }
