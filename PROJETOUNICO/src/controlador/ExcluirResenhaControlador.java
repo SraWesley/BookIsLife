@@ -1,5 +1,7 @@
 package controlador;
 
+import java.util.HashMap;
+
 import modelo.Resenha;
 import modelo.Usuario;
 import persistencia.ResenhaDAO;
@@ -17,8 +19,10 @@ public class ExcluirResenhaControlador implements TemplateViewRoute{
 		ResenhaDAO dao = new ResenhaDAO();
 		Resenha resenha = new Resenha();
 		resenha = dao.load(ISBN);
+		System.out.println(resenha.getTexto());
 		dao.delete(resenha);
-		return null;
+		HashMap mapa = new HashMap();
+		return new ModelAndView(mapa, "perfil.html");
 	}
 
 }

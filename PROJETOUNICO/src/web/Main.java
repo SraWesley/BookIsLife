@@ -71,7 +71,7 @@ public class Main {
 		Spark.get("/ver_resenha/:ISBN", verResenha, engine);
 		
 		ExcluirResenhaControlador excluirResenha = new ExcluirResenhaControlador();
-		Spark.post("exclui_resenha/:ISBN", excluirResenha, engine);
+		Spark.post("excluir_resenha/:ISBN", excluirResenha, engine);
 		
 		
 	}
