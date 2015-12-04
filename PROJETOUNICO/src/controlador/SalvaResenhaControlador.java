@@ -16,8 +16,9 @@ public class SalvaResenhaControlador implements TemplateViewRoute {
 		Resenha resenha = new Resenha();
 		Usuario usuario = req.session().attribute("usuario_logado");
 		resenha.setTexto(req.queryMap("texto").value());
-		resenha.setNumero(usuario.getNumero());
 		System.out.println(usuario.getNumero());
+		resenha.setNumero(usuario.getNumero());
+		
 		resenha.setISBN(req.params("ISBN"));
 		
 		boolean resenhaJaExiste = dao.resenhaExiste(resenha);

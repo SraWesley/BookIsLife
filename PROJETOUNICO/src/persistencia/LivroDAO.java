@@ -29,7 +29,11 @@ public class LivroDAO implements DAO<Livro> {
 	}
 
 	public void adicionaTitulos(String titulo) {
-		File file = new File("livros/" + "titulos.csv");
+		File dir = new File("livros/");
+		if (!dir.exists()) dir.mkdir();
+		File subdir = new File("livros/titulos/");
+		if (!subdir.exists()) subdir.mkdir();
+		File file = new File("livros/titulos/" + "titulos.csv");
 		String nome = "";
 		if (file.exists()) {
 			try {
@@ -152,10 +156,10 @@ public class LivroDAO implements DAO<Livro> {
 			File file = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "meusLivros.csv");
 			if (file.exists()) {
 				scan = new Scanner(file);
-				String linha3 = scan.nextLine();
-				String[] colunas3 = linha3.split(";");
-				for (int i = 0; i < colunas3.length; i++) {
-					Livro livro = load(colunas3[i]);
+				String linha = scan.nextLine();
+				String[] colunas = linha.split(";");
+				for (int i = 0; i < colunas.length; i++) {
+					Livro livro = load(colunas[i]);
 					lista.add(livro);
 				}
 			}
@@ -167,7 +171,7 @@ public class LivroDAO implements DAO<Livro> {
 	}
 
 	public boolean testandoSeLivroExiste(String nome) {
-		File file = new File("livros/" + "nomes.csv");
+		File file = new File("Titulos/titulos.csv");
 		System.out.println("Estou no else");
 		if (file.exists()) {
 			try {

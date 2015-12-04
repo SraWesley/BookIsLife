@@ -1,9 +1,16 @@
 package persistencia;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+=======
+import modelo.*;
+
+import java.io.*;
+import java.util.*;
+>>>>>>> c5079bcfea70316192562979f0fa60107dbc2793
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -90,9 +97,9 @@ public class ResenhaDAO implements DAO<Resenha> {
 		return false;
 	}
 
-	public void delete(Resenha obj) {
+	public void delete(Resenha obj, int numeroUsuario) {
 		try {
-			File arq = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/ " + obj.getISBN() + ".csv");
+			File arq = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "MinhasResenhas/" + obj.getISBN() + ".csv");
 			System.out.println(arq.exists());
 			if (!arq.exists()) return;
 			Files.delete(arq.toPath());
@@ -101,28 +108,36 @@ public class ResenhaDAO implements DAO<Resenha> {
 		}
 	}
 
-	public Resenha load(Object isbn) {
-		Resenha r = null;
+	public Resenha load(String isbn, int numeroUsuario) {
+		Resenha r = new Resenha();
+		Scanner scan = null;
+		String textodaResenha = "";
+		File arq = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "MinhasResenhas/" + isbn + ".csv");
+		System.out.println(arq.getPath());
+		r = new Resenha();
+		if (!arq.exists()) return null;
 		try {
-			File arq = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/ " + isbn + ".csv");
-			if (!arq.exists()) return null;
-			r = new Resenha();
-			Scanner scan = new Scanner(arq);
-			String linha = scan.nextLine();
+			scan = new Scanner(arq);
+			String linha = "";
+			
+			while(scan.hasNextLine()) {
+				linha += scan.nextLine();
+			}
+			r.setTexto(linha);
+			r.setNumero(numeroUsuario);
+			r.setISBN(isbn);
 			scan.close();
-			String[] colunas = linha.split(";");
-			for (int i = 0; i < colunas.length; i++) r.setTexto(colunas[i]);
-			return r;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		
+		return r;
 	}
 
 	public void update(Resenha obj) {
 		String isbn = obj.getISBN();
 		try {
-			File arq = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/ " + isbn + ".csv");
+			File arq = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/" + isbn + ".csv");
 			if (arq.exists()) {
 				FileWriter writer = new FileWriter(arq);
 				writer.write(obj.getTexto() + ";");
@@ -183,5 +198,17 @@ public class ResenhaDAO implements DAO<Resenha> {
 			}
 		}
 		return listaResenha;
+	}
+
+	@Override
+	public void delete(Resenha obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Resenha load(Object chave) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -33,7 +33,8 @@ public class VerResenhaControlador implements TemplateViewRoute {
 		
 		System.out.println(resenha.getTexto());
 		HashMap mapa = new HashMap();
-		mapa.put("resenha", resenha.getTexto());		
+		mapa.put("resenha", resenha.getTexto());
+		mapa.put("ISBN", ISBN);
 		return new ModelAndView(mapa, "ver_resenha.html");
 	}
 }
