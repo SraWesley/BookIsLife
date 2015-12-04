@@ -12,25 +12,9 @@ public class VerResenhaControlador implements TemplateViewRoute {
 		Usuario usuario = req.session().attribute("usuario_logado");
 		String ISBN = req.params("ISBN");
 		ResenhaDAO dao = new ResenhaDAO();
-			
-		File  file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/" + ISBN + ".csv");
 		Resenha resenha = new Resenha();
-		
-		if(file.exists()){
-			try {
-				Scanner scan = new Scanner(file);
-				String textoResenha = new String();
-				String linha = scan.nextLine();
-				while(scan.hasNextLine()){
-					linha+= scan.nextLine();
-				}
-				resenha.setTexto(linha);
-				scan.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
-		
+		String texto = dao.pegandoTexto(ISBN, usuario.getNumero());
+		resenha.setTexto(texto);
 		System.out.println(resenha.getTexto());
 		HashMap mapa = new HashMap();
 		mapa.put("resenha", resenha.getTexto());

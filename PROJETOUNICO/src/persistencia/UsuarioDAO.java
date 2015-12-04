@@ -3,6 +3,7 @@ package persistencia;
 import java.io.*;
 import java.util.*;
 
+import modelo.Resenha;
 import modelo.Usuario;
 
 public class UsuarioDAO implements DAO<Usuario> {
@@ -283,6 +284,33 @@ public class UsuarioDAO implements DAO<Usuario> {
 		}
 		return lista;
 	}
+
+	public ArrayList<Resenha> resenhasDoUsuario(int numero) {
+		ArrayList<Resenha> listaResenha = new ArrayList<Resenha>();
+		File dirUsuarios = new File("Usuarios/Matriculas/"+ numero + "/MinhasResenhas/");
+		File[] resenhasDoUsuario = dirUsuarios.listFiles();
+		for (File arq : resenhasDoUsuario) {
+			//System.out.println(usuarios[i].getPath());
+			String textoDaResenha = "";
+			Resenha r = new Resenha();
+			Scanner scan;
+			try {
+			scan = new Scanner(arq);
+			while (scan.hasNextLine()) {
+					String linha = scan.nextLine();
+					textoDaResenha += linha;
+					System.out.println(textoDaResenha);
+					r.setTexto(textoDaResenha);
+					listaResenha.add(r);
+					System.out.println(listaResenha);
+				}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+	return listaResenha;
+}
+	
 
 
 }

@@ -3,6 +3,7 @@ package persistencia;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.*;
+
 import modelo.*;
 
 public class ResenhaDAO implements DAO<Resenha> {
@@ -190,5 +191,24 @@ public class ResenhaDAO implements DAO<Resenha> {
 
 	public Resenha load(Object chave) {
 		return null;
+	}
+
+	public String pegandoTexto(String ISBN, int numero) {
+		File  file = new File("Usuarios/Matriculas/" + numero + "/" + "MinhasResenhas/" + ISBN + ".csv");
+		String linha = "";
+		if(file.exists()){
+			try {
+				Scanner scan = new Scanner(file);
+				String textoResenha = new String();
+				linha = scan.nextLine();
+				while(scan.hasNextLine()){
+					linha+= scan.nextLine();
+				}
+				scan.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		return linha;
 	}
 }

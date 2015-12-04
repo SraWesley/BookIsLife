@@ -32,6 +32,10 @@ public class Main {
 		EntraPerfilControlador entraPerfil = new EntraPerfilControlador();
 		Spark.get("/perfil", entraPerfil, engine);
 		
+		MeuMuralControlador meuMural = new MeuMuralControlador();
+		Spark.get("/meuMural", meuMural, engine);
+		
+		
 		// LIVROS
 		NovoControlador_Livros novoControlador = new NovoControlador_Livros();
 		Spark.get("/novo", novoControlador, engine);
