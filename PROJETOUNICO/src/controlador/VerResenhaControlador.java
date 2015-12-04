@@ -14,7 +14,6 @@ public class VerResenhaControlador implements TemplateViewRoute {
 		ResenhaDAO dao = new ResenhaDAO();
 		ArrayList<Resenha> resenhas = dao.resenhasDoLivro(ISBN); 
 		
-		
 		File  file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/" + ISBN + ".csv");
 		Resenha resenha = new Resenha();
 		if(file.exists()){
@@ -31,6 +30,7 @@ public class VerResenhaControlador implements TemplateViewRoute {
 				e.printStackTrace();
 			}
 		}
+		
 		System.out.println(resenha.getTexto());
 		HashMap mapa = new HashMap();
 		mapa.put("resenha", resenha.getTexto());		
