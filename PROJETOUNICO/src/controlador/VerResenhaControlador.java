@@ -12,6 +12,7 @@ public class VerResenhaControlador implements TemplateViewRoute {
 		Usuario usuario = req.session().attribute("usuario_logado");
 		String ISBN = req.params("ISBN");
 		ResenhaDAO dao = new ResenhaDAO();
+		File  file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" + "MinhasResenhas/" + ISBN + ".csv");
 		Resenha resenha = new Resenha();
 		String texto = dao.pegandoTexto(ISBN, usuario.getNumero());
 		resenha.setTexto(texto);
