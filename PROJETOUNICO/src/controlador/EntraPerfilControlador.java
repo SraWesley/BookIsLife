@@ -1,12 +1,8 @@
 package controlador;
 
-import java.util.HashMap;
-
+import java.util.*;
 import modelo.Usuario;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
+import spark.*;
 
 public class EntraPerfilControlador implements TemplateViewRoute{
 

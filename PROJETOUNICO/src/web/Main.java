@@ -1,21 +1,6 @@
 package web;
 
-import controlador.AdicionaEstanteControlador;
-import controlador.AdicionaResenhaControlador;
-import controlador.EntraControlador;
-import controlador.EntraPerfilControlador;
-import controlador.ExcluiControlador;
-import controlador.ExcluirResenhaControlador;
-import controlador.ListaControlador;
-import controlador.LoginControlador;
-import controlador.NovoControlador_Livros;
-import controlador.NovoControlador_usuario;
-import controlador.PaginaInicialControlador;
-import controlador.SalvaControlador;
-import controlador.SalvaControladorUsuario;
-import controlador.SalvaResenhaControlador;
-import controlador.VerResenhaControlador;
-import controlador.VerResenhasLivrosControlador;
+import controlador.*;
 import spark.Spark;
 import spark.template.mustache.MustacheTemplateEngine;
 

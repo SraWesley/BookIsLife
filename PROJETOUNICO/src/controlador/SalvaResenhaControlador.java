@@ -1,11 +1,8 @@
 package controlador;
 
 import spark.*;
-import java.io.*;
-import java.net.*;
 import java.util.*;
-import modelo.Resenha;
-import modelo.Usuario;
+import modelo.*;
 import persistencia.ResenhaDAO;
 
 public class SalvaResenhaControlador implements TemplateViewRoute {

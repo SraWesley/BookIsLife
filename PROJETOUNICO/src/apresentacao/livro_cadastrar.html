@@ -5,20 +5,41 @@
 <head>
 	<meta charset="utf-8">
 	<title> CADASTRO DE LIVROS </title>
-	<!-- <link href="Livros.css" rel="stylesheet" type="text/css" /> -->	
+	<link href="/CSS/Style.css" rel="stylesheet" type="text/css" />	
 </head>
 
 <body>	
-	<h1> Novo Livro </h1>	
+	<div align="center">
+		<div id="menu" >
+			<ul>
+				<li> <a href="/" title="Home"> Home </a> </li>
+				<li> <a href="/usuario_cadastrar" title="Registre-se"> Registre-se </a> </li>
+				<li> <a href="/login" title="Logar-se"> Logar-se </a> </li>
+				<li> <a href="/lista" title="Biblioteca"> Biblioteca </a> </li>
+				<li> <a href="/" title="Sair"> Sair </a> </li>
+			</ul>
+		</div>
+	</div>
+	<div id="img">
+		<img src="/Imagens/index.jpg" height="369" width="1363" alt="BookIsLife - Imagens"/>
+	</div>
+	
 	{{erro}
 	{{erro2}}
-	<form method="post" action="/salva">
-		<input type="text" name="ISBN" placeholder="ISBN do Livro" required> <br />
-		<input type="text" name="nome" placeholder="Titulo do Livro" required> <br />
-		<input type="text" name="escritor" placeholder="Escritor" required> <br />
-		<input type="text" name="editora" placeholder="Editora" required> <br /> <br />
-		<input type="text" name="sinopse" placeholder="Sinopse" required> <br /> <br />	
-		<input type="submit" value="Salvar">
-	</form>
+	
+	
+	<div align="center">
+		<div>
+			<h1> Novo Livro </h1>	
+			<form method="post" action="/salva">
+				<input type="text" name="ISBN" placeholder="ISBN do Livro" size="33" required> <br />
+				<input type="text" name="nome" placeholder="Titulo do Livro" size="33" required> <br />	
+				<input type="text" name="escritor" placeholder="Escritor(a)" size="33" required> <br />
+				<input type="text" name="editora" placeholder="Editora" size="33" required> <br />
+				<input type="text" name="sinopse" placeholder="Sinopse" size="33" required> <br /> <br />
+				<input type="submit" value="Salvar" title="Salvar" class="botao">
+			</form>
+		</div>
+	</div>
 </body>
 </html>

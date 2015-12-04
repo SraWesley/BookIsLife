@@ -1,18 +1,11 @@
 package controlador;
 
-import java.util.HashMap;
-
-import modelo.Resenha;
-import modelo.Usuario;
+import modelo.*;
 import persistencia.ResenhaDAO;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateViewRoute;
+import spark.*;
 
 public class ExcluirResenhaControlador implements TemplateViewRoute{
 
-	@Override
 	public ModelAndView handle(Request req, Response resp) {
 		Usuario usuario = req.session().attribute("usuario_logado");
 		String ISBN = req.params("ISBN");

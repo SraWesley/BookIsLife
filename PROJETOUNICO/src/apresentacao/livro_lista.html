@@ -1,44 +1,55 @@
 <!doctype html>
-
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<title>LIVROS</title>
+	<link href="/CSS/Style.css" rel="stylesheet" type="text/css" />
 </head>
-
-<body>		
-	<h1> Biblioteca </h1>
-	
-	<table>
-    	<thead>
-			<tr>
-        		<th> ISBN </th>
-        		<th> Nome </th>
-       			<th> Escritor </th>
-	        	<th> Editora </th>
-	        	<th> </th>
-	      	</tr>
-    	</thead>
-    	
-	    <tbody>
-			{{#livros}}
-			<tr>
-		        <td> {{ISBN}} </td>
-		        <td> {{nome}} </td>
-		        <td> {{escritor}} </td>
-		        <td> {{editora}} </td>
-	      		<td>
-	      			<a href="/adicionaestante/{{ISBN}}"> Adicionar à estante </a>
-		        	<a href="/exclui/{{ISBN}}" onclick="return confirm('Deseja excluir este livro?');"> Excluir </a>
-		        	<a href="/verTodasResenhas/{{ISBN}}"> Ver </a>
-	       		</td>
-	      	</tr>
-	      	{{/livros}}
-		</tbody>
-	</table>
-	
-	<a href="/novo"> Novo Livro </a>
-	
+<body>
+	<div align="center">
+		<div id="menu">
+			<ul>
+				<li> <a href="/" title="Home"> Home </a> </li>
+				<li> <a href="/usuario_cadastrar" title="Registre-se"> Registre-se </a> </li>
+				<li> <a href="/login" title="Logar-se"> Logar-se </a> <li>
+				<li> <a href="/novo" title="Novo Livro"> Novo Livro </a> </li>
+				<li> <a href="/" title="Sair"> Sair </a> </li>
+			</ul>
+		</div>
+	</div>
+	<div id="img">
+		<img src="/Imagens/index.jpg" height="369" width="1363" alt="BookIsLife - Imagens"/>
+	</div>
+	<div align="center">
+		<div id="biblioteca">
+			<h1> Biblioteca </h1>
+			<table>
+			   	<thead>
+					<tr>
+			       		<th> ISBN </th>
+		   	    		<th> Nome </th>
+			   			<th> Escritor </th>
+			        	<th> Editora </th>
+			        	<th> </th>
+			      	</tr>
+    			</thead>
+ 			    <tbody>
+					{{#livros}}
+						<tr>
+					        <td> {{ISBN}} </td>
+					        <td> {{nome}} </td>
+					        <td> {{escritor}} </td>
+					        <td> {{editora}} </td>
+	    			  		<td>
+	    			  			<a href="/adicionaestante/{{ISBN}}"> Adicionar à estante </a>
+		        				<a href="/exclui/{{ISBN}}" onclick="return confirm('Deseja excluir este livro?');"> Excluir </a>
+					        	<a href="/verTodasResenhas/{{ISBN}}"> Ver </a>
+	   			    		</td>
+	    			  	</tr>
+			      	{{/livros}}
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

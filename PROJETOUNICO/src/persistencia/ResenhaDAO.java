@@ -1,22 +1,9 @@
 package persistencia;
 
-<<<<<<< HEAD
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-=======
-import modelo.*;
-
 import java.io.*;
-import java.util.*;
->>>>>>> c5079bcfea70316192562979f0fa60107dbc2793
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-import modelo.Resenha;
-import modelo.Usuario;
+import java.util.*;
+import modelo.*;
 
 public class ResenhaDAO implements DAO<Resenha> {
 
@@ -200,15 +187,9 @@ public class ResenhaDAO implements DAO<Resenha> {
 		return listaResenha;
 	}
 
-	@Override
-	public void delete(Resenha obj) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void delete(Resenha obj) { }
 
-	@Override
 	public Resenha load(Object chave) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
