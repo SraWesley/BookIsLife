@@ -29,7 +29,11 @@ public class LivroDAO implements DAO<Livro> {
 	}
 
 	public void adicionaTitulos(String titulo) {
-		File file = new File("livros/" + "titulos.csv");
+		File dir = new File("livros/");
+		if (!dir.exists()) dir.mkdir();
+		File subdir = new File("livros/titulos/");
+		if (!subdir.exists()) subdir.mkdir();
+		File file = new File("livros/titulos/" + "titulos.csv");
 		String nome = "";
 		if (file.exists()) {
 			try {
