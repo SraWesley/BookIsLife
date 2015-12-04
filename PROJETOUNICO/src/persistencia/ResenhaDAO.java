@@ -87,7 +87,6 @@ public class ResenhaDAO implements DAO<Resenha> {
 	public void delete(Resenha obj, int numeroUsuario) {
 		try {
 			File arq = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "MinhasResenhas/" + obj.getISBN() + ".csv");
-			System.out.println(arq.exists());
 			if (!arq.exists()) return;
 			Files.delete(arq.toPath());
 		} catch (Exception e) {
@@ -100,7 +99,6 @@ public class ResenhaDAO implements DAO<Resenha> {
 		Scanner scan = null;
 		String textodaResenha = "";
 		File arq = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "MinhasResenhas/" + isbn + ".csv");
-		System.out.println(arq.getPath());
 		r = new Resenha();
 		if (!arq.exists()) return null;
 		try {
@@ -163,11 +161,11 @@ public class ResenhaDAO implements DAO<Resenha> {
 		ArrayList<Resenha> listaResenha = new ArrayList<Resenha>();
 		File dirUsuarios = new File("Usuarios/Matriculas/");
 		File[] usuarios = dirUsuarios.listFiles();
-		String textoDaResenha = "";
 		for (int i = 0; i < usuarios.length; i++) {
 			System.out.println(usuarios[i].getPath());
 			File resenha = new File(usuarios[i].getPath() + "/" + "MinhasResenhas/" + iSBN + ".csv");
 			if (resenha.exists()) {
+				String textoDaResenha = "";
 				Resenha r = new Resenha();
 				Scanner scan;
 				try {
@@ -175,13 +173,14 @@ public class ResenhaDAO implements DAO<Resenha> {
 					while (scan.hasNextLine()) {
 						String linha = scan.nextLine();
 						textoDaResenha += linha;
+						System.out.println(textoDaResenha);
+						r.setTexto(textoDaResenha);
+						listaResenha.add(r);
+						System.out.println(listaResenha);
 					}
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-				System.out.println(textoDaResenha);
-				r.setTexto(textoDaResenha);
-				listaResenha.add(r);
 			}
 		}
 		return listaResenha;

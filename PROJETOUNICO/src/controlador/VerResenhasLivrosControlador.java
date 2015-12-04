@@ -11,7 +11,6 @@ public class VerResenhasLivrosControlador implements TemplateViewRoute {
 		ArrayList<Resenha> resenha_lista = new ArrayList<Resenha>();
 		ResenhaDAO dao = new ResenhaDAO();
 		String ISBN = req.params("ISBN");
-		System.out.println(ISBN);
 		resenha_lista = dao.resenhasDoLivro(ISBN);
 		System.out.println(resenha_lista);
 		LivroDAO daoLivro = new LivroDAO();
