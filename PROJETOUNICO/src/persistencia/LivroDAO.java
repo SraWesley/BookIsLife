@@ -29,11 +29,9 @@ public class LivroDAO implements DAO<Livro> {
 	}
 
 	public void adicionaTitulos(String titulo) {
-		File dir = new File("livros/");
+		File dir = new File("titulos/");
 		if (!dir.exists()) dir.mkdir();
-		File subdir = new File("livros/titulos/");
-		if (!subdir.exists()) subdir.mkdir();
-		File file = new File("livros/titulos/" + "titulos.csv");
+		File file = new File("titulos/" + "titulos.csv");
 		String nome = "";
 		if (file.exists()) {
 			try {
@@ -171,7 +169,7 @@ public class LivroDAO implements DAO<Livro> {
 	}
 
 	public boolean testandoSeLivroExiste(String nome) {
-		File file = new File("Titulos/titulos.csv");
+		File file = new File("titulos/titulos.csv");
 		System.out.println("Estou no else");
 		if (file.exists()) {
 			try {
