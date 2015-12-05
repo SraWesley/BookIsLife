@@ -13,12 +13,16 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 
 		Usuario usuario = req.session().attribute("usuario_logado");
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-
+		if(usuario == null){
+			HashMap mapa = new HashMap();
+			return new ModelAndView(mapa, "login.html");
+		}
 		boolean foiAdicionado;
 		foiAdicionado = usuarioDAO.addMeusLivros(ISBN, usuario.getNumero());
 		System.out.println(foiAdicionado);
 		System.out.println(usuario.getMeusLivros());
 
+		
 		if (foiAdicionado) {
 			HashMap mapa = new HashMap();
 			mapa.put("usuario", usuario);
