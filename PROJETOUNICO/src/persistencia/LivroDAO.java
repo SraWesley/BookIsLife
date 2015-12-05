@@ -191,4 +191,37 @@ public class LivroDAO implements DAO<Livro> {
 		}
 		return false;
 	}
+
+	public boolean validandoISBN(String isbn) {
+		
+		char[] c = isbn.toCharArray();
+		int j = 10;
+		int ISBN = 0;
+		int ISBNsoma = 0;
+		
+		if (isbn.length() - 1 == 10) {
+			for (int i = 0; i < isbn.length() - 1; i++, j--) {
+				int isbnNum = Character.getNumericValue(c[i]);
+				ISBN = isbnNum * j;
+				if (ISBN % 11 == c[isbn.length()-1]) return true;
+			}
+		}
+		
+		if (isbn.length() == 13) {
+			for (int i = 0; i < isbn.length() - 2; i++) {
+				int isbnNum = Character.getNumericValue(c[i]);
+				if (i == 1 || i == 3 || i == 5 || i == 7 || i == 9 || i == 11) {
+					ISBN = isbnNum * 1;
+					ISBNsoma += ISBN;
+				}
+				if (i == 2 || i == 4 || i == 6 || i == 8 || i == 10 || i == 12) {
+					ISBN = isbnNum * 3;
+					ISBNsoma += ISBN;
+				}
+				if (c[isbn.length() - 1] == ((10 - ISBNsoma) % 10) % 10) return true;
+			}
+		}
+		
+		return false;
+	}
 }
