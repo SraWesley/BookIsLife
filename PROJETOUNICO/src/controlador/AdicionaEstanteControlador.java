@@ -6,9 +6,14 @@ import persistencia.UsuarioDAO;
 import spark.*;
 
 public class AdicionaEstanteControlador implements TemplateViewRoute {
-
+	/** Controlador que envia o livro desejado para a estante do usúario logado.
+	 * O ISBN vem do livro desejado, o usuário é o que está na sessão.
+	 * Caso o usuário não esteja logado é enviado para a página de login.
+	 * É criado uma variável booleana para teste, onde irá ser lido o arquivo dos livros do usuário 
+	 * e em seguida escrever o novo livro. Enviando para o perfil do usuário, com o novo livro na 'estante'.
+	 * Caso o livo já esteja na 'estante' a variável retornará false e será enviado um aviso que o livro já pertence a 'estante'.   */
 	public ModelAndView handle(Request req, Response resp) {
-
+		
 		String ISBN = req.params("ISBN");
 
 		Usuario usuario = req.session().attribute("usuario_logado");
@@ -38,22 +43,3 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 		}
 	}
 }
-///
-/*
- * File file = new File("Usuarios/Matriculas/" + usuario.getNumero() + "/" +
- * "meusLivros.csv"); Scanner scan; try { scan = new Scanner(file); String linha
- * = scan.nextLine(); scan.close(); String[] colunas = linha.split(";"); for(int
- * i = 0; i < colunas.length; i++){ Livro livro = new Livro();
- * livro.setISBN(ISBN); int teste = livro.getISBN(); }} catch
- * (FileNotFoundException e) { e.printStackTrace(); }
- * 
- * //String isbnteste = .toString(); // if(isbnteste.equals(colunas[i])){ // }
- * 
- * //HashMap mapa = new HashMap(); //mapa.put("usuario", usuario); //return new
- * ModelAndView(mapa, "perfil.html"); /* for(int i = 0; i <
- * usuario.getMeusLivros().size(); i++){ Livro livroteste = new Livro();
- * livroteste = usuario.getMeusLivros().get(i); if(livro.equals(livroteste)){
- * HashMap mapa = new HashMap(); usuario.setMeusLivros(livro);
- * mapa.put("usuario", usuario); return new ModelAndView(mapa, "perfil.html"); }
- * }
- */
