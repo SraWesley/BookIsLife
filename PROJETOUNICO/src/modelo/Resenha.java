@@ -4,7 +4,7 @@ public class Resenha {
 
 	private String texto;
 	private String ISBN;
-	private int numero;
+	private int numeroUsuario;
 	
 	public String getISBN() {
 		return ISBN;
@@ -15,11 +15,11 @@ public class Resenha {
 	}
 
 	public int getNumero() {
-		return numero;
+		return numeroUsuario;
 	}
 
 	public void setNumero(int numero) {
-		this.numero = numero;
+		this.numeroUsuario = numero;
 	}
 	
 	public Resenha(){}

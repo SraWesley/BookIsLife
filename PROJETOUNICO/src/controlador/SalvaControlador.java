@@ -19,9 +19,13 @@ public class SalvaControlador implements TemplateViewRoute {
 		livro.setSinopse(req.queryMap("sinopse").value());
 		String erro2="";
 		LivroDAO dao = new LivroDAO();
-		boolean ISBNvalido = true;
-		ISBNvalido = dao.validandoISBN(livro.getISBN());
-		if (!ISBNvalido) {
+		
+		if (livro.getISBN().length() == 10 || livro.getISBN().length() == 13) {
+			dao.save(livro);
+			resp.redirect("/lista");
+		}
+			
+		else {
 			String erro3 = "";
 			erro3 = "ISBN inválido";
 			HashMap mapa = new HashMap();
@@ -45,9 +49,6 @@ public class SalvaControlador implements TemplateViewRoute {
 				}
 			}
 		
-			dao.save(livro);
-			resp.redirect("/lista");
-			return null;
-		}
-		
+		return null;
+	}
 }

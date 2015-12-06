@@ -68,5 +68,5 @@ public class Main {
 		
 		ExcluirResenhaControlador excluirResenha = new ExcluirResenhaControlador();
 		Spark.get("/excluir_resenha/:ISBN", excluirResenha, engine);
-		}
+	}
 }

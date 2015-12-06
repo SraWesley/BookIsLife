@@ -23,26 +23,31 @@
 	
 	{{erro}}
 	
-	<div>
+	<div id="perfil">
+		<div align="center">
+			<img src="/Imagens/icone.jpg" height="80" width="80" alt="BookIsLife - Icone" />
+			<br /> <br />
+		</div>
 		<thead>
 			<tr>
 				<th>Login: {{usuario.login}} </th> <br />
-	        	<th>Local: {{usuario.local}} </th> <br />
-	       		<th>Idade: {{usuario.idade}} </th> <br />
+		    	<th>Local: {{usuario.local}} </th> <br />
+		   		<th>Idade: {{usuario.idade}} </th> <br />
 		       	<th>Nascimento: {{usuario.nascimento}} </th> <br />
 		       	<th>Escola: {{usuario.escola}} </th> <br />
 			</tr>
-	    </thead>
-    </div>
-    <div>
- 	    Meus Livros: {{#meusLivros}}
-	    				{{nome}}
-	    				<a href="/adiciona_resenha/{{ISBN}}"> Adicionar resenha </a>
-	    			 	<a href= "/ver_resenha/{{ISBN}}"> Ver resenha </a> <br />
-	    			 {{/meusLivros}}	
-	    			 
-	    
+		</thead>
 	</div>
-		
-	</body>
+   	<div align="center">
+    	<div id="livros">
+ 			<strong>Meus Livros:</strong> 
+ 			<br />
+ 				{{#meusLivros}} <br />
+	    			{{nome}}
+	    			<a href="/adiciona_resenha/{{ISBN}}"> Adicionar resenha </a>
+	    			<a href= "/ver_resenha/{{ISBN}}"> Ver resenha </a> <br />
+	    		{{/meusLivros}}	
+	    </div>
+	</div>
+</body>
 </html>

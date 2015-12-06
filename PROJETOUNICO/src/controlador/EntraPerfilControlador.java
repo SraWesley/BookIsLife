@@ -10,9 +10,8 @@ public class EntraPerfilControlador implements TemplateViewRoute{
 		Usuario u = req.session().attribute("usuario_logado");
 		HashMap mapa = new HashMap();
 		mapa.put("usuario", u);
-		System.out.println("estamos aquii");
+		//System.out.println("estamos aquii");
 		mapa.put("meusLivros", u.getMeusLivros());
 		return new ModelAndView(mapa, "perfil.html");
 	}
-
 }

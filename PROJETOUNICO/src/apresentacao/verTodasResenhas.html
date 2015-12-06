@@ -3,16 +3,30 @@
 <head>
 	<meta charset="utf-8">
 	<title>RESENHA</title>
+	<link href="/CSS/Style.css" rel="stylesheet" type="text/css" />	
 </head>
 
-<body>		
+<body>	
+	<div align="center">
+		<div id="menu" >
+			<ul>
+				<li> <a href="/perfil" title="Perfil"> Perfil </a> </li>
+				<li> <a href="/lista" title="Biblioteca"> Biblioteca </a> </li>
+				<li> <a href="/novo" title="Novo Livro"> Novo Livro </a> </li>
+				<li> <a href="/" title="Sair"> Sair </a> </li>
+			</ul>
+		</div>
+	</div>
+	<div id="img">
+		<img src="/Imagens/index.jpg" height="369" width="1363" alt="BookIsLife - Imagens"/>
+	</div>	
 	<h1> Sinopse </h1>
 		{{livro}}
 		
 	<h1> Todas as Resenhas </h1>
 		{{#resenha_lista}}
 			{{texto}}
-			<hr />
+			<br /> <br />
 		{{/resenha_lista}}
 		
 </body>

@@ -4,14 +4,12 @@ import java.sql.Date;
 
 public class Livro {
 	
-	private String nome;//
-	private String editora;//
-	private String escritor;//
-	private String ISBN;//
-	private Date anopublicado;//
-	private int paginas;
+	private String nome;
+	private String editora;
+	private String escritor;
+	private String ISBN;
+	private Date anopublicado;
 	private String sinopse;
-	//adicionar genero
 	
 	public String getSinopse() {
 		return sinopse;
@@ -59,14 +57,6 @@ public class Livro {
 
 	public void setAnopublicado(java.util.Date date) {
 		this.anopublicado = (Date) date;
-	}
-
-	public int getPaginas() {
-		return paginas;
-	}
-
-	public void setPaginas(int paginas) {
-		this.paginas = paginas;
 	}
 
 	public String toString() {

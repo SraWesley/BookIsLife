@@ -7,8 +7,8 @@ public class MuralResenha {
 	private ArrayList<Resenha> resenhas = new  ArrayList<Resenha>();
 	
 	public void addResenha(String texto) {
-		Resenha m = new Resenha(texto);
-		resenhas.add(m);
+		Resenha t = new Resenha(texto);
+		resenhas.add(t);
 	}
 	
 	public ArrayList<Resenha> getMensagens() {

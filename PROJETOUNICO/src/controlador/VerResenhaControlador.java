@@ -16,7 +16,7 @@ public class VerResenhaControlador implements TemplateViewRoute {
 		Resenha resenha = new Resenha();
 		String texto = dao.pegandoTexto(ISBN, usuario.getNumero());
 		resenha.setTexto(texto);
-		System.out.println(resenha.getTexto());
+		//System.out.println(resenha.getTexto());
 		HashMap mapa = new HashMap();
 		mapa.put("resenha", resenha.getTexto());
 		mapa.put("ISBN", ISBN);

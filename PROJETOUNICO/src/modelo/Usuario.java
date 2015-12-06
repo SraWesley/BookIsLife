@@ -17,14 +17,10 @@ public class Usuario {
 	public Usuario() {}
 
 	public ArrayList<Livro> getMeusLivros() {
-		System.out.println("estamos em getmeuslivros");
-	//File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
-			//System.out.println("estamos em getmeuslivros se for null");
-			LivroDAO livros =  new LivroDAO();
-			//System.out.println(numero);
-			meusLivros = livros.findAll(numero);
-			//System.out.println(meusLivros);
-			return meusLivros;
+		//System.out.println("estamos em getmeuslivros");
+		LivroDAO livros =  new LivroDAO();
+		meusLivros = livros.findAll(numero);
+		return meusLivros;
 	}
 			/*public 	ArrayList<Livro> getMeusLivros() {
 		File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
@@ -58,10 +54,9 @@ public class Usuario {
 			//for(int i = 0; i < colunas.length; i++){
 			//	Livro livro = new Livro();
 			//	livro.setNome(colunas[i]);
-				meusLivros.add(livro);
-			}
+		meusLivros.add(livro);
+	}
 		//} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 		//	e.printStackTrace();
 		//}
 		

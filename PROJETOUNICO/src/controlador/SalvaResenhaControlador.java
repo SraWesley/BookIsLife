@@ -13,7 +13,7 @@ public class SalvaResenhaControlador implements TemplateViewRoute {
 		Resenha resenha = new Resenha();
 		Usuario usuario = req.session().attribute("usuario_logado");
 		resenha.setTexto(req.queryMap("texto").value());
-		System.out.println(usuario.getNumero());
+		//System.out.println(usuario.getNumero());
 		resenha.setNumero(usuario.getNumero());
 		
 		resenha.setISBN(req.params("ISBN"));
@@ -29,6 +29,6 @@ public class SalvaResenhaControlador implements TemplateViewRoute {
 		}
 		req.session().attribute("resenha_logada", resenha);
 		resp.redirect("/ver_resenha/" + resenha.getISBN());
-			return null;
+		return null;
 	}
 }

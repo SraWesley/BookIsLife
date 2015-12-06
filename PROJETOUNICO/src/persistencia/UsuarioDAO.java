@@ -2,9 +2,7 @@ package persistencia;
 
 import java.io.*;
 import java.util.*;
-
-import modelo.Resenha;
-import modelo.Usuario;
+import modelo.*;
 
 public class UsuarioDAO implements DAO<Usuario> {
 
@@ -196,7 +194,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			File arq = new File(DIR + obj.getNumero() + ".csv");
 			if (!arq.exists()) return;
 			arq.delete();
-			System.out.println("Excluído com sucesso!");
+			//System.out.println("Excluído com sucesso!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -299,10 +297,10 @@ public class UsuarioDAO implements DAO<Usuario> {
 			while (scan.hasNextLine()) {
 					String linha = scan.nextLine();
 					textoDaResenha += linha;
-					System.out.println(textoDaResenha);
+					//System.out.println(textoDaResenha);
 					r.setTexto(textoDaResenha);
 					listaResenha.add(r);
-					System.out.println(listaResenha);
+					//System.out.println(listaResenha);
 				}
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -310,7 +308,4 @@ public class UsuarioDAO implements DAO<Usuario> {
 		}
 	return listaResenha;
 }
-	
-
-
 }

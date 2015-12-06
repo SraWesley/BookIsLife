@@ -16,8 +16,8 @@ public class AdicionaEstanteControlador implements TemplateViewRoute {
 
 		boolean foiAdicionado;
 		foiAdicionado = usuarioDAO.addMeusLivros(ISBN, usuario.getNumero());
-		System.out.println(foiAdicionado);
-		System.out.println(usuario.getMeusLivros());
+		//System.out.println(foiAdicionado);
+		//System.out.println(usuario.getMeusLivros());
 
 		if (foiAdicionado) {
 			HashMap mapa = new HashMap();
