@@ -7,6 +7,9 @@ import java.nio.file.Files;
 
 public class LivroDAO implements DAO<Livro> {
 
+	/** Se livro o que estiver sendo cadastrado passar pelas "regras" de cadastro e o diretório que armazena os livros ainda não 
+	 * existir este deve ser criado. Após será criado um arquivo .csv que "setará" as informações do livro. Quando salvo add em
+	 * outro arquivo .csv apenas o título da obra */
 	public void save(Livro obj) {
 		try {
 			File dir = new File("livros");
@@ -65,6 +68,7 @@ public class LivroDAO implements DAO<Livro> {
 		}
 	}
 	
+	/** Se o arquivo que deseja ser deletado existir no diretorio de livros o arquivo .csv será excluído */
 	public void delete(Livro obj) {
 		try {
 			File arq = new File("livros/" + obj.getISBN() + ".csv");
@@ -74,7 +78,9 @@ public class LivroDAO implements DAO<Livro> {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/** Será informada uma chava (ISBN) e através dessa chave, se o arquivo existir as informações salvas do livro serão enviadas
+	 * para o usuario */
 	public void update(Livro obj) {
 		Livro l = null;
 		String chave = obj.getISBN();

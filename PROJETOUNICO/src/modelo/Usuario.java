@@ -3,6 +3,7 @@ package modelo;
 import java.util.*;
 import persistencia.*;
 
+/** Get e Set de numero do usuario, login, senha, local, idade, data de nascimento, escola e lista de livros pessoais */
 public class Usuario {
 	
 	private int numero;

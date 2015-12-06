@@ -1,5 +1,6 @@
 package modelo;
 
+/** Get e set de Resenha, ISBN do livro para add resenha e número do usuário que quer add resenha */
 public class Resenha {
 
 	private String texto;

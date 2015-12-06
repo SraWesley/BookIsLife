@@ -1,14 +1,12 @@
 package modelo;
 
-import java.sql.Date;
-
+/** Get e Set de Nome do livro, editora, escritor(a), ISBN e sinopse */
 public class Livro {
 	
 	private String nome;
 	private String editora;
 	private String escritor;
 	private String ISBN;
-	private Date anopublicado;
 	private String sinopse;
 	
 	public String getSinopse() {
@@ -49,14 +47,6 @@ public class Livro {
 
 	public void setISBN(String iSBN) {
 		ISBN = iSBN;
-	}
-
-	public Date getAnopublicado() {
-		return anopublicado;
-	}
-
-	public void setAnopublicado(java.util.Date date) {
-		this.anopublicado = (Date) date;
 	}
 
 	public String toString() {

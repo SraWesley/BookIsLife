@@ -3,6 +3,11 @@ package modelo;
 import java.io.*;
 import java.util.*;
 
+/** Cria um ArrayList de Usuarios e apenas o add se todos os campos forem preenchidos. Se o usuário passar por todas as "regras" de 
+ * cadastro e for o primeiro a ser cadastrado. Uma pasta deverá ser criada a fim de armazenar seus dados. Com isso será criado um
+ * arquivo .csv para guardar as suas informações pessoais. Se não for o primeiro a ser cadastrado, apenas add.
+ * Get do ArrayList dos Usuarios. ToString dos Usuarios.
+ * E o indexOf onde pesquisa o usuario no Array através de seu login */
 public class Cadastro {
 
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); 

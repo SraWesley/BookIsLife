@@ -5,6 +5,11 @@ import modelo.*;
 import java.util.*;
 import persistencia.*;
 
+/** O usuário deverá estar na pág. livro_cadastrar. Estando nesta pág. ele deverá preencher os campos com as informações do livro, 
+ * uma vez preenchidos e de acordo com as "regras" do programa, essas informações serão "setadas" e o livro será salvo.
+ * Se essas informações não estiverem de acordo com as "regras" do programa serão enviadas mensagens de erro, como ISBN (tamanho
+ * incorreto), nome (< 3) ou ainda se o livro já estiver na lista de livros já cadastrados no programa.
+ * Após qualquer uma dessas ações o usuário será direcionado para a lista de livros já cadastrados (Biblioteca) */
 public class SalvaControlador implements TemplateViewRoute {
 
 	private LivroDAO dao = new LivroDAO();
