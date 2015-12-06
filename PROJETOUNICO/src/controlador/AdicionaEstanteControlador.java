@@ -6,7 +6,7 @@ import persistencia.UsuarioDAO;
 import spark.*;
 
 public class AdicionaEstanteControlador implements TemplateViewRoute {
-	/** Controlador que envia o livro desejado para a estante do usúario logado.
+	/** Controlador que envia o livro desejado para a estante do usuario logado.
 	 * O ISBN vem do livro desejado, o usuário é o que está na sessão.
 	 * Caso o usuário não esteja logado é enviado para a página de login.
 	 * É criado uma variável booleana para teste, onde irá ser lido o arquivo dos livros do usuário 

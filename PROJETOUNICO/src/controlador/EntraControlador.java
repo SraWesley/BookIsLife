@@ -26,7 +26,7 @@ public class EntraControlador implements TemplateViewRoute{
 				req.session().attribute("usuario_logado", usuario);
 				HashMap mapa2 = new HashMap();
 				mapa2.put("usuario", usuario);
-				System.out.println("estamos aquii");
+				//System.out.println("estamos aquii");
 				mapa2.put("meusLivros", usuario.getMeusLivros());
 				return new ModelAndView(mapa2, "perfil.html");
 			}

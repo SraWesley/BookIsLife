@@ -256,7 +256,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 			int aux = 0;
 			String[] colunas = linhas.split(";");
 			aux = colunas.length;
-			System.out.println(aux);
+			//System.out.println(aux);
 			Scanner scan2 = new Scanner(dir2);
 			String linhas2 = scan2.nextLine();
 			String[] colunas2 = linhas2.split(";");
