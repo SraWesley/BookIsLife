@@ -1,9 +1,9 @@
 package controlador;
 
-import java.util.*;
-import modelo.*;
-import persistencia.*;
 import spark.*;
+import modelo.*;
+import java.util.*;
+import persistencia.*;
 
 public class VerResenhasLivrosControlador implements TemplateViewRoute {
 
@@ -12,10 +12,9 @@ public class VerResenhasLivrosControlador implements TemplateViewRoute {
 		ResenhaDAO dao = new ResenhaDAO();
 		String ISBN = req.params("ISBN");
 		resenha_lista = dao.resenhasDoLivro(ISBN);
-		// System.out.println(resenha_lista);
 		LivroDAO daoLivro = new LivroDAO();
 		Livro livro = daoLivro.load(ISBN);
-		
+	
 		HashMap mapa = new HashMap();
 		mapa.put("livro", livro.getSinopse());
 		mapa.put("resenha_lista", resenha_lista);

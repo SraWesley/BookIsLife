@@ -1,9 +1,9 @@
 package controlador;
 
-import java.util.*;
 import spark.*;
-import modelo.Livro;
-import persistencia.LivroDAO;
+import modelo.*;
+import java.util.*;
+import persistencia.*;
 
 public class ListaControlador implements TemplateViewRoute {
 
@@ -11,7 +11,6 @@ public class ListaControlador implements TemplateViewRoute {
 	
 	public ModelAndView handle(Request req, Response resp) {
 		ArrayList<Livro> livros = dao.findAll();
-		//System.out.println(livros);
 		HashMap mapa = new HashMap();
 		mapa.put("livros", livros);		
 		return new ModelAndView(mapa, "livro_lista.html");

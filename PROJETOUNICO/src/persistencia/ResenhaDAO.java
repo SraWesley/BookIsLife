@@ -1,9 +1,9 @@
 package persistencia;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.util.*;
 import modelo.*;
+import java.io.*;
+import java.util.*;
+import java.nio.file.Files;
 
 public class ResenhaDAO implements DAO<Resenha> {
 
@@ -25,6 +25,7 @@ public class ResenhaDAO implements DAO<Resenha> {
 			} finally {
 				scan.close();
 			}
+			
 			try {
 				FileWriter writer = new FileWriter(file);
 				if (!resenhasExistente.isEmpty()) writer.write(resenhasExistente);
@@ -46,17 +47,6 @@ public class ResenhaDAO implements DAO<Resenha> {
 				e.printStackTrace();
 			}
 		}
-		/*
-		 * if (file.exists()) { Scanner scan = new Scanner(file); String linha =
-		 * scan.nextLine(); scan.close(); String[] colunas = linha.split(";");
-		 * FileWriter writer = new FileWriter(file); writer.write();
-		 * writer.write(r.getISBN() + ";"); writer.write(r.getTexto() + ";"); //
-		 * writer.write(); // writer.flush(); //writer.close(); //} FileWriter
-		 * writer = new FileWriter(file); writer.write(r.getISBN() + ";");
-		 * writer.write(r.getTexto() + ";"); writer.flush(); writer.close(); }
-		 * 
-		 * catch (Exception e) { e.printStackTrace(); }
-		 */
 	}
 
 	public boolean resenhaExiste(Resenha resenha) {
@@ -81,6 +71,7 @@ public class ResenhaDAO implements DAO<Resenha> {
 				scan.close();
 			}
 		}
+		
 		return false;
 	}
 
@@ -97,15 +88,13 @@ public class ResenhaDAO implements DAO<Resenha> {
 	public Resenha load(String isbn, int numeroUsuario) {
 		Resenha r = new Resenha();
 		Scanner scan = null;
-		//String textodaResenha = "";
 		File arq = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "MinhasResenhas/" + isbn + ".csv");
 		r = new Resenha();
 		if (!arq.exists()) return null;
 		try {
 			scan = new Scanner(arq);
 			String linha = "";
-			
-			while(scan.hasNextLine()) {
+			while (scan.hasNextLine()) {
 				linha += scan.nextLine();
 			}
 			r.setTexto(linha);
@@ -153,6 +142,7 @@ public class ResenhaDAO implements DAO<Resenha> {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 		if (scan != null) scan.close();
 		return lista;
 	}
@@ -162,7 +152,6 @@ public class ResenhaDAO implements DAO<Resenha> {
 		File dirUsuarios = new File("Usuarios/Matriculas/");
 		File[] usuarios = dirUsuarios.listFiles();
 		for (int i = 0; i < usuarios.length; i++) {
-			//System.out.println(usuarios[i].getPath());
 			File resenha = new File(usuarios[i].getPath() + "/" + "MinhasResenhas/" + iSBN + ".csv");
 			if (resenha.exists()) {
 				String textoDaResenha = "";
@@ -173,16 +162,15 @@ public class ResenhaDAO implements DAO<Resenha> {
 					while (scan.hasNextLine()) {
 						String linha = scan.nextLine();
 						textoDaResenha += linha;
-						//System.out.println(textoDaResenha);
 						r.setTexto(textoDaResenha);
 						listaResenha.add(r);
-						//System.out.println(listaResenha);
 					}
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
 			}
 		}
+		
 		return listaResenha;
 	}
 
@@ -195,10 +183,9 @@ public class ResenhaDAO implements DAO<Resenha> {
 	public String pegandoTexto(String ISBN, int numero) {
 		File  file = new File("Usuarios/Matriculas/" + numero + "/" + "MinhasResenhas/" + ISBN + ".csv");
 		String linha = "";
-		if(file.exists()){
+		if (file.exists()) {
 			try {
 				Scanner scan = new Scanner(file);
-				//String textoResenha = new String();
 				linha = scan.nextLine();
 				while(scan.hasNextLine()){
 					linha+= scan.nextLine();

@@ -1,7 +1,7 @@
 package modelo;
 
 import java.util.*;
-import persistencia.LivroDAO;
+import persistencia.*;
 
 public class Usuario {
 	
@@ -15,51 +15,6 @@ public class Usuario {
 	private ArrayList<Livro> meusLivros;
 	
 	public Usuario() {}
-
-	public ArrayList<Livro> getMeusLivros() {
-		//System.out.println("estamos em getmeuslivros");
-		LivroDAO livros =  new LivroDAO();
-		meusLivros = livros.findAll(numero);
-		return meusLivros;
-	}
-			/*public 	ArrayList<Livro> getMeusLivros() {
-		File file = new File("Usuarios/Matriculas/" + this.getNumero() + "/" + "meusLivros.csv");
-		LivroDAO livros =  new LivroDAO();
-		try {
-			Scanner scan = new Scanner(file);
-			String linha =  scan.nextLine();
-			String[] colunas = linha.split(";");
-			for(int i = 0; i < colunas.length; i++){
-				Livro livro = new Livro();
-				livro.setNome(colunas[i]);
-				meusLivros.add(livro);
-			}
-			//String[] meuslivrosNomes = new String[meusLivros.size()];
-			//for(int i = 0; i < meusLivros.size();i++){
-			//	 meuslivrosNomes[i] = meusLivros.get(i).getNome();
-			//}
-			return meusLivros;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		meusLivros = livros.findAll();
-		return meusLivros;*/
-	public void setMeusLivros(Livro livro) {
-		//File file = new File("Usuarios/Matricula/" + this.getNumero() + "/" + "meusLivros.csv");
-		//try {
-			//Scanner scan = new Scanner(file);
-			//String linha =  scan.nextLine();
-			//String[] colunas = linha.split(";");
-			//for(int i = 0; i < colunas.length; i++){
-			//	Livro livro = new Livro();
-			//	livro.setNome(colunas[i]);
-		meusLivros.add(livro);
-	}
-		//} catch (FileNotFoundException e) {
-		//	e.printStackTrace();
-		//}
-		
 
 	public int getNumero() {
 		return numero;
@@ -115,8 +70,18 @@ public class Usuario {
 	
 	public void setEscola(String escola) {
 		this.escola = escola;
+	}	
+	
+	public ArrayList<Livro> getMeusLivros() {
+		LivroDAO livros =  new LivroDAO();
+		meusLivros = livros.findAll(numero);
+		return meusLivros;
 	}
-
+	
+	public void setMeusLivros(Livro livro) {
+		meusLivros.add(livro);
+	}
+	
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

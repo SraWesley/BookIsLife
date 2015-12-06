@@ -5,7 +5,6 @@
 	<title>RESENHA</title>
 	<link href="/CSS/Style.css" rel="stylesheet" type="text/css" />	
 </head>
-
 <body>
 	<div align="center">
 		<div id="menu" >
@@ -19,9 +18,11 @@
 	</div>
 	<div id="img">
 		<img src="/Imagens/index.jpg" height="369" width="1363" alt="BookIsLife - Imagens"/>
-	</div>		
-	<h1> Resenha </h1>
-		{{resenha}}
+	</div>
+	<divs id="texto">
+		<h1> Resenha </h1>
+		{{resenha}}  
 		<a href="/excluir_resenha/{{ISBN}}" onclick="return confirm('Deseja excluir esta resenha?');"> Excluir </a>
+	</div>
 </body>
 </html>

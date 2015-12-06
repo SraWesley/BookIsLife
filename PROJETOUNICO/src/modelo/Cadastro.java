@@ -10,7 +10,7 @@ public class Cadastro {
 	public void addUsuario(int numero, String login, String senha, String local, int idade, String nascimento, String escola) {
 		Usuario usuario = new Usuario();
 		
-		if(usuarios.indexOf(usuario) == -1)	{
+		if (usuarios.indexOf(usuario) == -1)	{
 			try {
 				File dir = new File("Usuarios");
 				if( ! dir.exists()) dir.mkdir();
@@ -30,8 +30,7 @@ public class Cadastro {
 					writer.flush();
 					writer.close();
 				}
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
@@ -47,7 +46,7 @@ public class Cadastro {
 		return usuarios.toString();
 	}
 
-	public int indexOf(Usuario m) {
-		return usuarios.indexOf(m);
+	public int indexOf(Usuario u) {
+		return usuarios.indexOf(u);
 	}
 }

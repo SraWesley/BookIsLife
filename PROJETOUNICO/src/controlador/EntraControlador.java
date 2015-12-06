@@ -1,11 +1,11 @@
 package controlador;
 
-import java.util.*;
-import modelo.Usuario;
-import persistencia.UsuarioDAO;
 import spark.*;
+import modelo.*;
+import java.util.*;
+import persistencia.*;
 
-public class EntraControlador implements TemplateViewRoute{
+public class EntraControlador implements TemplateViewRoute {
 		
 	public ModelAndView handle(Request req, Response resp) {
 		HashMap mapa = new HashMap();
@@ -21,12 +21,10 @@ public class EntraControlador implements TemplateViewRoute{
 	
 		for (int i = 0; i < usuarios.size(); i++) {
 			Usuario usuario = usuarios.get(i);
-	
 			if (username.equals(usuario.getLogin()) && psw.equals(usuario.getSenha())){
 				req.session().attribute("usuario_logado", usuario);
 				HashMap mapa2 = new HashMap();
 				mapa2.put("usuario", usuario);
-				//System.out.println("estamos aquii");
 				mapa2.put("meusLivros", usuario.getMeusLivros());
 				return new ModelAndView(mapa2, "perfil.html");
 			}

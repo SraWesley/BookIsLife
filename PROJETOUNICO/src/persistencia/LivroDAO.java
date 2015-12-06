@@ -1,9 +1,9 @@
 package persistencia;
 
-import java.util.*;
+import modelo.*;
 import java.io.*;
+import java.util.*;
 import java.nio.file.Files;
-import modelo.Livro;
 
 public class LivroDAO implements DAO<Livro> {
 
@@ -42,6 +42,7 @@ public class LivroDAO implements DAO<Livro> {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
+			
 			try {
 				FileWriter writer = new FileWriter(file);
 				writer.write(nome);
@@ -52,9 +53,7 @@ public class LivroDAO implements DAO<Livro> {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-
-		else {
+		} else {
 			try {
 				FileWriter writer = new FileWriter(file);
 				writer.write(titulo + ";");
@@ -69,7 +68,6 @@ public class LivroDAO implements DAO<Livro> {
 	public void delete(Livro obj) {
 		try {
 			File arq = new File("livros/" + obj.getISBN() + ".csv");
-			//System.out.println(arq.exists());
 			if (!arq.exists()) return;
 			Files.delete(arq.toPath());
 		} catch (Exception e) {
@@ -163,26 +161,21 @@ public class LivroDAO implements DAO<Livro> {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 		if (scan != null) scan.close();
 		return lista;
 	}
 
 	public boolean testandoSeLivroExiste(String nome) {
 		File file = new File("titulos/titulos.csv");
-		//System.out.println("Estou no else");
 		if (file.exists()) {
 			try {
-				//System.out.println(nome);
 				Scanner scan = new Scanner(file);
 				String linha = scan.nextLine();
 				String[] colunas = linha.split(";");
 				scan.close();
-				for(int i = 0; i < colunas.length; i++){
-					if(nome.equals(colunas[i])){
-						//System.out.println(colunas[i]);
-						//System.out.println("é igual");
-						return true;
-					}
+				for (int i = 0; i < colunas.length; i++) {
+					if (nome.equals(colunas[i])) return true;
 				}
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();

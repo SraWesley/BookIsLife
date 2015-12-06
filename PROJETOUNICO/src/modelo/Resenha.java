@@ -6,6 +6,20 @@ public class Resenha {
 	private String ISBN;
 	private int numeroUsuario;
 	
+	public Resenha(){}
+	
+	public Resenha(String texto) {
+		this.texto = texto;
+	}
+	
+	public String getTexto() {
+		return texto;
+	}
+	
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+	
 	public String getISBN() {
 		return ISBN;
 	}
@@ -20,20 +34,6 @@ public class Resenha {
 
 	public void setNumero(int numero) {
 		this.numeroUsuario = numero;
-	}
-	
-	public Resenha(){}
-	
-	public void setTexto(String texto) {
-		this.texto = texto;
-	}
-
-	public Resenha(String texto) {
-		this.texto = texto;
-	}
-	
-	public String getTexto() {
-		return texto;
 	}
 	
 	public String toString() {

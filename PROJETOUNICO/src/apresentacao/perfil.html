@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html>
 <head>
 	<meta charset="utf-8">
@@ -20,9 +19,7 @@
 	<div id="img">
 		<img src="/Imagens/index.jpg" height="369" width="1363" alt="BookIsLife - Imagens"/>
 	</div>	
-	
 	{{erro}}
-	
 	<div id="perfil">
 		<div align="center">
 			<img src="/Imagens/icone.jpg" height="80" width="80" alt="BookIsLife - Icone" />
@@ -40,13 +37,12 @@
 	</div>
    	<div align="center">
     	<div id="livros">
- 			<strong>Meus Livros:</strong> 
- 			<br />
- 				{{#meusLivros}} <br />
-	    			{{nome}}
-	    			<a href="/adiciona_resenha/{{ISBN}}"> Adicionar resenha </a>
-	    			<a href= "/ver_resenha/{{ISBN}}"> Ver resenha </a> <br />
-	    		{{/meusLivros}}	
+ 			<strong> Meus Livros: </strong> <br />
+ 			{{#meusLivros}} <br />
+	    		{{nome}}
+	    		<a href="/adiciona_resenha/{{ISBN}}"> Adicionar resenha </a>
+	    		<a href= "/ver_resenha/{{ISBN}}"> Ver resenha </a> <br />
+	    	{{/meusLivros}}	
 	    </div>
 	</div>
 </body>

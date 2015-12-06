@@ -1,7 +1,7 @@
 package controlador;
 
-import java.util.*;
 import spark.*;
+import java.util.*;
 
 public class LoginControlador implements TemplateViewRoute{
 

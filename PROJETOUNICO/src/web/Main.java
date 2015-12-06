@@ -1,7 +1,7 @@
 package web;
 
+import spark.*;
 import controlador.*;
-import spark.Spark;
 import spark.template.mustache.MustacheTemplateEngine;
 
 public class Main {

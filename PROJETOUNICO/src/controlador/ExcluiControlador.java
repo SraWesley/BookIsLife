@@ -1,8 +1,8 @@
 package controlador;
 
-import modelo.Livro;
-import persistencia.LivroDAO;
 import spark.*;
+import modelo.*;
+import persistencia.*;
 
 public class ExcluiControlador implements TemplateViewRoute {
 	

@@ -1,10 +1,10 @@
 package controlador;
 
+import spark.*;
+import modelo.*;
 import java.io.*;
 import java.util.*;
-import modelo.*;
-import persistencia.ResenhaDAO;
-import spark.*;
+import persistencia.*;
 
 public class VerResenhaControlador implements TemplateViewRoute {
 
@@ -16,7 +16,7 @@ public class VerResenhaControlador implements TemplateViewRoute {
 		Resenha resenha = new Resenha();
 		String texto = dao.pegandoTexto(ISBN, usuario.getNumero());
 		resenha.setTexto(texto);
-		//System.out.println(resenha.getTexto());
+		
 		HashMap mapa = new HashMap();
 		mapa.put("resenha", resenha.getTexto());
 		mapa.put("ISBN", ISBN);

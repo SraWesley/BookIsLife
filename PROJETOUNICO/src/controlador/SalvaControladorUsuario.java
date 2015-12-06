@@ -1,12 +1,12 @@
 package controlador;
 
+import spark.*;
+import modelo.*;
 import java.io.*;
 import java.util.*;
-import modelo.Usuario;
-import persistencia.UsuarioDAO;
-import spark.*;
+import persistencia.*;
 
-public class SalvaControladorUsuario implements TemplateViewRoute{
+public class SalvaControladorUsuario implements TemplateViewRoute {
 
 	private UsuarioDAO dao = new UsuarioDAO();
 
@@ -26,21 +26,17 @@ public class SalvaControladorUsuario implements TemplateViewRoute{
 			HashMap mapa = new HashMap();
 			mapa.put("erro", erro);
 			return new ModelAndView(mapa,"usuario_cadastrar.html");
-		}else {
+		} else {
 			File file = new File("Usuarios/" + "login.csv");
 			String login = usuario.getLogin();
-			//System.out.println("Estou no else");
 			if (file.exists()) {
 				try {
-					//System.out.println(login);
 					Scanner scan = new Scanner(file);
 					String linha = scan.nextLine();
 					String[] colunas = linha.split(";");
 					scan.close();
-					for(int i = 0; i < colunas.length; i++){
-						if(login.equals(colunas[i])){
-							///System.out.println(colunas[i]);
-							//System.out.println("é igual");
+					for (int i = 0; i < colunas.length; i++) {
+						if (login.equals(colunas[i])) {
 							erro2 = "Login já existente! Escolha outro!";
 							break;
 						}
@@ -49,12 +45,14 @@ public class SalvaControladorUsuario implements TemplateViewRoute{
 					e.printStackTrace();
 				}
 			}
-			if(!erro2.equals("")){
+			
+			if (!erro2.equals("")) {
 				HashMap mapa1 = new HashMap();
 				mapa1.put("erro2", erro2);
 				return new ModelAndView(mapa1,"usuario_cadastrar.html");
 			}
 		}
+		
 		dao.save(usuario);	
 		resp.redirect("/");
 		return null;

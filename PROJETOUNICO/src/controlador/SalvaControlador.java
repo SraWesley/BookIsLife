@@ -1,9 +1,9 @@
 package controlador;
 
-import java.util.*;
-import modelo.Livro;
-import persistencia.LivroDAO;
 import spark.*;
+import modelo.*;
+import java.util.*;
+import persistencia.*;
 
 public class SalvaControlador implements TemplateViewRoute {
 
@@ -23,9 +23,7 @@ public class SalvaControlador implements TemplateViewRoute {
 		if (livro.getISBN().length() == 10 || livro.getISBN().length() == 13) {
 			dao.save(livro);
 			resp.redirect("/lista");
-		}
-			
-		else {
+		} else {
 			String erro3 = "";
 			erro3 = "ISBN inválido";
 			HashMap mapa = new HashMap();
@@ -40,14 +38,14 @@ public class SalvaControlador implements TemplateViewRoute {
 			mapa.put("erro", erro);
 			return new ModelAndView(mapa,"livro_cadastrar.html");
 		} else {
-				boolean existeLivro = dao.testandoSeLivroExiste(livro.getNome());
-				if(existeLivro){
-					erro2 = "Livro já existente!";
-					HashMap mapa1 = new HashMap();
-					mapa1.put("erro2", erro2);
-					return new ModelAndView(mapa1,"livro_cadastrar.html");
-				}
+			boolean existeLivro = dao.testandoSeLivroExiste(livro.getNome());
+			if (existeLivro) {
+				erro2 = "Livro já existente!";
+				HashMap mapa1 = new HashMap();
+				mapa1.put("erro2", erro2);
+				return new ModelAndView(mapa1,"livro_cadastrar.html");
 			}
+		}
 		
 		return null;
 	}
