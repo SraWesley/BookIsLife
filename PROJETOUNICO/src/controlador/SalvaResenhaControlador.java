@@ -5,6 +5,8 @@ import modelo.*;
 import java.util.*;
 import persistencia.ResenhaDAO;
 
+/** Testa se o usuário está logado, se sim "seta" a resenha, o número do usuário e o ISBN do livro. Cria uma variável booleana que
+ * testa se a resenha já existe, se sim envia uma mensagem de erro, se não salva e direciona para ver_resenha com o número do ISBN */
 public class SalvaResenhaControlador implements TemplateViewRoute {
 
 	ResenhaDAO dao = new ResenhaDAO();

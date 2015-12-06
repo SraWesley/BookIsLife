@@ -5,6 +5,10 @@ import modelo.*;
 import java.util.*;
 import persistencia.*;
 
+/** São criadas duas Strings que recebem o login e a senha enviados pelo usuário que está na pág. de login. Estas são testadas e procuradas no Dir de Usuários, 
+ * se o login e a senha forem iguais aos cadastrados, ao usuário é atribuído "usuário logado". E suas informações pessoais, assim como sua lista de livros são enviados para
+ * o perfil do usuário. Se login e senha não forem as mesmas cadastradas para o usuário, é enviada uma mensagem de erro para o usuário e este é enviado novamente para a 
+ * página de login para efetuá-lo corretamente */
 public class EntraControlador implements TemplateViewRoute {
 		
 	public ModelAndView handle(Request req, Response resp) {

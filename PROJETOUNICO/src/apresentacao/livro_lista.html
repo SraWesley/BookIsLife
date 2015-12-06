@@ -21,30 +21,28 @@
 		<img src="/Imagens/index.jpg" height="369" width="1363" alt="BookIsLife - Imagens"/>
 	</div>
 	<div align="center">
+		<h1> Biblioteca </h1>
 		<div id="biblioteca">
-			<h1> Biblioteca </h1>
 			<table>
-			   	<thead>
+				<thead>
 					<tr>
-			       		<th> ISBN </th>
-		   	    		<th> Nome </th>
-			   			<th> Escritor </th>
-			        	<th> Editora </th>
-			      	</tr>
-    			</thead>
- 			    <tbody>
+						<th align="center"> <label> ISBN </label> </th>
+						<th align="center"> <label> Nome </label> </th>
+						<th align="center"> <label> Escritor </label> </th>
+						<th align="center"> <label> Editora </label> </th>
+					</tr>
+				</thead>
+				<tbody>
 					{{#livros}}
-						<tr>
-					        <td> {{ISBN}} </td>
-					        <td> {{nome}} </td>
-					        <td> {{escritor}} </td>
-					        <td> {{editora}} </td>
-	    			  		<td>
-	    			  			<a href="/adicionaestante/{{ISBN}}"> Adicionar à estante </a>
-		        				<a href="/exclui/{{ISBN}}" onclick="return confirm('Deseja excluir este livro?');"> Excluir </a>
-					        	<a href="/verTodasResenhas/{{ISBN}}"> Ver </a>
-	   			    		</td>
-	    			  	</tr>
+					<tr align="center">
+						<td> {{ISBN}} </td>
+					    <td> {{nome}} </td>
+					    <td> {{escritor}} </td>
+					    <td> {{editora}} </td>
+	    			  	<td> <a href="/adicionaestante/{{ISBN}}"> Adicionar à estante </a> </td>
+		        		<td> <a href="/exclui/{{ISBN}}" onclick="return confirm('Deseja excluir este livro?');"> Excluir </a> </td>
+					    <td> <a href="/verTodasResenhas/{{ISBN}}"> Ver </a> </td>
+	    			  </tr>
 			      	{{/livros}}
 				</tbody>
 			</table>

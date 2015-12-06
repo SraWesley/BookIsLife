@@ -5,6 +5,8 @@ import modelo.*;
 import java.util.*;
 import persistencia.*;
 
+/** Será criado um Array de resenhas, onde o método resenhasDoUsuario carregará as resenhas daquele usuário que tiver o "atributo" usuario_logado, através do número do 
+ * usuario. As resenhas retornadas do método preencherão o Array e este será enviado para meuMural.html */
 public class MeuMuralControlador implements TemplateViewRoute {
 
 	public ModelAndView handle(Request req, Response resp) {

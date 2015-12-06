@@ -9,7 +9,7 @@ public class ResenhaDAO implements DAO<Resenha> {
 
 	private static final String DIR = "Usuarios/Matriculas/";
 	Usuario usuario = new Usuario();
-
+	
 	public void save(Resenha r) {
 		File dir = new File(DIR + "/" + r.getNumero() + "/" + "MinhasResenhas");
 		if (!dir.exists()) dir.mkdir();

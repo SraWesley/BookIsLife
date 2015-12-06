@@ -3,6 +3,11 @@ package controlador;
 import spark.*;
 import java.util.*;
 
+/**
+ * 
+ *
+ *
+ */
 public class LoginControlador implements TemplateViewRoute{
 
 	public ModelAndView handle(Request req, Response resp) {	

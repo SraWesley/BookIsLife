@@ -48,3 +48,7 @@ h1 {padding: 15px; font-size: 22px; color: #C85C43; font-family: Arial, Helvetic
 	margin-left: 50px;
 	margin-right: 50px;
 }
+
+#biblioteca tbody tr td a{
+	text-decoration:none;
+} 
