@@ -101,6 +101,8 @@ public class LivroDAO implements DAO<Livro> {
 		}
 	}
 
+	/** Cria um ArrayList de livros, onde o método "roda" até a lista de arquivos terminar. Toda vez que este "rodar" ele atribui
+	 * as informações de cada um dos arquuivos a um new Livro e os add no Array. Retornando o Array de livros */
 	public ArrayList<Livro> findAll() {
 		ArrayList<Livro> lista = new ArrayList<Livro>();
 		try {
@@ -126,6 +128,7 @@ public class LivroDAO implements DAO<Livro> {
 		return lista;
 	}
 
+	/** Se o ISBN recebido existir na lista de livros, o método "seta" as informações do livro e retorna para o usuário. */
 	public Livro load(Object chave) {
 		Livro l = null;
 		
@@ -150,6 +153,9 @@ public class LivroDAO implements DAO<Livro> {
 		return null;
 	}
 
+	/** Cria um ArrayList de livros. Através do número do Usuário que é recebido é "criado" um diretório, se este existir serão
+	 * scanneados os arquivos, enquanto tiver uma "nova linha", Livro carrega as proximas linhas e os add no Array. Se não tiver 
+	 * mais arquivos Scanner é fechado e a lista o Array é retornado. */
 	public ArrayList<Livro> findAll(int numeroUsuario) {
 		ArrayList<Livro> lista = new ArrayList<Livro>();
 		Scanner scan = null;
@@ -171,7 +177,8 @@ public class LivroDAO implements DAO<Livro> {
 		if (scan != null) scan.close();
 		return lista;
 	}
-
+	
+	/** O método recebe um nome se este nome existir no diretório indicado retornará true, se não retornará false */
 	public boolean testandoSeLivroExiste(String nome) {
 		File file = new File("titulos/titulos.csv");
 		if (file.exists()) {
