@@ -100,8 +100,11 @@ public class LivroDAO implements DAO<Livro> {
 			e.printStackTrace();
 		}
 	}
-	/** O método a seguir busca todos os livros salvos no diretório livros. 
-	 * */
+	
+
+	/** Cria um ArrayList de livros, onde o método "roda" até a lista de arquivos terminar. Toda vez que este "rodar" ele atribui
+	 * as informações de cada um dos arquuivos a um new Livro e os add no Array. Retornando o Array de livros */
+
 	public ArrayList<Livro> findAll() {
 		ArrayList<Livro> lista = new ArrayList<Livro>();
 		try {
@@ -127,31 +130,9 @@ public class LivroDAO implements DAO<Livro> {
 		return lista;
 	}
 
-	/** Já este método, busca os livros no arquivo .csv do usuário que possui a chave que vem como parâmetro, retornando uma 
-	 * ArrayList com os livros 'lidos' no arquivo.
-	 * */
-	public ArrayList<Livro> findAll(int numeroUsuario) {
-		ArrayList<Livro> lista = new ArrayList<Livro>();
-		Scanner scan = null;
-		try {
-			File file = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "meusLivros.csv");
-			if (file.exists()) {
-				scan = new Scanner(file);
-				String linha = scan.nextLine();
-				String[] colunas = linha.split(";");
-				for (int i = 0; i < colunas.length; i++) {
-					Livro livro = load(colunas[i]);
-					lista.add(livro);
-				}
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		if (scan != null) scan.close();
-		return lista;
-	}
 	
+	/** Se o ISBN recebido existir na lista de livros, o método "seta" as informações do livro e retorna para o usuário. */
+
 	public Livro load(Object chave) {
 		Livro l = null;
 		
@@ -176,10 +157,33 @@ public class LivroDAO implements DAO<Livro> {
 		return null;
 	}
 
-	/** O método a seguir é um auxiliar, ele recebe com parâmetro o nome do livro, existe um arquivo com todos os nomes dos livros 
-	 * persistidos, logo o este arquivo é lido e caso já exista o nome em questão salvo neste arquivo é retornado true, caso não 
-	 * exista retorna-se false.
-	 * */
+	/** Cria um ArrayList de livros. Através do número do Usuário que é recebido é "criado" um diretório, se este existir serão
+	 * scanneados os arquivos, enquanto tiver uma "nova linha", Livro carrega as proximas linhas e os add no Array. Se não tiver 
+	 * mais arquivos Scanner é fechado e a lista o Array é retornado. */
+	public ArrayList<Livro> findAll(int numeroUsuario) {
+		ArrayList<Livro> lista = new ArrayList<Livro>();
+		Scanner scan = null;
+		try {
+			File file = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "meusLivros.csv");
+			if (file.exists()) {
+				scan = new Scanner(file);
+				String linha = scan.nextLine();
+				String[] colunas = linha.split(";");
+				for (int i = 0; i < colunas.length; i++) {
+					Livro livro = load(colunas[i]);
+					lista.add(livro);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		if (scan != null) scan.close();
+		return lista;
+	}
+	
+	/** O método recebe um nome se este nome existir no diretório indicado retornará true, se não retornará false */
+
 	public boolean testandoSeLivroExiste(String nome) {
 		File file = new File("titulos/titulos.csv");
 		if (file.exists()) {
