@@ -10,7 +10,8 @@ import persistencia.*;
  * preenchidos e de acordo com as "regras" do programa, essas informações serão "setadas" e o usuário será salvo. 
  * Se essas informações não estiverem de acordo com as "regras" do programa serão enviadas mensagens de erro, como login (< 3) ou 
  * ainda se o login já for existente.
- * Se alguma das mensagens de erro for exibida o usuário retornará para a pág. login. Se já cadastrado será direcionado para o index*/
+ * Se alguma das mensagens de erro for exibida o usuário retornará para a pág. login. 
+ * Se já cadastrado será direcionado para o index*/
 public class SalvaControladorUsuario implements TemplateViewRoute {
 
 	private UsuarioDAO dao = new UsuarioDAO();

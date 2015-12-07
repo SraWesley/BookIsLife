@@ -5,7 +5,8 @@ import modelo.*;
 import java.util.*;
 import persistencia.*;
 
-/** Cria um ArrayList<Resenha>, pega o ISBN do livro desejado, add para o Array todas as resenhas de todos os usuários que tiverem resenhas neste livro com este ISBN.
+/** Cria um ArrayList<Resenha>, pega o ISBN do livro desejado, add para o Array todas as resenhas de todos os usuários que tiverem
+ *  resenhas neste livro com este ISBN.
  * Carrega a sinopse do livro que tiver esse ISBN e manda essas informações para verTodasResenhas.html  */
 public class VerResenhasLivrosControlador implements TemplateViewRoute {
 

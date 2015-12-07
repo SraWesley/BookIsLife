@@ -26,17 +26,7 @@ public class SalvaControlador implements TemplateViewRoute {
 		LivroDAO dao = new LivroDAO();
 		
 		if (livro.getISBN().length() == 10 || livro.getISBN().length() == 13) {
-			dao.save(livro);
-			resp.redirect("/lista");
-		} else {
-			String erro3 = "";
-			erro3 = "ISBN inválido";
-			HashMap mapa = new HashMap();
-			mapa.put("erro3", erro3);
-			return new ModelAndView(mapa,"livro_cadastrar.html");
-		}
-		
-		if (livro.getNome().length() < 3) {
+			if (livro.getNome().length() < 3) {
 			String erro = "";
 			erro = "Título deve ter pelo menos 3 caracteres";
 			HashMap mapa = new HashMap();
@@ -50,7 +40,18 @@ public class SalvaControlador implements TemplateViewRoute {
 				mapa1.put("erro2", erro2);
 				return new ModelAndView(mapa1,"livro_cadastrar.html");
 			}
+		}		
+			dao.save(livro);
+			resp.redirect("/lista");
+		} else {
+			String erro3 = "";
+			erro3 = "ISBN inválido";
+			HashMap mapa = new HashMap();
+			mapa.put("erro3", erro3);
+			return new ModelAndView(mapa,"livro_cadastrar.html");
 		}
+		
+		
 		
 		return null;
 	}

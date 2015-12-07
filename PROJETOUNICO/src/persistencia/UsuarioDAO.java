@@ -38,6 +38,10 @@ public class UsuarioDAO implements DAO<Usuario> {
 		adicionaSenhas(obj.getSenha());
 	}
 
+	/** O método a seguir recebe como parâmetros o ISBN do livro que deseja-se adicionar a estante do usuário e a chave deste. 
+	 *  Primeiro verifica-se se o usuário possui arquivo meusLivros.csv caso sim, lê-se o arquivo, se não existe esse livro ainda, 
+	 *  persistimos, caso exista retorna-se false. Verifica-se ainda o caso do arquivo não existir, caso não exista cria-se.
+	 * */
 	public boolean addMeusLivros(String ISBN, int chave) {
 		File file = new File(DIR + chave + "/" + "meusLivros.csv");
 		String isbnExistente = "";
@@ -92,6 +96,9 @@ public class UsuarioDAO implements DAO<Usuario> {
 		return true;
 	}
 
+	/** O método a seguir cria um arquivo .csv com as senhas dos usuários cadastrados, a cada novo usuário o método recebe como 
+	 *  parâmetro a senha, e escrevê-a no arquivo.
+	 * */
 	public void adicionaSenhas(String senha) {
 		File file = new File("Usuarios/" + "senha.csv");
 		String senha1 = "";
@@ -129,6 +136,9 @@ public class UsuarioDAO implements DAO<Usuario> {
 		}
 	}
 
+	/** O método a seguir cria um arquivo .csv com os logins (nomes) dos usuários cadastrados, a cada novo usuário o método recebe 
+	 * como parâmetro o login, e escrevê-o no arquivo.
+	 * */
 	public void adicionaNomes(String login) {
 		File file = new File("Usuarios/" + "login.csv");
 		String nome = "";
@@ -257,7 +267,10 @@ public class UsuarioDAO implements DAO<Usuario> {
 		
 		return lista;
 	}
-
+	 /** O seguinte método recebe como parâmetro o número do usuário(chave), assim ele lê o arquivo .csv de resenhas do usuário, 
+	  * a cada resenha lida, ele cria uma nova e envia a uma ArrayList de resenhas, que será retornada pelo método.
+	  *  */
+	
 	public ArrayList<Resenha> resenhasDoUsuario(int numero) {
 		ArrayList<Resenha> listaResenha = new ArrayList<Resenha>();
 		File dirUsuarios = new File("Usuarios/Matriculas/"+ numero + "/MinhasResenhas/");

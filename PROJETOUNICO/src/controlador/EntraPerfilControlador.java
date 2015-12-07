@@ -4,7 +4,8 @@ import spark.*;
 import modelo.*;
 import java.util.*;
 
-/** O usuário que possuir o "atributo" usuario_logado, será direcionado para o seu perfil juntamente com suas informações e sua lista de livros */
+/** O usuário que possuir o "atributo" usuario_logado, será direcionado para o seu perfil juntamente com suas informações
+ *  e sua lista de livros */
 public class EntraPerfilControlador implements TemplateViewRoute{
 
 	public ModelAndView handle(Request req, Response resp) {

@@ -48,7 +48,11 @@ public class ResenhaDAO implements DAO<Resenha> {
 			}
 		}
 	}
-
+	/** O seguinte método auxilia para verificar se um determinado usuário já possui ou não uma resenha em determinado livro,
+	 * recebendo como parêmetro a resenha, pois essa possui os dados de ISBN do livro ao qual está vinculada e chave do usuário
+	 * autor. Logo o arquivo .csv da resenha em questão é lido caso exista e verificado se o texto é igual ao da resenha que o usuário
+	 * deseja adicionar. Retornando valor true caso a resenha já exista e false caso não. 
+	 * */
 	public boolean resenhaExiste(Resenha resenha) {
 		File dir = new File(DIR + "/" + resenha.getNumero() + "/" + "MinhasResenhas");
 		if (!dir.exists()) dir.mkdir();
@@ -146,7 +150,11 @@ public class ResenhaDAO implements DAO<Resenha> {
 		if (scan != null) scan.close();
 		return lista;
 	}
-
+	/** O método a seguir auxilia em VerResenhasLivrosControlador, recebendo o ISBN do livro que deseja-se ver todas as resenhas.
+	 *  Então, é criado um Array com todos os usuários cadastraos, após percorrer todas as listas de resenha e cada um, verificando 
+	 *  se trata-se de uma resenha do livro em questão, quando encontrado o arquivo é lido, e salvo em uma nova resenha, esta é 
+	 *  salva em um ArrayList de resenhas que será retornado no fim do método.
+	 *  */
 	public ArrayList<Resenha> resenhasDoLivro(String iSBN) {
 		ArrayList<Resenha> listaResenha = new ArrayList<Resenha>();
 		File dirUsuarios = new File("Usuarios/Matriculas/");
@@ -179,7 +187,11 @@ public class ResenhaDAO implements DAO<Resenha> {
 	public Resenha load(Object chave) {
 		return null;
 	}
-
+	
+	/** O seguinte método auxilia em VerResenhaControlador, ele recebe o ISBN do livro e o número do usuário que está solicitando a
+	 * função, assim pode ler o arquivo .csv da resenha em questão, cado a resenha exista ele une o texto do arquivo em apenas uma 
+	 * String retornando-a. 
+	 * */
 	public String pegandoTexto(String ISBN, int numero) {
 		File  file = new File("Usuarios/Matriculas/" + numero + "/" + "MinhasResenhas/" + ISBN + ".csv");
 		String linha = "";

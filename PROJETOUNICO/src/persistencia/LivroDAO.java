@@ -100,7 +100,8 @@ public class LivroDAO implements DAO<Livro> {
 			e.printStackTrace();
 		}
 	}
-
+	/** O método a seguir busca todos os livros salvos no diretório livros. 
+	 * */
 	public ArrayList<Livro> findAll() {
 		ArrayList<Livro> lista = new ArrayList<Livro>();
 		try {
@@ -126,6 +127,31 @@ public class LivroDAO implements DAO<Livro> {
 		return lista;
 	}
 
+	/** Já este método, busca os livros no arquivo .csv do usuário que possui a chave que vem como parâmetro, retornando uma 
+	 * ArrayList com os livros 'lidos' no arquivo.
+	 * */
+	public ArrayList<Livro> findAll(int numeroUsuario) {
+		ArrayList<Livro> lista = new ArrayList<Livro>();
+		Scanner scan = null;
+		try {
+			File file = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "meusLivros.csv");
+			if (file.exists()) {
+				scan = new Scanner(file);
+				String linha = scan.nextLine();
+				String[] colunas = linha.split(";");
+				for (int i = 0; i < colunas.length; i++) {
+					Livro livro = load(colunas[i]);
+					lista.add(livro);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		if (scan != null) scan.close();
+		return lista;
+	}
+	
 	public Livro load(Object chave) {
 		Livro l = null;
 		
@@ -150,28 +176,10 @@ public class LivroDAO implements DAO<Livro> {
 		return null;
 	}
 
-	public ArrayList<Livro> findAll(int numeroUsuario) {
-		ArrayList<Livro> lista = new ArrayList<Livro>();
-		Scanner scan = null;
-		try {
-			File file = new File("Usuarios/Matriculas/" + numeroUsuario + "/" + "meusLivros.csv");
-			if (file.exists()) {
-				scan = new Scanner(file);
-				String linha = scan.nextLine();
-				String[] colunas = linha.split(";");
-				for (int i = 0; i < colunas.length; i++) {
-					Livro livro = load(colunas[i]);
-					lista.add(livro);
-				}
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		if (scan != null) scan.close();
-		return lista;
-	}
-
+	/** O método a seguir é um auxiliar, ele recebe com parâmetro o nome do livro, existe um arquivo com todos os nomes dos livros 
+	 * persistidos, logo o este arquivo é lido e caso já exista o nome em questão salvo neste arquivo é retornado true, caso não 
+	 * exista retorna-se false.
+	 * */
 	public boolean testandoSeLivroExiste(String nome) {
 		File file = new File("titulos/titulos.csv");
 		if (file.exists()) {
